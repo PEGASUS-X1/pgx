@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antropologia</title>
+    <link rel="stylesheet" href="./assets/css/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./assent/css/font-awesome.css">
+    <link rel="stylesheet" href="./assent/css/fontawesome-all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/dark.css">
+</head>
+
+<body>
+    <audio id="Audio_Presentacion" src="./assets/audio/presentacion.mp3"></audio>
+
+    <header class="header">
+        <img src="./assets/img/PG.png" alt="" class="logo">
+        <menu class="menu">
+            <a href="#diapositivas">Presentacion</a>
+        </menu>
+    </header>
+
+    <div class="slider" id="diapositivas">
+        <div class="slide Presentacion" id="abrir">
+            <div id="loader" class="loader">
+                <img src="./assets/img/PG.png" alt="" class="logo_presentacion">
+                <div class="loader-circle"></div>
+            </div>
+        </div>
+        <div class="slide" id="slide2">
+            <img src="./assets/img/expo/1.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/2.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/3.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/4.webp" alt="Image 1">
+            <button class="btn_silde Abrir_Pgx" data-modal="2">Puertos</button>
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/5.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/6.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/7.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/8.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/9.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/10.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/11.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/12.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/13.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/14.webp" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="./assets/img/expo/fin.webp" alt="Image 1">
+        </div>
+        <div class="controladores">
+            <span class="Mas_Herramientas" id="Mas_Herramientas"><i class="fa fa-plus"></i>
+                <div class="Herramientas" id="Herramientas">
+                    <button class="Herramienta Abrir_Pgx" data-modal="dibujos"><i class="fa fa-brush"></i></button>
+                    <button class="Herramienta Abrir_Pgx" ><i class="fa fa-microphone"></i></button>
+                    <button class="Herramienta Abrir_Pgx"><i class="fa fa-video"></i></button>
+                </div>
+            </span>
+            <span class="prev"><i class="fa fa-arrow-left"></i></span>
+            <span class="next"><i class="fa fa-arrow-right"></i></span>
+        </div>
+    </div>
+    <div class="Modal_Pgx" data-modal-pgx="dibujos" id="dibujos">
+        <div class="Content_Above">
+            <span id="Close_Pgx">⨉</span>
+            <h1 style="text-align: center;">Dibujos</h1>
+        </div>
+        <div class="dibujos_ejemplos">
+            <canvas id="main-canvas" ></canvas>
+            <div class="tablero_control_dibujos">
+
+                <span class="select_lapiz"><i class="fa fa-pencil"></i>
+                <div class="contenido_herramientas_de_dibujo">
+                    <h1>Elige el color y el tipo</h1>
+                    <input type="color" id="color_lapiz_plumon_pincel">
+                    <select name="" id="tipo_herramienta">
+                        <option value="1">Lapiz</option>
+                        <option value="5">Plumon</option>
+                        <option value="15">Pincel</option>
+                    </select>
+                </div>
+                </span>
+
+                <span id="borrar"><i class="fa fa-eraser"></i></span>
+
+                <span class="select_Background">
+                    <i class="fa fa-file"></i>
+                    <div class="contenido_Background">
+                        <h1>Elige El Fondo</h1>
+                        <input type="color" name="" id="color_Background">
+                        <button id="activar_color_Background">Activar</button>
+                        <button id="bac1">Background Selva</button>
+                        <button id="bac2">Background Casa</button>
+                        <button id="bac3">Background Campo</button>
+                        <button id="bac4">Background Luna</button>
+                        <button id="bac5">Background Ciudad</button>
+                    </div>
+                </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="Modal_Pgx" data-modal-pgx="2" id="Modal2">
+        <div class="Content_Above">
+            <h1>Puertos</h1>
+        </div>
+        <div class="Content_Center">
+            <p>HTTPS: Hypertext Transfer Protocol.</p>
+            <p>HTTP:  Hypertext Transfer Protocol Secure.</p>
+            <p>FTP: File Transfer Protocol</p>
+            <p>FTPS: File Transfer Protocol Secure.</p>
+            <p>SMTP: Simple Mail Transfer Protocol.</p>
+            <p>POP3: Post Office Protocol version 3.</p>
+            <p>IMAP: Internet Message Access Protocol.</p>
+            <p>HTTPS: Hypertext Transfer Protocol.</p>
+            <p>HTTP:  Hypertext Transfer Protocol Secure.</p>
+            <p>FTP: File Transfer Protocol</p>
+            <p>FTPS: File Transfer Protocol Secure.</p>
+            <p>SMTP: Simple Mail Transfer Protocol.</p>
+            <p>POP3: Post Office Protocol version 3.</p>
+            <p>IMAP: Internet Message Access Protocol.</p>
+        </div>
+        <div class="Content_Below">
+            <div class="Content_Below_right">
+                <button class="buttonModal" id="Close_Pgx" href="#">button 3</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/silders.js"></script>
+    <script src="./assets/js/modal_basico.js"></script>
+    <script src="./assets/js/btn.js"></script>
+    <script src="./assets/js/dibujo.js"></script>
+</body>
+
+</html>
