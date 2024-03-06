@@ -21,35 +21,6 @@ img {
     max-width: 100%;
 }
 
-.header {
-    position: relative;
-    width: 100%;
-    height: 70px;
-    background: #000;
-    border-bottom: 2px solid #fff;
-}
-
-.header .logo {
-    max-width: 100%;
-    width: 70px;
-}
-
-.header .menu {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.header .menu a {
-    text-decoration: none;
-    width: 150px;
-    line-height: 30px;
-    text-align: center;
-    background: #000;
-    color: lime;
-}
-
 .slider {
     position: relative;
     width: 100%;
@@ -70,100 +41,6 @@ img {
     position: relative;
     animation: 2s;
     animation-fill-mode: forwards;
-}
-
-
-@keyframes abajoarriba {
-    0%{
-        position: absolute;
-        transform: translate(0px,-1200px);
-    }
-    100%{
-        display: block;
-        position: relative;
-        transform: translate(0px, 0px);
-    }
-}
-
-@keyframes arribaabajo {
-    0%{
-        position: absolute;
-        transform: translate(0px,-1200px);
-    }
-    100%{
-        display: block;
-        position: relative;
-        transform: translate(0px, 0px);
-    }
-}
-
-
-@keyframes afueraparaadentro {
-    0%{
-        position: absolute;
-        scale: -10%;
-        transform: none;
-    }
-    100%{
-        display: block;
-        position: relative;
-        scale: 100%;
-        transform: none;
-    }
-}
-
-@keyframes adentroparaafuera {
-    0%{
-        position: absolute;
-        scale: 400%;
-        transform: none;
-    }
-    100%{
-        display: block;
-        position: relative;
-        scale: none;
-        transform: none;
-    }
-}
-
-@keyframes rotacion90 {
-    0%{
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        transform: rotate(90deg);
-    }
-    100%{
-        display: block;
-        position: relative;
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes rotacion90inver {
-    0%{
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        transform: rotate(-90deg);
-    }
-    100%{
-        display: block;
-        position: relative;
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes movimiento {
-    0%{
-        position: absolute;
-        transform: translate(-1200px);
-    }
-    100%{
-        display: block;
-        position: relative;
-        transform: translate(0px);
-    }
 }
 
 .slide img {
@@ -192,6 +69,57 @@ img {
     font-weight: 1;
     color: #fff;
 }
+
+a{
+    text-decoration: none;
+}
+
+.hover{
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    z-index: 111;
+    position: fixed;
+}
+
+.barras{
+    top: 1px;
+    right: 0;
+    font-size: 20px;
+    position: absolute;
+    display: block;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    background: #0000009d;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 1;
+    cursor: pointer;
+    z-index: 15;
+    position: fixed;
+}
+
+.bat{
+    top: 1px;
+    right: 0;
+    font-size: 20px;
+    position: absolute;
+    display: block;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    background: #0000009d;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 1;
+    cursor: pointer;
+    z-index: 15;
+    position: fixed;
+    color: #fff;
+}
+
+
 
 .Herramientas {
     display: none;
@@ -273,7 +201,13 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+#loaderr{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .loader-circle {
     text-align: center;
     border: 8px solid #494949;
@@ -295,6 +229,16 @@ img {
 }
 
 #loader .logo_presentacion {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loaderr .logo_presentacion {
     position: absolute;
     width: 150px;
     height: 150px;

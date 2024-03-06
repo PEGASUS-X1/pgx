@@ -10,17 +10,12 @@ const Mas_Herramientas = document.getElementById("Mas_Herramientas");
 const Herramientas = document.getElementById("Herramientas");
 const abrir = document.getElementById("abrir");
 var Audio_Presentacion = document.getElementById("Audio_Presentacion");
-var loader = document.getElementById("loader");
-var slide2 = document.getElementById("slide2");
+var loaderr = document.getElementById("loaderr");
 
 abrir.onclick = function(){
   abrir.classList.add("active");
+  loaderr.style.display = "none";
   Audio_Presentacion.play();
-  loader.style.display = "none";
-  setTimeout(() => {
-    abrir.style.display = "none";  
-    slide2.style.display = "block";
-  }, 9000);
 
 }
 

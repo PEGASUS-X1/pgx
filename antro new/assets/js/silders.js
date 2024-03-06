@@ -9,9 +9,13 @@ const animations = [
     "arribaabajo",
     "abajoarriba",
     "afueraparaadentro",
-    "movimiento",
+    "delado",
+    "deladoinvertido",
     "rotacion90",
     "rotacion90inver",
+    "rotacionescalada",
+    "rotacionescaladainvertida",
+    "circulo"
 ];
 
 function showSlide(n, animationName) {
@@ -23,6 +27,7 @@ function showSlide(n, animationName) {
 }
 
 function nextSlide() {
+    
     const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
     showSlide(currentSlide + 1 - 1 + 1, randomAnimation);
 }
