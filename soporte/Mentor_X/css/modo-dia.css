@@ -1,0 +1,117 @@
+    body{
+        background: #fff;
+    }
+    
+    /* Estilos para el botón */
+    .switch {
+        position: relative;
+        background-color: #cfcfcf; /* Color de fondo */
+        border: none;
+        border-radius: 30px; /* Forma redondeada del botón */
+        color: #fff; /* Color del texto */
+        padding: 5px 10px; /* Espaciado interno del botón */
+        border: 1px solid #000;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Alinea los iconos y el texto */
+        transition: background-color 0.3s ease;
+    }
+    .btn_comentarios{
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        height: 40px;
+    }
+    #Cajadecomentarios{
+        height: auto;
+        max-height: 1290px;
+        border: 1px solid #fff;
+        width: 90%;
+        margin: 0 auto;
+        overflow: auto;
+    }
+    .comentarios{
+        display: none;
+        max-width: 100%;
+        width: 700px;
+        outline: 5px solid #b30000;
+        margin: 0 auto;
+        /* margin-top: 30px; */
+        /* padding: 20px; */
+        height: 600px;
+        overflow: auto;
+        position: fixed;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        background: #fff;
+        transform: translate(-50%, -50%);
+    }
+    /* Estilo para el icono de sol y luna */
+    .switch .fas.fa-sun, .switch .fas.fa-moon {
+        font-size: 24px;
+    }
+
+    /* Bolita indicadora */
+    .indicator {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff; /* Color de la bolita */
+        transition: transform 0.3s ease;
+    }
+
+    /* Estilo para el icono de sol y luna */
+    .switch .fas.fa-sun {
+        z-index: 5;
+        color: #ffd900; /* Color del sol */
+        padding-left: 3px;
+        margin-right: 10px; /* Espacio entre el icono y el texto */
+    }
+
+    /* Estilo para el icono de luna */
+    .switch .fas.fa-moon {
+        opacity: 0;
+        z-index: 2;
+        color: #ff00f2; /* Color de la luna */
+        margin-left: 7px; /* Espacio entre el icono y el texto */
+    }
+
+
+
+    /* Animación de la bolita */
+    .switch.active .indicator {
+        transform: translateX(135%); /* Mueve la bolita a la derecha cuando el botón está activo (modo noche) */
+        background-color: #fff; /* Cambia el color de la bolita en modo noche */
+    }
+    .switch.active {
+        border: 1px solid #fff;
+        background: #31002f;
+    }
+    .switch.active .fas.fa-moon{
+        opacity: 1;
+    }
+    .switch.active .fas.fa-sun{
+        opacity: 0;
+    } 
+    body.skull {
+        background: #000;
+        color:  #fff;
+    }
+    body.skull .info-contenedor{
+        border: 1px solid #fff;
+    }
+    body.skull .temario{
+        border: 1px solid #fff;
+    }
+    body.skull .btn{
+        border: 1px solid #fff;
+    }
+    body.skull .librosContainer{
+        border: 1px solid #fff;
+        background: #1f1f1f;
+    }
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./css/examen.css">
+    <link rel="stylesheet" href="../data/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div id="overlay">
+        <div class="loader-circle"></div>
+        <div id="loading-text">Cargando...</div>
+        <div class="personal-information">
+            <input type="text" id="cual-nombre" placeholder="Cual Es Tu Nombre?" onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="guardarNombre()">Guardar Nombre</button>
+        </div>
+        <br>
+    </div> 
+
+<header class="barra" id="barra">
+    <h1>Mentor X</h1>
+    <span id="menu"><i class="fa fa-bars"></i></span>
+</header>
+<div class="menu" id="menu_barra">
+    <span class="close" id="close" >&times;</span>
+    <nav>
+        <span class="tops"><i class="fa fa-trophy"></i> Tops</span>
+        <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+        <a href="./reproductor.html"><i class="fa fa-video"></i> Academia</a>
+    </nav>
+</div>
+<section class="lading" id="lading">
+    <div class="textos">
+        <h1 id="texto-generado"></h1>
+        <p>Hoy es el día de demostrar lo que sabes. Cada pregunta es una oportunidad para brillar. Confía en ti mismos, respira profundo y enfrenta el desafío. ¡Vamos, tu puedes hacerlo! ¡Buena suerte!</p>
+        <select name="" id="Examenes" class="Examenes">
+            <option value="" disabled selected>Seleciona Un Examen</option>
+            <option value="Andina">Andina</option>
+            <option value="Unssac">Unssac</option>
+            <option value="Continental">Continental</option>
+            <option value="Catolica">Catolica</option>
+            <option value="Ingienieria">Ingienieria</option>
+        </select>
+        <button id="comensar1" onclick="comensar()">Iniciar</button>
+        <button onclick="nopuedo()">No Puedo</button>
+    </div>
+</section>
+<section class="no_puedo" id="no_puedo">
+<div class="textos tex1">
+    <audio src="./audio/NOPuedo.mp3" id="audio"></audio>
+    <p id="texto"></p>
+    <button id="comensar2">Yo Si Puedo</button>
+</div>
+</section>
+<div class="quiz-container" id="quiz-container">
+</div>
+
+<div id="quiz-summary">
+    <!-- <span class="close" id="close">&times;</span> -->
+    <h2>Resumen del Examen</h2>
+    <p id="correct-answers">Respuestas correctas: 0</p>
+    <p id="incorrect-answers">Respuestas incorrectas: 0</p>
+    <p id="score">Puntuación: 0</p>
+    <div id="incorrect-questions">
+        <h3>Preguntas incorrectas:</h3>
+        <ul id="incorrect-question-list"></ul>
+    </div>
+    <button id="Recarga"> Volver A Dar El Examen</button>
+</div>
+<script src="./js/examen.js"></script>
+<script src="../data/base.js"></script>
+</body>
+</html>
