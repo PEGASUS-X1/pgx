@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="tab1"></div>
+    <div id="tab2"></div>
+    <div id="tab3"></div>
+    <script>
+
+        function SubirBtn() {
+            var url_img_actividad = $("#url_img_actividad").val();
+            var url_Archivo_actividad = $("#url_Archivo_actividad").val();
+            var Nombre_Actividad = $("#Nombre_Actividad").val();
+            var Fecha_Actividad = $("#Fecha_Actividad").val();
+            var selectedTablero = $("#Alojamiento_selec_area").val();
+            
+            // Recuperar el valor de Link_Online del localStorage
+        
+            if (selectedTablero.trim() !== '' ) {
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbziKTXltWyYjyZwT5bRN063JRTbldpAe5A5KR78tE5Uc_go1k2DA1_f-FVzxlM7q-aD/exec",
+                    method: 'POST',
+                    data: {
+                        selectedTablero: selectedTablero,
+                        url_img_actividad: url_img_actividad,
+                        url_Archivo_actividad: url_Archivo_actividad,
+                        Nombre_Actividad: Nombre_Actividad,
+                        Fecha_Actividad: Fecha_Actividad,
+                    },
+                    success: function (response) {
+                        alert('Agregado con éxito');
+                        mostrarBtns();
+                    },
+                    error: function (error) {
+                        console.error('Error al agregar: ', error);
+                    }
+                });
+        
+                // Limpiar los campos después de agregar el botón
+                $('#url_img_actividad').val('');
+                $('#url_Archivo_actividad').val('');
+                $('#Nombre_Actividad').val('');
+                $('#Fecha_Actividad').val('');
+            } else {
+                alert('Por favor, seleccione un tablero y asegúrese de que la URL esté guardada antes de subir el botón.');
+            }
+        }
+        
+        function mostrarBtns() {
+        
+            if ("https://script.google.com/macros/s/AKfycbziKTXltWyYjyZwT5bRN063JRTbldpAe5A5KR78tE5Uc_go1k2DA1_f-FVzxlM7q-aD/exec") { // Verificar si hay una URL guardada en el localStorage
+                $.ajax({
+                    url:  "https://script.google.com/macros/s/AKfycbziKTXltWyYjyZwT5bRN063JRTbldpAe5A5KR78tE5Uc_go1k2DA1_f-FVzxlM7q-aD/exec",
+                    method: 'GET',
+                    success: function (response) {
+                        var Tabas1 = $('#tabb1');
+                        var Tabas2 = $('#tabb2');
+                        var Tabas3 = $('#tabb3');
+                        Tab1.empty();
+                        Tab2.empty();
+                        Tab3.empty();
+        
+                        response.forEach(function (Btns) {
+                            const contenedor = document.createElement("div");
+                            contenedor.className = "carta_avance";
+            
+                            const Img_avance = document.createElement("img");
+                            Img_avance.src = Btns.url_img_actividad;
+            
+                            const xa = document.createElement("a");
+                            xa.className = "carta_avance";
+                            xa.href = url_Archivo_actividad;
+            
+                            const xh1 = document.createElement("h1");
+                            xh1.className = "carta_avance";
+                            xh1.textContent = Nombre_Actividad;
+                            xa.append(xh1);
+            
+                            const textofecha = document.createElement("p");
+                            textofecha.textContent = Fecha_Actividad;
+        
+                            MAMADO.append(Img_avance);
+                            MAMADO.append(xa);
+                            MAMADO.append(xh1);
+                            MAMADO.append(textofecha);
+                            contenedor.append(MAMADO);
+        
+                            if (Btns.selectedTablero === 'A') {
+                                Tabas1.append(contenedor);
+                            } else if (Btns.selectedTablero === 'M') {
+                                Tabas2.append(contenedor);
+                            } else if (Btns.selectedTablero === 'tab3') {
+                                Tabas3.append(contenedor);
+                            }
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error', error);
+                    }
+                });
+            } else {
+                console.log('No hay una URL guardada en el localStorage.');
+            }
+        }
+        
+    </script>
+</body>
+</html>
