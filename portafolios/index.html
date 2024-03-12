@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 
+        @le falta
+        !subir firebase
+        !comentar
+        !aparecer 
+-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/silders.css">
+    <link rel="stylesheet" href="./assets/css/animaciones.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/dark.css">
+    <link rel="stylesheet" href="./porta/assets/css/metodos.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+    <script>
+        function preventTranslate() {
+          if (typeof google === 'object' && google.translate && google.translate.getSupportedLanguages) {
+            // Remove the Translate Bar container.
+            var translateBarContainer = document.querySelector('#goog-gt-tt');
+            if (translateBarContainer) {
+              translateBarContainer.style.display = 'none';
+            }
+    
+            // Disable translate functionality.
+            google.translate.disableTranslate();
+          }
+        }
+    
+        window.onload = preventTranslate;
+    </script>
+</head>
+<body>
+    <div id="overlay" class="hover">
+        <div id="loader">
+        <div class="loader-circle"></div>
+        <img src="./assets/img/PG.png" alt="" class="logo_presentacion">
+        </div>
+    </div>
+    <span id="abrir_bar"> <i id="bar_abri" class="fa fa-times"></i> </span>
+    <div class="bar abierto" id="bar">
+        <span class="Modelo-user" id="Modelo-user" onclick="mostraedits()"></span>
+        <div id="img_portada"></div>
+        <img src="" id="img-user" alt="">
+        <h1 id="nombre_completo"></h1>
+
+        <div class="navegacion">
+            <span class="divi"></span>
+            <h1 class="divi_letra">Principal:</h1>
+            <a href=""><i class="fa fa-home"></i> Home</a>
+            <a href="#Portafolios"><i class="fa fa-briefcase"></i> Portafolios</a>
+            <a href="#" data-modal="creators" class="Abrir_Pgx"><i class="fa fa-id-card"></i> Credores</a>
+            <a href="#"  data-modal="edit" class="Abrir_Pgx edit" style="display: none;"><i class="fa fa-pencil"></i> Agregar Información</a>
+            <span class="divi"></span>
+            <h1 class="divi_letra">Extras:</h1>
+            <a href="" class="extras"><i class="fa fa-play"></i> Pelicula</a>
+            <a href="" class="extras"><i class="fa fa-play"></i> Series</a>
+            <a href="" class="extras"><i class="fa fa-person"></i> Academia</a>
+            <a href="" class="extras"><i class="fa fa-file"></i> Sistema De Presentacion</a>
+        </div>
+        <button class="salir" onclick="salir()"><i class="fa fa-sign-out"></i> Salir</button>
+    </div>
+
+    <div class="slider" id="diapositivas">
+        <div class="slide" id="slide1">
+            <img class="fondo" src="https://th.bing.com/th/id/OIG3.AFLjngMVA2KUBI0_5OIE?pid=ImgGn" alt="Image 1">
+            <div class="texto">
+                <h1>Portafolios</h1>
+                <p>De: Joseph Anthony Laucata Zuñiga</p>
+                <p>Carrera Profesional: <span class="Glitch">Ingeniera De Sistemas</span></p>
+                <p>Edad: 16</p>
+                <p>Frase: <span class="hack">¿Qué pasaría si pudiéramos ver el código fuente de las personas? ¿Lo haríamos?</span></p>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo" src="https://th.bing.com/th/id/OIG1.FqXqTrVYYMUAhjBdngoN?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Image 1">
+            <div class="texto">
+                <h1>Resulta el individuo mas complejo que el conjunto</h1>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo" src="https://th.bing.com/th/id/OIG2.KnDodfmsY79MCEzwha_I?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="">
+            <div class="texto">
+                <h1>La realidad es una contrucion solcial y tu estas adentro de una en mis miles de realidades</h1>
+            </div>
+        </div>
+        <div class="controladores">
+            <span class="prev"><i class="fa fa-arrow-left"></i></span>
+            <span class="next"><i class="fa fa-arrow-right"></i></span>
+        </div>
+    </div>
+    <div class="divisor_de_secciones" id="Portafolios">
+        <span class="divi"></span>
+        <h1 class="dibi_name">Portafolios</h1>
+        <span class="divi"></span>
+    </div>
+    <div class="cartas">
+        <div class="carta">
+            <figure>
+                <img src="https://tesisymasters.com.co/wp-content/uploads/2022/08/TYM-COL-nueva-portada-2-9-1024x576.jpg" alt="">
+            </figure>
+            <div class="contenido_carta">
+                <h1 class="carta_name">Metodos De Estudio</h1>
+                <div class="informacion">
+                    <p>Fecha: 08/03/2024</p>
+                    <p>De: Joseph</p>
+                </div>
+            </div>
+            <a target="_blank" href="./porta/Metodos.html" class="ver_porta"> <span><i class="fa fa-eye"></i> Ver Portafolio</span></a>
+        </div>        
+        <div class="carta">
+            <figure>
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/517/472/desktop-wallpaper-2978358-grunge-skull-and-backgrounds-anthropology.jpg" alt="">
+            </figure>
+            <div class="contenido_carta">
+                <h1 class="carta_name">Antropologia</h1>
+                <div class="informacion">
+                    <p>Fecha: 09/03/2024</p>
+                    <p>De: Joseph</p>
+                </div>
+            </div>
+            <a target="_blank" href="./porta/Antropologia.html" class="ver_porta"> <span><i class="fa fa-eye"></i> Ver Portafolio</span></a>
+        </div>
+    </div>
+
+    <div class="Modal_Pgx edit" id="edit" data-modal-pgx="edit">
+        <div class="Content_Above">
+            <span id="Close_Pgx">⨉</span>
+            <h1 class="title_modal">Que hacemos hoy <span class="user"></span>?</h1>
+        </div>
+        <div class="Content_Center">
+            <select name="" id="Alojamiento_selec_area">
+                <option value="" disabled selected>Seleciona La Asignatura</option>
+                <option value="Metodos">Metodos</option>
+                <option value="Antro">Antro</option>
+            </select>
+        <div id="Alojamiento">
+            <select name="" id="Alojamiento_selec" onchange="cambiarScript()">
+                <option value="" disabled selected>Tipo de Alojamiento</option>
+                <option value="Actividades">Actividades</option>
+                <option value="Trabajos">Trabajos</option>
+            </select>
+            <div class="Actividades" id="Actividades">
+                <div class="ejemplo" id="ejemplo">
+                    <div class="avances">
+                    <div class="carta_avance">
+                        <img id="IMG_ejemplo" src="" alt="">
+                        <a id="Enlace_ejemplo" href="#" class="x">
+                            <h1 class="textodecarta" id="Nombre_ejemplo"></h1>
+                        </a>
+                        <p class="fechap" id="fecha_ejemplo"></p>
+                    </div>
+                </div>
+                </div>
+                <label for="">Url De La Imagen</label>
+                <input type="url" name="" value="https://firebasestorage.googleapis.com/v0/b/fotos-b8a54.appspot.com/o/Joseph%20Anthony%20Laucata%20Zu%C3%B1iga%2FPGX.PNG?alt=media&token=60d2238b-5419-48a9-a8e6-5d028a38c7a4" id="url_img_actividad">
+                <label for="">Enlace Del Archivo </label>
+                <input type="url" name="" id="url_Archivo_actividad">
+                <label for="">Nombre De La Actividad</label>
+                <input type="text" name="" id="Nombre_Actividad">
+                <label for="">Fecha Del Avanze</label>
+                <input type="text" name="" id="Fecha_Actividad">
+            </div>
+            <div class="Trabajos" id="Trabajos">
+                bbbbbb
+            </div>
+        </div>
+        <div class="upload" id="upload">
+            <div class="cargador-archivos">
+                <input type="file" id="fileToUpload" style="display: none">
+            <h2  class="selec_cg" onclick="selectFile()">Seleccionar archivo</h2>
+            <label for="">El Nombre Del Archivo:</label>
+            <input type="text" id="fileName" value="Ningún archivo seleccionado" disabled>
+            <button class="btn-cg" onclick="subirArchivo()">Cargar</button>
+            </div>
+            <div id="archivosContainer"></div>
+        </div>
+        </div>
+        <div class="Content_Below">
+            <div class="Content_Below_left">
+                <a id="Alojamientos" href="#" ><i class="fa fa-user"></i> Alojamientos</a>
+                <a id="uploads" href="#" ><i class="fa fa-upload"></i> Subir</a>
+            </div>
+            <div class="Content_Below_right">
+                <a id="button_3_actividades" href="#" onclick="SubirBtn()" ><i class="fa fa-save"></i> Guardar</a>
+                <a id="button_3_trabajos" href="#"><i class="fa fa-save"></i> Guardar</a>
+            </div>
+        </div>
+    </div>
+    <div class="Modal_Pgx" id="creators" data-modal-pgx="creators">
+        <div class="Content_Above">
+            <span id="Close_Pgx">⨉</span>
+            <h1 class="title_modal"><span class="user"></span> Quieres Conocernos?</h1>
+        </div>
+        <div class="Content_Center">
+            <div class="cartas_creators">
+                <div class="carta_creator">
+                    <img src="./assets/img/324443985_3385240871715891_7814097938008960036_n.jpg" alt="">
+                <div class="information">
+                    <h1 class="name">Joseph</h1>
+                    <p>Ecargado:</p>
+                    <p>Js, Html, AppScript</p>
+                </div>
+                </div>
+                <div class="carta_creator">
+                    <img src="./assets/img/6bb1c62c910bd0266b8235302aad4ac8.jpg" alt="">
+                <div class="information">
+                    <h1 class="name">Bi</h1>
+                    <p>Ecargado:</p>
+                    <p>Css, Apis(Pgx)</p>
+                </div>
+                </div>
+                <div class="carta_creator">
+                    <img src="./assets/img/Bryan.png" alt="">
+                <div class="information">
+                    <h1 class="name">Bryan</h1>
+                    <p>Ecargado:</p>
+                    <p>Imgs, Texto, Tematica</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/silders.js"></script>
+    <script src="./assets/Data/data.js"></script>
+        <div id="mensajes-container" style="display: none;"></div>
+    <script src="./assets/js/home.js"></script>
+    <script src="./assets/js/modal_basico.js"></script>
+    <script>
+        const animations = [
+    "adentroparaafuera",
+    "arribaabajo",
+    "abajoarriba",
+    "afueraparaadentro",
+    "delado",
+    "deladoinvertido",
+];
+        var intervalo = setInterval(nextSlide, 15000);
+    </script>
+    <script src="./assets/Data/Subir_actividad.js"></script>
+    <script src="./assets/Data/online_server.js"></script>
+</body>
+</html>
