@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #000;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    display: none;
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: red;
+}
+
+img {
+    max-width: 100%;
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: none;
+    position: relative;
+}
+
+
+.slide.activo {
+    display: block;
+    position: relative;
+    animation: 2s;
+    animation-fill-mode: forwards;
+}
+
+.slide .fondo {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 50%;
+}
+
+/*.controladores {
+    position: absolute;
+    bottom: 5%;
+    right: 1%;
+}
+*/
+.controladores span {
+    border: 1px solid #fff;
+    font-size: 20px;
+    display: block;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    background: #0000009d;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 1;
+    color: #fff;
+}
+
+.prev{
+    opacity: 0;
+    position: absolute;
+    left: 0%;
+    width: 30px;
+    top: 50%;
+    transform: translate(0%,-50%);
+    line-height: 300px;
+}
+
+.prev:hover{
+    opacity: 1;
+}
+
+.next:hover{
+    opacity: 1;
+}
+
+.next{
+    opacity: 0;
+    font-family: 'Courier New', Courier, monospace;
+    width: 30px;
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translate(0%,-50%);
+    line-height: 300px;
+}
+
+.texto{
+    max-width: 80%;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    background: #000000b7;
+    width: 700px;
+}
+
+.texto h1{
+    font-family: "Metal Mania", system-ui;
+
+    text-align: center;
+    color: #fff;
+    font-size: 4vh;
+    background-clip: text;
+    text-shadow: 0px 0px 15px rgb(255, 0, 0);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    margin-bottom: 10px;
+}
+
+.texto p{
+    color: #fff;
+    font-size: 2.2vh;
+}
+
+.Glitch{
+    color: #fff;
+    text-shadow: 0px 0px 15px rgb(255, 0, 0);
+    font-family: "Rubik Glitch", system-ui;
+}
+.hack{
+    background: #000;
+    color: lime;
+}
+
+.primero_hoja, .tercera_hoja{
+    text-align: center;
+    width: 90%;
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    /* background: #fff; */
+}
+
+
+.primero_hoja img{
+    opacity: 1;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.primero_hoja h1{
+    margin: 0 auto;
+    display: block;
+    font-size: 4vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.segunda_hoja{
+    font-family: "Dancing Script", cursive;
+    text-align: center;
+    width: 90%;
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+}
+
+.segunda_hoja h1{
+    font-family: "Dancing Script", cursive;
+
+}
+
+.segunda_hoja .nombre_curso{
+    font-size: 7.5vh;
+    font-family: "Dancing Script", cursive;
+}
+
+.tercera_hoja h1{
+    font-size: 5vh;
+}
+
+.tercera_hoja p,li,ul,h2{
+    text-align: left;
+    color: #000;
+    font-size: 3vh;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px #fff;
+}
+
+.tercera_hoja .textos{
+    height: auto;
+    max-height: 300px;
+    padding-right: 2px;
+    overflow: auto;
+}
+
+.tercera_hoja .textos::-webkit-scrollbar{
+    display: block;
+    background: #00000000;
+    border: 1px solid #ffffff;
+}
+
+.tercera_hoja .textos::-webkit-scrollbar-thumb{
+    background: #3f2616;
+}
+
+.tercera_hoja .btn_lector{
+    margin-top: 10px;
+    width: 150px;
+    line-height: 30px;
+}
+
+.download{
+    margin: 0 auto;
+    text-decoration: none;
+    padding: 5px;
+    background: #000;
+    width: 150px;
+    text-align: center;
+    color: red;
+    -webkit-text-stroke: 0px;
+    line-height: 30px;
+    display: block;
+}
