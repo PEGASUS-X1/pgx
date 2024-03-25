@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--! ✝ ======= 🐉 ╟ General ╢ 🐉 ======= ✝ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precalculo</title>
+    <link rel="shortcut icon" href="../assets/img/PG.png" type="image/x-icon">
+    <!--! ✝ ======= 🐉 ╟ End General ╢ 🐉 ======= ✝ -->
+
+    <!--! ✝ ======= 🐉 ╟ Tarjeta ╢ 🐉 ======= ✝ -->
+
+    <meta name="description" content="Precalculo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+    <link rel="image_src" href="https://cdn.discordapp.com/attachments/952741392139042827/1143512517109366854/PGX_1.png" id="image_src" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="677288579025878" />
+    <meta property="fb:pages" content="122006227838751" />
+    <meta property="og:title" content="Pegasus X" />
+    <meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+    <meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+
+    <meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143512517109366854/PGX_1.png" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Pegasus X" />
+    <meta property="og:description" content="Precalculo" />
+    <meta property="og:locale" content="es_ES" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NamazYunpio">
+    <meta name="twitter:title" content="Pegasus X">
+    <meta name="twitter:description"content="Precalculo">
+    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143512517109366854/PGX_1.png">
+    <meta name="robots" content="index, follow" />
+    <meta name='googlebot' content='index, follow' />
+
+    <!--! ✝ ======= 🐉 ╟ Dublin Core ╢ 🐉 ======= ✝ -->
+
+    <meta name="DC.title" content="Pegasus X" />
+    <meta name="dc.creator" content="Nombre del Autor">
+    <meta name="dc.date" content="2023-08-21">
+    <meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+    <meta name="DC.description" content="Precalculo" />
+    <meta name="dc.subject" content=" Pegasus X, pegasus x">
+    <meta name="dc.format" content="text/html">
+    <meta name="DC.language" content="es" />
+
+    <meta name=”GOOGLEBOT” content=”NOODP” />
+    <meta name=”Slurp” content=”NOODP” />
+    <meta name=”msnbot” content=”NOODP” />
+
+    <!--! ✝ ======= 🐉 ╟ favicon diferentes dispositivos + pwa ╢ 🐉 ======= ✝ -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pegasus X">
+    <meta name="theme-color" content="#b10a0a">
+
+    <!--! ✝ ======= 🐉 ╟ Tarjeta fin ╢ 🐉 ======= ✝ -->
+
+    <!--! ✝ ======= 🐉 ╟ Estilos ╢ 🐉 ======= ✝ -->
+    <link rel="stylesheet" href="../assets/css/silders.css">
+    <link rel="stylesheet" href="../assets/css/animaciones.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/metodos.css">
+    <!--! ✝ ======= 🐉 ╟ End Estilos ╢ 🐉 ======= ✝ -->
+
+    <!--! ✝ ======= 🐉 ╟ Importaciones ╢ 🐉 ======= ✝ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+    <script src="../assets/Data/pas.min.js"></script>
+    <script src="./assets/Data/NoTrac.js"></script>
+    <!--! ✝ ======= 🐉 ╟ End Importaciones ╢ 🐉 ======= ✝ -->
+</head>
+
+<body>
+    <div class="audios">
+        <audio id="presentacion" src="./assets/audio/presentacion.mp3"></audio>
+        <audio id="vision" src="./assets/audio/vision.mp3"></audio>
+        <audio id="vision_ing" src="./assets/audio/vision_ing.mp3"></audio>
+        <audio id="vision_sis" src="./assets/audio/vision_sis.mp3"></audio>
+        <audio id="mision" src="./assets/audio/mision.mp3"></audio>
+        <audio id="mision_fa" src="./assets/audio/mision_fa.mp3"></audio>
+        <audio id="mision_sis" src="./assets/audio/mision_sis.mp3"></audio>
+    </div>
+    <div id="overlay" class="hover">
+        <div id="loader">
+            <div class="loader-circle"></div>
+            <img src="../assets/img/PG.png" alt="" class="logo_presentacion">
+        </div>
+    </div>
+    <span id="abrir_bar"> <i id="bar_abri" class="fa fa-times"></i> </span>
+    <div class="bar abierto" id="bar">
+        <span class="Modelo-user" id="Modelo-user" onclick="mostraedits()"></span>
+        <div id="img_portada"></div>
+        <img src="" id="img-user" alt="">
+        <h1 id="nombre_completo"></h1>
+        <div class="navegacion">
+            <span class="divi"></span>
+            <h1 class="divi_letra">Principal:</h1>
+            <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+            <a href="#Avances_re"><i class="fa fa-briefcase"></i> Avances</a>
+            <a href="#Trabajos_re"><i class="fa fa-briefcase"></i> Trabajos</a>
+            <span class="divi"></span>
+            <h1 class="divi_letra">Extras:</h1>
+            <a href="" class="extras"><i class="fa fa-play"></i> Pelicula</a>
+            <a href="" class="extras"><i class="fa fa-play"></i> Series</a>
+            <a href="" class="extras"><i class="fa fa-person"></i> Academia</a>
+            <a href="" class="extras"><i class="fa fa-file"></i> Sistema De Presentacion</a>
+        </div>
+        <button class="salir" onclick="salir()"><i class="fa fa-sign-out"></i> Salir</button>
+    </div>
+    <!-- @reduerda el edit para editor  -->
+    <div class="slider" id="diapositivas">
+        <div class="slide" id="slide1">
+            <img class="fondo" src="https://th.bing.com/th/id/OIG3.AFLjngMVA2KUBI0_5OIE?pid=ImgGn" alt="Image 1">
+            <div class="primero_hoja">
+                <h1>UNIVERSIDAD ANDINA DEL CUSCO</h1>
+                <img src="../assets/img/logo-new-UAC-1.svg" alt="">
+                <h1>De: Joseph Anthony Laucata Zuñiga</h1>
+                <h1>2024 Año del bicentenario</h1>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e1.pxfuel.com/desktop-wallpaper/517/472/desktop-wallpaper-2978358-grunge-skull-and-backgrounds-anthropology.jpg"
+                alt="Image 1">
+            <div class="segunda_hoja">
+                <h1>Portafolio</h1>
+                <h1 class="nombre_curso">PRECALCULO</h1>
+                <br>
+                <h1></h1>
+                <br>
+                <h1>2024</h1>
+                <br>
+                <h1>Sicuani - Cusco - Peru</h1>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>PRESENTACIÓN</h1>
+                <div class="textos">
+                    <p>La Antropología es una disciplina que considero fundamental en mi formación profesional. Su
+                        capacidad para ofrecer una comprensión profunda y diversa de las culturas, sociedades y la
+                        condición humana en su totalidad es invaluable. A través de esta asignatura, no solo exploramos
+                        las diferencias culturales, sino también las conexiones y similitudes que nos unen como seres
+                        humanos en un mundo cada vez más interconectado. </p>
+                    <br>
+                    <p>La importancia de la Antropología en mi formación profesional radica en su capacidad para
+                        desarrollar una perspectiva global, crítica y reflexiva. Al adentrarme en temas como la cultura,
+                        la sociedad, la religión, la economía y la política desde múltiples ángulos, amplío mi
+                        comprensión del mundo en el que vivimos y aprendo a apreciar la diversidad en todas sus formas.
+                    </p>
+                    <br>
+                    <p>Esta asignatura también me brinda habilidades prácticas que considero esenciales en mi futuro
+                        profesional. El pensamiento crítico, la empatía, la comunicación efectiva y la capacidad para
+                        trabajar en equipos multidisciplinarios son solo algunas de las habilidades que estoy
+                        desarrollando gracias a la Antropología. Estas habilidades son transferibles a una amplia gama
+                        de campos, desde la educación y la salud hasta el trabajo social y la gestión cultural.</p>
+                    <br>
+                    <p>Además, la Antropología me proporciona herramientas conceptuales y metodológicas para abordar
+                        problemas sociales y culturales complejos de manera informada y ética. Esto me capacita para ser
+                        un agente de cambio consciente y responsable en mi futura carrera profesional, donde espero
+                        aplicar los conocimientos y las perspectivas adquiridas en esta asignatura para contribuir
+                        positivamente a mi comunidad y al mundo en general.</p>
+                </div>
+                <button id="leer_presentacion" class="btn_lector" data-medio="presentacion">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>VISIÓN DE LA UAC</h1>
+                <div class="textos">
+                    <p>La Escuela Profesional de Educación de la Universidad Andina del Cusco al 2025, será una escuela
+                        profesional con excelencia académica, centrada en la formación integral de la persona y la
+                        investigación, con una educación de calidad orientada al desarrollo de la ciencia, pedagogía,
+                        tecnología e investigación, con principios éticos, valores universales y andinos de sabiduría
+                        (Yachay), trabajo (Llank’ay), voluntad (Munay), reciprocidad y solidaridad (Ayni), promoviendo
+                        la cultura andina y el desarrollo sostenible de la sociedad.</p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="vision">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>VISIÓN DE LA FACULTAD INGENIERÍA Y ARQUITECTURA</h1>
+                <div class="textos">
+                    <p>La Facultad de Ingeniería y Arquitectura de la Universidad Andina del Cusco al año 2025, será
+                        líder en la formación integral de los ingenieros y arquitectos, con una educación de calidad,
+                        orientada a la ciencia, investigación científica – tecnologíca, asumiendo los valores
+                        universales y andinos de sabiduría (Yachay), trabajo (Llank’ay), voluntad (Munay), reciprocidad
+                        y solidaridad (Ayni), principios éticos, promoviendo la cultura andina, la preservación del
+                        ambiente y el desarrollo sostenible de la sociedad en el ámbito regional y nacional.</p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="vision_ing">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>VISIÓN DE LA ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS</h1>
+                <div class="textos">
+                    <p>La escuela profesional de Ingeniería de Sistemas de la Universidad Andina del Cusco, al 2025 será
+                        líder en la formación integral de ingenieros de sistemas, con una educación de calidad basada en
+                        la ciencia y tecnología, con proyección social, orientada a la gestión y desarrollo de sistemas
+                        de información, tecnologías de información y comunicación, con principios éticos profesionales y
+                        valores andinos de sabiduría (Yachay), trabajo (Llank’ay), voluntad (Munay), reciprocidad y
+                        solidaridad (Ayni), promoviendo la investigación, la conservación del ambiente, la cultura
+                        andina y el desarrollo sostenible de la sociedad a nivel regional y nacional.</p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="vision_sis">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>MISIÓN DE LA UAC</h1>
+                <div class="textos">
+                    <p>Brindar una educación superior universitaria de calidad para la formación integral de
+                        profesionales y ciudadanos competentes en la región, con valores fundamentales y principios
+                        éticos y capacidad de adaptarse a los cambios, mediante programas presenciales, semipresenciales
+                        y a distancia, promoviendo la investigación científica, la innovación, el desarrollo humano,
+                        compromiso con la sociedad por una ciudadanía responsable y solidaria, y con el medio ambiente,
+                        para contribuir al desarrollo regional, nacional e internacional.
+                    </p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="mision">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>PERFIL DE LA ESCUELA PROFESIONAL</h1>
+                <div class="textos">
+                    <p>
+                        La Facultad de Ingeniería y Arquitectura de la Universidad Andina del Cusco, es una comunidad
+                        académica dedicada a la formación integral, científica, tecnológica y humanística de ingenieros
+                        y arquitectos con valores y principios éticos impulsadores de la preservación del ambiente y el
+                        desarrollo sostenible de la región y del país.
+                    </p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="mision_fa">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>MISIÓN DE LA ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS</h1>
+                <div class="textos">
+                    <p>
+                        Somos una escuela profesional que forma, de manera integral y con calidad, ingenieros de
+                        sistemas, a través del fortalecimiento de habilidades y capacidades para dominar tecnologías de
+                        la información, tecnologías de comunicación y la gestión y desarrollo de sistemas de
+                        información, con principios éticos profesionales y valores andinos, liderando equipos de
+                        trabajo, promotora de la investigación científica, el cuidado del ambiente, capaz de satisfacer
+                        y responder a las necesidades para el desarrollo sostenible de la sociedad a nivel regional y
+                        nacional.
+                    </p>
+                </div>
+                <button id="leer_vision" class="btn_lector" data-medio="mision_sis">
+                    <i class="fa fa-play"></i> Leer
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>MISIÓN DE LA ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS</h1>
+                <div class="textos">
+                    <p>
+                    <h2>Ingresante:</h2>
+                    <br><br>
+                    <p>El aspirante a la Escuela Profesional de Ingeniería de Sistemas deberá contar con:</p>
+                    <br><br>
+                    <ul>
+                        <li>Capacidad de desarrollar la inteligencia lógico matemática.</li>
+                        <br>
+                        <li>Capacidad de identificar modelos, calcular, formular y verificar hipótesis, utilizando el
+                            método deductivo e inductivo y buen nivel de abstracción.</li><br>
+                        <li>Capacidad de desarrollar la inteligencia lingüística que es la capacidad de comprender el
+                            orden y el significado de las palabras en la lectura, entender, hablar, escuchar y escribir
+                            eficazmente.</li><br>
+                        <li>Capacidad de leer en inglés.</li><br>
+                        <li>Capacidad de adaptarse fácilmente a los cambios tecnológicos y a la innovación siendo
+                            indagador.</li><br>
+                        <li>Habilidades para comunicarse y tener disposición para trabajar en equipo.</li><br>
+                        <li>Cualidades como ser colaborativo y proactivo.</li><br>
+                        <li>Capacidad para ubicar y relacionar objetos o elementos en contexto.</li>
+                    </ul>
+                    <br><br>
+                    <h2>Egresado:</h2>
+                    <br><br>
+                    <p>
+                        El perfil del Egresado está determinado por los resultados del estudiante de la Escuela
+                        Profesional de Ingeniería de Sistemas, los cuales están aprobados por Resolución
+                        N°231-2015-CFI-UAC y fueron actualizados por Resolución (Res. 116-2019-CFIA-UAC).
+                        <br><br>
+                        La Escuela Profesional debe permitir que los estudiantes logren, al momento de la graduación:
+                        <br><br>
+                        [Resultado a] Conocimientos de Computación: La capacidad de aplicar conocimientos de
+                        matemáticas, ciencias, computación y una especialidad de computación apropiados para los
+                        resultados del estudiante y la disciplina del programa.
+                        <br><br>
+                        [Resultado b] Análisis de problemas: La capacidad de identificar, formular, investigar
+                        literatura y resolver problemas complejos de computación y otras disciplinas relevantes en el
+                        dominio.
+                        <br><br>
+                        [Resultado c] Diseño y desarrollo de soluciones: La capacidad de diseñar, implementar y evaluar
+                        soluciones a problemas complejos de computación y diseñar y evaluar sistemas, componentes o
+                        procesos que satisfacen las necesidades específicas.
+                        <br><br>
+                        [Resultado d] Trabajo individual y en equipo: La capacidad de desenvolverse eficazmente como
+                        individuo, como miembro o líder de equipos diversos.
+                        <br><br>
+                        [Resultado e] Comunicación: La capacidad de comunicarse eficazmente, de forma oral y escrita, en
+                        una variedad de contextos profesionales.
+                        <br><br>
+                        [Resultado f] Profesionalismo y sociedad: La capacidad de analizar el impacto local y global de
+                        la computación sobre las personas, las organizaciones y la sociedad.
+                        <br><br>
+                        [Resultado g] Aprendizaje continuo: La capacidad de reconocer la necesidad del aprendizaje y el
+                        desarrollo profesional continuo.
+                        <br><br>
+                        [Resultado h] Uso de herramientas modernas: La capacidad de crear, seleccionar, adaptar y
+                        aplicar técnicas, recursos y herramientas modernas para la práctica de la computación, con la
+                        comprensión de sus limitaciones.
+                        <br><br>
+                        [Resultado i] La comprensión y la capacidad para apoyar el uso, ejecución y gestión de sistemas
+                        de información dentro de un entorno de aplicación.
+                        <br><br>
+                        (Resolución Nº 185-2019-CFIA-UAC)
+                    </p>
+                    <br><br>
+                    <h2>Profesional:</h2>
+                    <br><br>
+                    <p>Los objetivos educacionales son declaraciones generales que describen lo que se espera que los
+                        graduados logren algunos años después de la graduación. Los objetivos educacionales del programa
+                        están basados en las necesidades de los constituyentes del programa.</p>
+                    <ul>
+                        <li>OE1. Dominar tecnologías de información y comunicación para responder a las exigencias del
+                            mercado global a través de la investigación y la innovación tecnológica.</li>
+                        <br>
+                        <li>OE2. Liderar equipos multidisciplinarios a nivel regional, nacional e internacional para el
+                            desarrollo de proyectos de sistemas de información y tecnologías de información y
+                            comunicación, demostrando profesionalidad, conducta ética y practicando valores andinos.
+                        </li><br>
+                        <li>OE3. Administrar, gestionar y dirigir proyectos de sistemas de información que satisfagan y
+                            respondan a las necesidades organizacionales para el desarrollo sostenible de la sociedad.
+                        </li><br>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>LEY UNIVERSITARIA Nro. 30220 (ARTÍCULOS PERTINENTES REFERENTES AL
+                    ESTUDIANTE).</h1>
+                <div class="textos">
+                    <p>
+
+                    <h2>Participación Estudiantil (Artículo X)</h2>
+                    <p>Los estudiantes tienen derecho a participar en la vida académica, cultural, deportiva y de
+                        extensión de la universidad, así como en sus órganos de gobierno y representación.</p>
+                    <br>
+                    <h2>Libertad de Expresión (Artículo X)</h2>
+                    <p>Los estudiantes tienen derecho a la libertad de expresión y opinión, dentro del respeto a los
+                        valores democráticos y los derechos de los demás miembros de la comunidad universitaria.</p>
+                    <br>
+                    <h2>Derecho a la Información (Artículo X)</h2>
+                    <p>Las universidades deben garantizar a los estudiantes el acceso a la información relacionada con
+                        su formación académica, administrativa y financiera.</p>
+                    <br>
+                    <h2>Participación en la Evaluación de la Calidad Educativa (Artículo X)</h2>
+                    <p>Los estudiantes tienen derecho a participar en los procesos de autoevaluación, evaluación externa
+                        y acreditación de la calidad educativa de la universidad.</p>
+                    <br>
+                    <h2>Derechos Disciplinarios (Artículo X)</h2>
+                    <p>Los estudiantes tienen derecho a ser informados de manera clara y precisa sobre las normas
+                        disciplinarias de la universidad y a recibir un trato justo y equitativo en los procesos
+                        disciplinarios.</p>
+                    <br>
+                    <h2>Protección de la Integridad y Dignidad (Artículo X)</h2>
+                    <p>Las universidades deben garantizar la protección de la integridad física, moral y psicológica de
+                        los estudiantes, así como promover un ambiente libre de violencia, discriminación y acoso.</p>
+                    <br>
+                    <h2>Acceso a Beneficios y Servicios (Artículo X)</h2>
+                    <p>Los estudiantes tienen derecho a acceder a los beneficios y servicios que ofrece la universidad
+                        en igualdad de condiciones, sin discriminación alguna.</p>
+                    <br>
+                    <h2>Desarrollo Integral (Artículo X)</h2>
+                    <p>Las universidades deben promover el desarrollo integral de los estudiantes, brindando
+                        oportunidades para su formación académica, profesional, personal y social.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>ESTATUTO UAC</h1>
+                <div class="textos">
+                    <p>
+                        <a href="./assets/docs/23-63.pdf" class="download" download="Estatuto"><i
+                                class="fa fa-download"></i> Descargar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img class="fondo"
+                src="https://e0.pxfuel.com/wallpapers/554/202/desktop-wallpaper-brown-grunge-texture-grunge-background-grunge-paper.jpg"
+                alt="">
+            <div class="tercera_hoja">
+                <h1>REGLAMENTO DE EVALUACIÓN DEL ESTUDIANTE</h1>
+                <div class="textos">
+                    <p>
+                        <a href="https://www.uandina.edu.pe/descargas/transparencia/2019/R_CU-261-2019-UAC-evaluacion-pregrado.pdf"
+                            class="download"
+                            download="https://www.uandina.edu.pe/descargas/transparencia/2019/R_CU-261-2019-UAC-evaluacion-pregrado.pdf"><i
+                                class="fa fa-download"></i> Descargar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="controladores">
+            <span class="prev"><i class="fa fa-arrow-left"></i></span>
+            <span class="next"><i class="fa fa-arrow-right"></i></span>
+        </div>
+    </div>
+    <div class="divisor_de_secciones" id="Portafolios">
+        <span class="divi"></span>
+        <h1 class="dibi_name">Avances</h1>
+        <span class="divi"></span>
+    </div>
+    <div class="avances" id="avances">
+        <div class="buscador">
+            <input type="text" placeholder="Ingrese Los Parametros('nombre', 'fecha')" id="buscador_act">
+            <button onclick="mostrarBtns()" class="recarga">recarga</button>
+        </div>
+        <div id="Metodos" style="display: none;"></div>
+        <div id="Antropologia" style="display: none;" ></div>
+        <div id="Ambiente" style="display: none;"></div>
+        <div id="Comunicacion" style="display: none;"></div>
+        <div id="Precalculo"></div>
+        <div id="Quechua" style="display: none;"></div>
+        <div id="Sistemas" style="display: none;"></div>
+    </div>
+    <div class="divisor_de_secciones" id="Trabajos_re">
+        <span class="divi"></span>
+        <h1 class="dibi_name">Trabajos</h1>
+        <span class="divi"></span>
+    </div>
+
+    <div class="avances" id="Trabajos">
+        <div class="buscador">
+            <input type="text" placeholder="Ingrese Los Parametros('nombre', 'fecha')" id="buscador_ava">
+            <button onclick="mostrarTrabajos()" class="recarga">recarga</button>
+        </div>
+        <div id="Metodos_T" style="display: none;"></div>
+        <div id="Antropologia_T" style="display: none;"></div>
+        <div id="Ambiente_T" style="display: none;"></div>
+        <div id="Comunicacion_T" style="display: none;"></div>
+        <div id="Precalculo_T" ></div>
+        <div id="Quechua_T" style="display: none;"></div>
+        <div id="Sistemas_T" style="display: none;"></div>
+    </div>
+    <script src="../assets/js/silders.js"></script>
+    <script src="../assets/Data/data.js"></script>
+    <div id="mensajes-container" style="display: none;"></div>
+    <script src="../assets/js/home.js"></script>
+    <script>
+        const animations = [
+            "delado",
+            "deladoinvertido",
+        ];
+    </script>
+    <script src="./assets/js/metodos.js"></script>
+    <script src="../assets/Data/online_server.js"></script>
+</body>
+
+</html>

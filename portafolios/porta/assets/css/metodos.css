@@ -1,0 +1,130 @@
+.avances{
+    text-align: center;
+}
+
+.carta_ava {
+    max-width: 90%;
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #fff;
+    background: #000;
+}
+
+.carta_ava img {
+    text-align: center;
+    width: 100%;
+    height: 267px;
+}
+
+.carta_ava .fechap {
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    color: #000000;
+    background: #fff;
+}
+
+.carta_ava .nombre_avance {
+    display: none;
+}
+
+.carta_ava:hover > .x{
+    text-decoration: none;
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000086;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;
+}
+
+
+.carta_avance {
+    max-width: 90%;
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #fff;
+    background: #000;
+}
+
+.carta_avance img {
+    text-align: center;
+    width: 100%;
+    height: 267px;
+}
+
+.carta_avance .fechap {
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    color: #000000;
+    background: #fff;
+}
+
+.carta_avance .nombre_avance {
+    display: none;
+}
+
+.carta_avance:hover > .x{
+    text-decoration: none;
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000086;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;
+}
+
+.x .textodecarta {
+    text-align: center;
+    color: lime;
+    font-size: 4vh;
+    font-weight: 1;
+}
+
+.x{
+    display: none;
+}
+
+.filtro-shar{
+    display: none;
+}
+
+.buscador{
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    width: 1000px;
+    padding-bottom: 30px;
+}
+
+.buscador input{
+    max-width: 90%;
+    text-align: left;
+    height: 20px;
+    width: 500px;
+    outline: none;
+    padding: 5px;
+}
+
+.recarga{
+    display: inline-block;
+    height: 35px;
+    width: 150px;
+}
