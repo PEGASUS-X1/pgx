@@ -1,0 +1,683 @@
+﻿<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Pedidos</title>
+<link rel="shortcut icon" href="./PG.png" type="image/x-icon">
+  <!-- ✝ ======= 🐉 ╟ Tarjeta ╢ 🐉 ======= ✝ -->
+
+  <meta name="description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+  <link rel="image_src" href="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" id="image_src" />
+  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="677288579025878" />
+  <meta property="fb:pages" content="122006227838751" />
+  <meta property="og:title" content="Pegasus X" />
+  <meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  <meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  
+  <meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Pegasus X" />
+  <meta property="og:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta property="og:locale" content="es_ES" />
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@NamazYunpio">
+  <meta name="twitter:title" content="Pegasus X">
+  <meta name="twitter:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png">
+  <meta name="robots" content="index, follow" />
+  <meta name='googlebot' content='index, follow' />
+
+  <!-- ✝ ======= 🐉 ╟ Dublin Core ╢ 🐉 ======= ✝ -->
+
+  <meta name="DC.title" content="Pegasus X" />
+  <meta name="dc.creator" content="PEGASUS X">
+  <meta name="dc.date" content="2023-08-21">
+  <meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+  <meta name="DC.description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta name="dc.subject" content=" Pegasus X, pegasus x">
+  <meta name="dc.format" content="text/html">
+  <meta name="DC.language" content="es" />
+  
+  <meta name=”GOOGLEBOT” content=”NOODP” />
+  <meta name=”Slurp” content=”NOODP” />
+  <meta name=”msnbot” content=”NOODP” />
+  
+  <!-- ✝ ======= 🐉 ╟ favicon diferentes dispositivos + pwa ╢ 🐉 ======= ✝ -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pegasus X">
+  <meta name="theme-color" content="#b10a0a">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta fin ╢ 🐉 ======= ✝ -->
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <link rel="stylesheet" href="./assets/css/pedidos.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+  <script src="./pas.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/font-awesome.css">
+</head>
+<script>
+  var usuariosContrasenas = {
+    "Florentino": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/fa/7c/2c/fa7c2c6165b5d219a8353a660f31b2f3.jpg" },
+    "admin": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+    "aa": { password: "aa", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/d5/81/45/d58145ed8fded7ebed053677baeef49c.jpg" },
+    "Arquitecto Sandro": { password: "admin", mensaje: "Pago: te faltan 2 días", modelo: "Basico", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+    "Usuario2": { password: "admin", modelo: "💎 Premiun 💎", imagen: "./1.jpg" }
+};
+
+$(document).ready(function () {
+    var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+    var today = new Date().toLocaleDateString();
+
+    if (lastSecurityCheckDate === today) {
+        showWelcomeMessage();
+    } else {
+        performSecurityCheck();
+    }
+});
+
+function showWelcomeMessage() {
+    var username = localStorage.getItem('username');
+
+    if (username) {
+        var saludo = "Hola, " + username + " Bienvenid@!";
+        document.getElementById("texto-generado").textContent = saludo;
+
+        var TipoModelos = localStorage.getItem('TipoModelo');
+
+        if (TipoModelos) {
+            var TipoModelo = document.getElementById("Modelo-user");
+            TipoModelo.textContent = TipoModelos;
+            
+            if (TipoModelos === "💎 Premiun 💎") {
+                var passwordElement = document.getElementById("password");
+                passwordElement.style.display = "none";
+            }
+        }
+
+        var imagenUsuarioURL = localStorage.getItem('imagenUsuario');
+
+        if (imagenUsuarioURL) {
+            var imagenUsuario = document.getElementById("img-user");
+            imagenUsuario.src = imagenUsuarioURL;
+            imagenUsuario.alt = "Imagen de Usuario";
+        }
+    } else {
+        performSecurityCheck();
+    }
+    hideLoader();
+}
+  
+  function performSecurityCheck() {
+      var maxAttempts = 3;
+      var attempts = 0;
+      var isAvisoMostrado = false;
+      var controluno = false;
+      var controldos = false;
+  
+      function showLoader() {
+          $("#overlay").fadeIn();
+      }
+  
+      function hideLoader() {
+          $("#overlay").fadeOut();
+      }
+  
+      function guardarDatos(nombre) {
+        //var fechaHora = obtenerFechaHora();
+        //var url = "https://script.google.com/macros/s/AKfycby1aVTFUQOvTLePapUGtgR-nZ49jo_Z3NDJBQpbIFM_o0ucMMBzOlVXwcqHjqD--N27/exec";
+        //var data = {
+        //    nombre: nombre
+        //};
+  
+        //$.post(url, JSON.stringify(data), function (response) {
+        //    alert(response);
+        //});
+  
+          var lastReloadDate = localStorage.getItem('lastReloadDate');
+          var today = new Date().toLocaleDateString();
+  
+          if (lastReloadDate !== today) {
+              setTimeout(function () {
+                  localStorage.setItem('lastReloadDate', today);
+                  window.location.reload();
+              }, 5000);
+          }
+      }
+  
+      function obtenerFechaHora() {
+          var now = new Date();
+          var fecha = now.toLocaleDateString();
+          var hora = now.toLocaleTimeString();
+          return fecha + " " + hora;
+      }
+  
+      function checkNombre() {
+          if (attempts < maxAttempts) {
+              if (!isAvisoMostrado) {
+                  alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/registro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
+                  isAvisoMostrado = true;
+              }
+  
+              if (!controluno) {
+                  alert("Control De Seguridad 1");
+                  controluno = true;
+              }
+  
+              var username = prompt("Ingrese el nombre de seguridad");
+  
+              if (usuariosContrasenas.hasOwnProperty(username)) {
+                  checkCodigo(username);
+              } else {
+                  attempts++;
+                  alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                  checkNombre();
+              }
+          } else {
+              showLoader();
+              setTimeout(hideLoader, 5000);
+              window.location.href = "404.html";
+          }
+      }
+  
+      function checkCodigo(username) {
+        if (attempts < maxAttempts) {
+            if (!controldos) {
+                alert("Control De Seguridad 2");
+                controldos = true;
+            }
+    
+            var codigo = prompt("Ingrese la contraseña");
+    
+            if (usuariosContrasenas[username].password === codigo) {
+                showLoader();
+                setTimeout(function () {
+                    hideLoader();
+                    var saludo = "Hola, " + username + " Bienvenid@!";
+                    textoGenerado.textContent = saludo;
+  
+                    var TipoModelos = usuariosContrasenas[username].modelo;
+                    var TipoModelo = document.getElementById("Modelo-user");
+                    TipoModelo.textContent = TipoModelos;
+                    localStorage.setItem('TipoModelo', TipoModelos);
+  
+                    // Agregar imagen de usuario aquí
+                    var imagenUsuarioURL = usuariosContrasenas[username].imagen;
+                    var imagenUsuario = document.getElementById("img-user");
+                    imagenUsuario.src = imagenUsuarioURL;
+                    imagenUsuario.alt = "Imagen de Usuario";
+                    // document.getElementById("texto-generado").appendChild(imagenUsuario);
+  
+                    // Almacenar la URL de la imagen en el almacenamiento local
+                    localStorage.setItem('imagenUsuario', imagenUsuarioURL);
+    
+                    if (username === 'admin') {
+                        // Mostrar una alerta específica para el usuario 'admin'
+                        alert("¡Acceso de administrador!");
+                    } else {
+                        alert(" ✅ Acceso concedido ✅ ");
+                    }
+                    if (usuariosContrasenas[username].mensaje) {
+                      alert(usuariosContrasenas[username].mensaje);
+                  }
+  
+                    guardarDatos(username, imagenUsuarioURL, TipoModelos);
+    
+                    var today = new Date().toLocaleDateString();
+                    localStorage.setItem('lastSecurityCheckDate', today);
+    
+                    localStorage.setItem('username', username);
+                }, 5000);
+            } else {
+                attempts++;
+                alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
+                checkCodigo(username);
+            }
+        } else {
+            showLoader();
+            setTimeout(hideLoader, 5000);
+            window.location.href = "404.html";
+        }
+    }
+  
+      showLoader();
+      checkNombre();
+  }
+  
+  function showLoader() {
+      var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+      var today = new Date().toLocaleDateString();
+  
+      if (lastSecurityCheckDate !== today) {
+          $("#overlay").fadeIn();
+      }
+  }
+  
+  function hideLoader() {
+      $("#overlay").fadeOut();
+  }
+  
+  </script>
+<body>
+  <!-- <textarea name="" id="aaaaa" cols="30" rows="10">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea> -->
+  <!-- <div id="overlay">
+    <div id="loader">
+      <div class="loader-circle"></div>
+    </div>
+    <div id="loading-text">Cargando...</div>
+ </div> -->
+ <style>
+  .bar-client-cover{
+    max-width: 100%;
+
+    background: #0000008e;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    top: 50.1%;
+    left: 50.1%;
+    transform: translate(-50.1%, -50.1%);
+  }
+  .cotenseb{
+    max-width: 100%;
+    width: 450px;
+    height: 100vh;
+    position: fixed;
+  }
+  .bar-client{
+    width: 450px;
+    height: 100vh;
+    background: #000;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    max-width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    overflow: auto;
+    /* padding-left: 2px; */
+  }
+  .bar-client h1{
+    font-size: 30px;
+    font-weight: 1;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .bar-client img{
+    max-width: 100%;
+    width: 300px;
+    height: 300px;
+    border-radius: 1000px;
+  }
+  .close-bar-client-cover{
+    color: #fff;
+    background: none;
+    top: 2px;
+    margin-top: 9px;
+    right: 9px;
+    font-weight: bold;
+    font-size: 40px;
+    z-index: 10;
+    position: absolute;
+    cursor: pointer;
+  }
+  .bar-client select, input{
+      margin: 0 auto;
+      max-width: 100%;
+      width: 90%;
+      margin-top: 10px;
+      height: 35px;
+      text-align: center;
+    }
+  .textodeanimo{
+    color: #fff;
+    text-align: left;
+  }
+  .alerta{
+    color: #ff0000;
+    padding: 10px 20px;
+    width: auto;
+  }
+  .sugerencias{
+    margin-top: 10px;
+    color: #00ffc8;
+    display: flex;
+    gap: 5px;
+  }
+  .sugerencias a{
+    color: #00ffc8;
+  }
+  .sugerencia{
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #00ffc8;
+    width: 150px;
+    height: 120px;
+    transition: 2s;
+  }
+  a{
+    text-decoration: none;
+  }
+  .sugerencia:hover{
+    color: #fff;
+    border: 1px solid #fff;
+    transition: 2s;
+  }
+  .sugerencia i{
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  .sugerencia-contend{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bar-client-text{
+    padding: 30px;
+  }
+  @media screen and (max-width: 368px){
+    .bar-client img{
+      max-width: 100%;
+      width: 300px;
+      height: 250px;
+      border-radius: 1000px;
+    }
+    .sugerencias{
+      flex-wrap: wrap;
+    }
+    .sugerencia{
+      width: 100%;
+    }
+    .bar-client select, input{
+      margin: 0 auto;
+      max-width: 100%;
+      width: 100%;
+      margin-top: 10px;
+      height: 35px;
+      text-align: center;
+    }
+  }
+  #scrollButton{
+    max-width: 100%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 14px 17px;
+    border-radius: 1000px;
+    background: #fff;
+    font-size: 20px;
+    z-index: 10;
+    
+  }
+ </style>
+<div class="bar-client-cover" id="bar-client-cover">
+  <div class="cotenseb">
+    <span id="scrollButton"><i class="fas fa-arrow-down"></i></span>
+    <p class="Modelo-user" id="Modelo-user"></p>
+    <span class="close-bar-client-cover" id="close-bar-client-cover">&times;</span>
+  <div class="bar-client" id="bar-client">
+    <div class="bar-client-text">
+      <p class="alerta">☠️ <span id="username"></span> Si eres nuevo preciona el icono flotante de incotnita para saber todo el funcionamiento de la pagina para no tener problemas con los pedidos ☠️</p>
+
+    <h1 id="texto-generado"></h1>
+    <img src="" id="img-user" alt="">
+    <br>
+    <br>
+    <p id="textodeanimo" class="textodeanimo"></p>
+    <br>
+    <p style="text-align: left; color: #fff;">Pedido Desde:</p>
+
+    <select name="Tipo-De-Proyecto" id="Tipo-De-Proyecto" onchange="mostrarInput()">
+      <option value="null" disabled selected>Tipo De Proyecto</option>
+      <option value="publico">Público</option>
+      <option value="privado">Privado</option>
+    </select>
+    
+    <div id="input-container" style="display: none;">
+      <label for="otroInput">Ingrese otro valor:</label>
+      <input type="text" id="otroInput" name="otroInput">
+    </div>
+    
+    <script>
+    function mostrarInput() {
+      var select = document.getElementById("Tipo-De-Proyecto");
+      var inputContainer = document.getElementById("input-container");
+    
+      if (select.value === "publico" || select.value === "privado") {
+        inputContainer.style.display = "block";
+      } else {
+        inputContainer.style.display = "none";
+      }
+    }
+    </script>
+
+    <div id="input-container" style="display: none;">
+      <label for="otroInput">Ingrese otro valor:</label>
+      <input type="text" id="otroInput" name="otroInput">
+    </div>
+    <select name="Región" id="Región">
+      <option value="null" disabled selected>Seleciona Tu Region</option>
+      <option value="cusco">cusco</option>
+    </select>
+    <select name="provincia" id="provincia">
+      <option value="null" disabled selected>Seleciona Tu Provincia</option>
+      <option value="Acomayo">Acomayo</option>
+      <option value="Anta">Anta</option>
+      <option value="Calca">Calca</option>
+      <option value="Canas">Canas</option>
+      <option value="Canchis">Canchis</option>
+      <option value="Cusco">Cusco</option>
+      <option value="Chumbivilcas">Chumbivilcas</option>
+      <option value="Espinar">Espinar</option>
+      <option value="La Convención">La Convención</option>
+      <option value="Paruro">Paruro</option>
+      <option value="Paucartambo">Paucartambo</option>
+      <option value="Quispicanchi">Quispicanchi</option>
+      <option value="Urubamba" hidden>Urubamba</option>
+    </select>
+    <br>
+    <input type="text" id="distrito" placeholder="distrito de:">
+    <br>
+    <br>
+    <div class="sugerencias">
+      <a href="./Calificacion.html" class="sugerencia">
+        <div class="sugerencia-contend">
+          <i class="fas fa-folder"></i>
+          <p>Estilos</p>
+        </div>
+      </a>
+      <div class="sugerencia">
+        <div class="sugerencia-contend">
+        <i class="fas fa-user-alt"></i>
+        <p>Profecionales</p>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+ <!-- <div class="caja-de-info-envio">
+  <div class="contenedor-info">
+    <h1 id="texto-generado"></h1>
+    <p id="textodeanimo" class="textodeanimo"></p>
+    <p style="text-align: left;">Pedido Desde:</p>
+    <br>
+    <div class="mensaje" id="mensaje">
+      <p>Hola <span id="username"></span> Antes De Elegir Al Profesional Te Recomiendo Revisar Los Portafolios De Nuestros Profecionales </p>
+      <p>Portafolios: <a href="./Calificacion.html"> Ver Portafolios </a></p>
+      <p class="pie-pagina">Pegasus X</p>
+    </div>
+    <br>
+    <select name="Región" id="Región" disabled >
+      <option value="cusco">cusco</option>
+    </select>
+    <br>
+
+    <select name="provincia" id="provincia">
+      <option value="null" disabled selected>seleciona tu provincia</option>
+      <option value="Acomayo">Acomayo</option>
+      <option value="Anta">Anta</option>
+      <option value="Calca">Calca</option>
+      <option value="Canas">Canas</option>
+      <option value="Canchis">Canchis</option>
+      <option value="Cusco">Cusco</option>
+      <option value="Chumbivilcas">Chumbivilcas</option>
+      <option value="Espinar">Espinar</option>
+      <option value="La Convención">La Convención</option>
+      <option value="Paruro">Paruro</option>
+      <option value="Paucartambo">Paucartambo</option>
+      <option value="Quispicanchi">Quispicanchi</option>
+      <option value="Urubamba" hidden>Urubamba</option>
+    </select>
+    <br>
+    <input type="text" id="distrito" placeholder="distrito de:">
+  </div>
+ </div> -->
+ <div class="modal" id="modal-ques">
+  <div class="modal-content">
+    <span class="closes">&times;</span>
+    <h1>Como usar</h1>
+    <div class="usar">
+      <h2>Primer tutorial: Como Registrarse</h2>
+      <iframe src="https://www.youtube.com/embed/Mtmh39K5h_Y?si=kgVmxS2lf6siyhW7" allowfullscreen frameborder="0"></iframe>
+    </div>
+    <div class="usar">
+      <h2>Segundo Tutorial: Como Realizar El Pedido</h2>
+      <iframe src="https://www.youtube.com/embed/L8iFZTTq-o4?si=IIqnIJtbrWDdNXxW" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+  </div> 
+  <div class="modal" id="modal-img">
+    <div class="modal-content">
+      <span class="close-img">&times;</span>
+    <!-- <iframe src="https://cdn14.tokyvideo.com/videos/239/239132/mp4/0a8727fa5cf78b244b96820ca04cb57aee5b4f6c0a9e26abf5a22d0dd740941d.mp4?nva=20231025022612&nvb=20231023022612&token=06441d62d2d3841aad280" frameborder="0"></iframe> -->
+    <h3>Sube Los Archivos y Img De Los Documentos</h3>
+    <!-- <input id="fileToUpload" type="file"> -->
+    <div class="cargador-archivos">
+
+    <input type="file" id="fileToUpload" style="display: none">
+<h1 onclick="selectFile()">Seleccionar archivo</h1>
+<label for="">El Nombre Del Archivo:</label>
+<input type="text" id="fileName" value="Ningún archivo seleccionado" disabled>
+
+<h1 onclick="subirArchivo()">Cargar</h1>
+
+</div>
+
+<div class="imageContainer" id="imageContainer">
+</div>
+  </div>
+  </div> 
+<div class="covertura-black" id="covertura-black">
+  <span class="close" id="hidePremiumCartBtn">&times;</span>
+<div class="premium">
+  <div class="password" id="password">
+    <div class="pasword-contend" id="pasword-contend">
+      <h1>Premium</h1>
+      <a href="" class="donar">Donar</a>
+    </div>
+  </div>
+  <div class="contenedor-prime"></div>
+</div>
+</div>
+<br>
+<div class="caja" id="caja">
+<div class="caja-abierta" id="caja-abierta">
+  <span id="open-bar-client-cover">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="oopen" id="oopen">
+    <i class="fa fa-question"></i>
+  </span>
+  <span href="#" class="cart-btn" id="cart-btn">
+    <i class="fas fa-shopping-cart" ></i>
+  </span>
+
+  <span id="PremiumCartBtn">
+    <i class='fas fa-user-friends'></i>
+  </span>
+
+  <span class="ImgBtn" id="ImgBtn">
+    <i class='fas fa-images'></i>
+  </span>
+</div>
+
+</div>
+
+<div class="desplegador-optioon" id="desplegador-option">
+  <span class="open-caja-2" id="open-caja-2">
+    <i class="fas fa-box"></i>
+  </span>
+</div>
+
+<div class="desplegador-option" id="desplegador-optioon">
+  <span class="open-caja-1" id="open-caja">
+    <i class="fas fa-box-open"></i>
+  </span>
+</div>
+
+      <div id="productos"></div>
+  <div class="cart-items-container-black">
+    <div class="cart-items-container">
+      <span class="close-" id="hide-cart-btn">&times;</span>
+
+        <h3>Carrito</h3>
+        <ul class="productosEnCaja" id="productosEnCaja"></ul>
+        <a id="btnEnviarWhatsApp">Hacer pedido</a>
+        <br>
+        <br>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script>
+    const container = document.getElementById('bar-client');
+    const scrollButton = document.getElementById('scrollButton');
+    const innerContent = document.getElementById('bar-client');
+  
+    // Mostrar u ocultar el botón según la posición del scroll
+    container.addEventListener('scroll', () => {
+      if (innerContent.clientHeight + container.scrollTop < innerContent.scrollHeight - 10) {
+        scrollButton.style.display = 'block';
+      } else {  
+        scrollButton.style.display = 'none';
+      }
+    });
+  
+    // Hacer scroll suavemente al final del contenido del div
+    scrollButton.addEventListener('click', () => {
+      innerContent.scrollTo({ top: innerContent.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+
+  <script src="./assets/js/pedidos.js"></script>
+</body>
+</html>

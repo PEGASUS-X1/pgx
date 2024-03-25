@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Texto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        #texto {
+            display: inline-block;
+        }
+
+        #texto::after {
+            content: "";
+            border-right: 2px solid #000;
+            margin: 1px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .texto-container p span {
+            border-bottom: 1px solid #000;
+            display: inline;
+        }
+    </style>
+    <div class="texto-container">
+        <p id="texto"></p>
+    </div>
+    <script>
+        // script.js
+        const texto = document.getElementById("texto");
+        const textos = [ `En verdad no te amo con los ojos,
+        Que descubren en ti mil fealdades,
+        Pero este corazón, que desvaría,
+        Adora lo que ellos más desprecian.
+        Tu voz no me deleita los oídos;
+        Tampoco te codicia el tierno tacto
+        Ni ansían el gusto y el olfato
+        Una fiesta sensual contigo a solas.
+        Mas no pueden el juicio ni el sentido
+        Disuadir a un corazón imbécil
+        Que desbarata a un simulacro de hombre
+        Haciéndome tu esclavo y tu vasallo.
+        Sólo me conforta, en tal flagelo,
+        Que purgo mi delito al cometerlo.`];
+        let index = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function escribirTexto() {
+            const textoActual = textos[index];
+            if (isDeleting) {
+                texto.innerHTML = textoActual.substring(0, charIndex - 1)
+                    .split('')
+                    .map(char => `<span>${char}</span>`)
+                    .join('');
+            } else {
+                texto.innerHTML = textoActual.substring(0, charIndex + 1)
+                    .split('')
+                    .map(char => `<span>${char}</span>`)
+                    .join('');
+            }
+
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+
+            if (!isDeleting && charIndex === textoActual.length) {
+                isDeleting = true;
+                setTimeout(escribirTexto, 2500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                index = (index + 1) % textos.length;
+                setTimeout(escribirTexto, 500);
+            } else {
+                setTimeout(escribirTexto, isDeleting ? 50 : 100);
+            }
+        }
+
+        escribirTexto();
+    </script>
+</body>
+</html>

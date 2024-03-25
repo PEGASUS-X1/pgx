@@ -1,0 +1,245 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.abridor{
+  cursor: pointer;
+  z-index: 5;
+  position: fixed;
+  top: 10px;
+  right: 15px;
+}
+.abridor i{
+  color: #00ffc8;
+  font-size: 25px;
+  padding: 10px 15px;
+  background: #000;
+}
+.cuerpo-oscuro{
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background: #0000007a;
+  height: 100vh;
+  z-index: -1;
+}
+.abridor #tablero-2{
+  display: block;
+}
+#tablero-1{
+  display: none;
+}
+#img-user{
+  max-width: 100%;
+  width: 250px;
+  border-radius:  50% !important;
+  border: 5px solid #00ffc8;
+  pointer-events: none;
+}
+
+.BarraUser{
+  top: 0;
+  outline: 1px solid #fff;
+  z-index: 5;
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 100%;
+  width: 400px;
+  height: 100vh;
+  text-align: center;
+  background: #000;
+  display: block;
+  color: #fff;
+  overflow: auto;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+}
+.selectores-barra{
+  margin: 0 auto;
+  width: 95%;
+  text-align: center;
+  justify-content: center;
+}
+.selectores-barra h1{
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 1;
+  text-align: left;
+}
+.selectores-barra select{
+  text-align: center;
+  justify-content: center;
+  width: 90%;
+  height: 35px;
+  margin-bottom: 20px;
+  border: 1px solid #00ffc8;
+  background: transparent;
+  color: #fff;
+}
+.selectores-barra select{
+  outline: none;
+}
+.selectores-barra select > option{
+  color:  #fff;
+  background: #000;
+}
+.selectores-barra input{
+  text-align: center;
+  justify-content: center;
+  width: 90%;
+  height: 35px;
+  border: 1px solid #00ffc8;
+  background: #000;
+  color:  #fff;
+  outline: none;
+  margin-bottom: 20px;
+}
+.BarraUser::-webkit-scrollbar{
+  border-radius: 1000px;
+  width: 10px;
+  background: #000;
+}
+
+.BarraUser::-webkit-scrollbar-thumb{
+  border-radius: 1000px;
+  background: #00ffc8;
+}
+
+#texto-generado{
+  font-weight: 1;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  color: #fff;
+}
+
+#scrollButton{
+  max-width: 100%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 14px 17px;
+  border-radius: 1000px;
+  background: #fff;
+  font-size: 20px;
+  color: #000;
+  border: 1px solid #000;
+  z-index: 10;
+}
+
+.Modelo-user{
+  background: #00ffc8;
+  float: left;
+  top: 0;
+  left: 0;
+  color: #000;
+  z-index: 1;
+  height: 30px;
+  width: 150px;
+  text-align: center;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+
+.navegacion a{
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
+  width: 90%;
+  height: 40px;
+  color:#fff;
+  display: flex;
+  text-align: left;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: left; /* Centrar horizontalmente */
+  padding-left: 10px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  font-size: 20px;
+}
+
+.navegacion a:hover i{
+  color: #00ffc8;
+
+}
+.navegacion a:hover{
+  border: 1px solid #00ffc8;
+  color: #00ffc8;
+}
+
+#texto {
+  display: inline-block;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#texto::after {
+  content: "";
+  border-right: 2px solid #000;
+  margin: 1px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+}
+
+.texto-container p span {
+  border-bottom: 1px solid #000;
+  display: inline;
+}
+
+/* codigo */
+#overlay {
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  /* background: url(./317777504_631742454954138_7354368721083756453_n.jpg) center fixed; */
+  /* background-size: cover; */
+  /* background-repeat: none; */
+  z-index: 1000000000000000000000;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  }
+  
+  #loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  }
+  .loader-circle {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #f40303;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+  }
+  
+  #loading-text {
+  color: white;
+  font-size: 16px;
+  margin-top: 16px;
+  }
+  .text-center{
+  text-align: center;
+  }

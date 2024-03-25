@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Generador de Códigos</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Códigos</h1>
+        <button id="generarCodigo">Generar Código</button>
+        <button id="copiarCodigo">Copiar Código</button>
+        <p>Código generado: <span id="codigoGenerado"></span></p>
+        
+    </div>
+    
+    <script>
+// Función para generar un código aleatorio separado por guiones
+function generarCodigo() {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let codigo = '';
+
+    for (let i = 0; i < 12; i++) {
+        const randomIndex = Math.floor(Math.random() * caracteres.length);
+        codigo += caracteres.charAt(randomIndex);
+
+        // Agregar un guión después de cada grupo de cuatro caracteres
+        if ((i + 1) % 4 === 0 && i !== 11) {
+            codigo += '-';
+        }
+    }
+
+    return codigo;
+}
+
+// Función para copiar el código al portapapeles
+function copiarCodigoAlPortapapeles() {
+    const codigoGenerado = document.getElementById('codigoGenerado');
+    const codigoTexto = codigoGenerado.textContent;
+
+    // Crear un elemento de texto temporal para copiar el contenido
+    const textoTemporal = document.createElement('textarea');
+    textoTemporal.value = codigoTexto;
+
+    // Agregar el elemento temporal al DOM para poder seleccionarlo y copiarlo
+    document.body.appendChild(textoTemporal);
+
+    // Seleccionar y copiar el contenido
+    textoTemporal.select();
+    document.execCommand('copy');
+
+    // Eliminar el elemento temporal
+    document.body.removeChild(textoTemporal);
+
+    // Mostrar un mensaje de copia exitosa (puedes personalizarlo)
+    alert('Código copiado al portapapeles: ' + codigoTexto);
+}
+
+// Manejar el clic en el botón "Generar Código"
+const botonGenerar = document.getElementById('generarCodigo');
+const codigoGenerado = document.getElementById('codigoGenerado');
+
+botonGenerar.addEventListener('click', () => {
+    const nuevoCodigo = generarCodigo();
+    codigoGenerado.textContent = nuevoCodigo;
+});
+
+// Manejar el clic en el botón "Copiar Código"
+const botonCopiar = document.getElementById('copiarCodigo');
+
+botonCopiar.addEventListener('click', () => {
+    copiarCodigoAlPortapapeles();
+});
+
+// Generar un código inicial al cargar la página
+const codigoInicial = generarCodigo();
+codigoGenerado.textContent = codigoInicial;
+
+    </script>
+</body>
+</html>

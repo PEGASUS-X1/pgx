@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Formulario Google Sheets</title>
+  <style>
+    body{
+        background: #000;
+    }
+    /* Estilos generales para el formulario y contenedor */
+    .container {
+
+    background: #ffffff;
+    color: #af0000;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 650px;
+    display: flex;
+    border: 1px solid #000;
+    }
+
+    #data-form {
+        height: 450px;
+        overflow: auto;
+        max-width: 100%;
+      flex: 1;
+      padding: 20px;
+      border: 1px solid #7c0000;
+    }
+
+    /* Estilos para las etiquetas de los campos */
+    label {
+      text-align: left;  
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    /* Estilos para los campos de entrada */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    textarea{
+        width: 100%;
+        height: 110px;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        resize: none;
+        overflow-y: none;
+        overflow-x: auto;
+    }
+    /* Estilos para el botón de enviar */
+    button[type="submit"] {
+      background-color: #af0000;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #7a0000;
+    }
+
+    /* Estilos para la imagen */
+    .form-image {
+      border: 1px solid #7c0000;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-image img {
+      max-width: 100%;
+      width: 310px;
+      height: 100%;
+    }
+    @media (max-width: 768px) {
+        .container {
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+        #data-form {
+            max-width: 100%;
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #7c0000;
+            box-shadow: none;
+            border-radius: 0px 0px 5px 5px;
+        }    
+        .container {
+            max-width: 100%;
+        width: 300px;
+        }  
+        .form-image img {
+            max-width: 100%;
+            width: 310px;
+            height: 300px;
+        }
+      }
+      @media (max-width: 300px) {
+        .container {
+            max-width: 100%;
+        width: 250px;
+        }  
+      }
+      .chet{
+        display: none;
+        color: #5eff00;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+      }
+      #preview-image {
+        max-width: 100%;
+        width: 500px;
+        height: auto;
+      }
+  </style>
+</head>
+<body>
+  <audio id="miMusica" >
+    <source src="https://github.com/1RubiUwU1/pegasus.tk/raw/main/Adm%C3%ADtelo%2C%20tienes%20a%20quien%20dedicarle%20este%20MASHUP%20%F0%9F%8E%B5.mp3" type="audio/mpeg">
+</audio>
+  <div class="container" id="elementoParaOcultar">
+    <form id="data-form">
+        <h1 class="titulo-c">Registro ARQ</h1>
+
+    <label for="nombre-equipo">Nombre Del Equipo:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+      <label for="nombres">Nombres:</label>
+      <textarea name="" id="nombres" cols="30" rows="10">
+1)
+2)
+3)
+4)
+5)
+      </textarea>
+      <label for="Gmail">Gmail:</label>
+      <textarea name="" id="gmail" cols="30" rows="10">
+1)
+2)
+3)
+4)
+5)
+        </textarea>
+
+      <label for="Numeros">Numeros:</label>
+<textarea name="" id="numeros" cols="30" rows="10">
+1)
+2)
+3)
+4)
+5)
+</textarea>
+
+      <label for="url">Url Del perfil:</label>
+      <input type="url" id="url" name="url" required>
+      <img id="preview-image" src="" alt="">
+      <br>
+      <a id="preview"  onclick="mostrarVistaPrevia()">Ver Perfil</a>
+      <a id="preview-no" style="display: none;" onclick="NomostrarVistaPrevia()">No Ver Perfil</a>
+      <br>
+      <br>
+        <button type="submit" onclick="ocultarElemento()" >Enviar</button>
+
+    </form>
+    <div class="form-image">
+        <img src="../img/pegasus.jpg" alt="Imagen">
+    </div>
+  </div>
+
+</div>
+<div class="chet" id="visible"> <span>Ya estas registrado</span> 
+  <script>
+  // Función para mostrar la vista previa (solo un ejemplo visual)
+  function mostrarVistaPrevia() {
+    var url = document.getElementById("url").value;
+    var previsualizacion = document.getElementById("preview-image");
+    var preview = document.getElementById("preview");
+    var previewno = document.getElementById("preview-no");
+    preview.style.display = "none"
+    previewno.style.display = "block"
+    previsualizacion.src = url; // Imagen de relleno
+    previsualizacion.style.display = "block"
+  }
+
+  function NomostrarVistaPrevia() {
+    var previsualizacion = document.getElementById("preview-image");
+    var preview = document.getElementById("preview");
+    var previewno = document.getElementById("preview-no");
+    preview.style.display = "block"
+    previewno.style.display = "none"
+    previsualizacion.style.display = "none"
+  }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("data-form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre").value;
+        const nombres = document.getElementById("nombres").value;
+        const gmail = document.getElementById("gmail").value;
+        const numeros = document.getElementById("numeros").value;
+        const url = document.getElementById("url").value;
+
+        const formData = {
+          nombre: nombre,
+          nombres: nombres,
+          gmail: gmail,
+          numeros: numeros,
+          url: url,
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbxgWn-O7szVLdXjtrR2Yp-kqjQ_o-8r0K9SYb05WxKdJQbxbwPgj5Wb-VDxG1ro3b0xaQ/exec", {
+          method: "POST",
+          body: JSON.stringify(formData),
+        })
+          .then(response => response.text())
+          .then(data => {
+            console.log(data);
+            alert("De 10 minutos su cuenta estara activa");
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            alert("Hubo un error en los datos");
+          });
+      });
+    });
+    function ocultarElemento() {
+      const audioElement = document.getElementById("miMusica");
+      audioElement.play();
+      // Obtener la fecha actual
+      const fechaActual = new Date();
+      
+      // Calcular la fecha de reaparición (1 día después)
+      const fechaReaparicion = new Date();
+      fechaReaparicion.setDate(fechaActual.getDate() + 1);
+      
+      // Convertir la fecha de reaparición a formato de cookie
+      const fechaReaparicionUTC = fechaReaparicion.toUTCString();
+      
+      // Establecer una cookie con la fecha de reaparición
+      document.cookie = `ocultarElemento=true; expires=${fechaReaparicionUTC}; path=/`;
+      
+      // Ocultar el elemento
+      document.getElementById("elementoParaOcultar").style.display = "none";
+      document.getElementById("visible").style.display = "block";
+      // Deshabilitar el botón
+      document.getElementById("botonOcultar").disabled = true;
+
+  }
+
+  // Verificar si la cookie existe al cargar la página
+  window.onload = function () {
+      if (document.cookie.includes("ocultarElemento=true")) {
+          document.getElementById("elementoParaOcultar").style.display = "none";
+          const audioElement = document.getElementById("miMusica");
+          audioElement.play();
+          document.getElementById("visible").style.display = "block";
+          document.getElementById("botonOcultar").disabled = true;
+          
+      }
+  };
+  </script>
+</body>
+</html>
