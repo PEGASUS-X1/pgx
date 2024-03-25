@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+#overlay {
+    max-width: 100%;
+    position: fixed;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    /* background: url(./317777504_631742454954138_7354368721083756453_n.jpg) center fixed; */
+    /* background-size: cover; */
+    /* background-repeat: none; */
+    z-index: 1000000000000000000000;
+    /* align-items: center;  */
+    /* justify-content: center; */
+    }
+    .loader-circle {
+    position: absolute;
+    top: 45%;
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #f40303;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+    }
+    .personal-information{
+        text-align: center;
+    width: 300px;
+    position: absolute;
+    /* display: -ms-inline-grid; */
+    top: 65%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    }
+    .personal-information input{
+        text-align: center;
+        width: 250px;
+        height: 26px;
+        margin-bottom: 15px;
+        border: 1px solid #f40303;
+        outline: none;
+        background: #252525;
+        color: #ffffff;
+    }
+    .personal-information input::placeholder{
+        color: #c7c4c4;
+    }
+    .personal-information button{
+        cursor: pointer;
+        width: 150px;
+        text-decoration: none;
+        height: 25px;
+        border: 1px solid #f40303;
+        background: #252525;
+        color: #ffffff;
+    }
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+    
+    #loading-text {
+    color: white;
+    font-size: 26px;
+    margin-top: 16px;
+    position: absolute;
+    top: 38%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    }
+    @media screen and (max-width: 484px) {
+        .loader-circle {
+            position: absolute;
+            top: 45%;
+            left: 43%; 
+        }
+    }
+    @media screen and (max-width: 358px) {
+        .loader-circle {
+            position: absolute;
+            top: 45%;
+            left: 40%; 
+        }
+    }

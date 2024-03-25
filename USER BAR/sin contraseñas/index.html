@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 id="texto-generado"></h1>
+    <div class="user"></div>
+    <button id="recargarBtn" onclick="recargarPagina()">Recargar Página y Borrar Nombre</button>
+
+    <div id="overlay">
+        <div class="loader-circle"></div>
+        <div id="loading-text">Cargando...</div>
+        <div class="personal-information">
+            <input type="text" id="cual-nombre" placeholder="Cual Es Tu Nombre?" onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="guardarNombre()">Guardar Nombre</button>
+        </div>
+        <br>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Verificar si ya se guardó el nombre en el local storage
+            const nombreGuardado = localStorage.getItem("nombre");
+            if (nombreGuardado) {
+                // Si ya se guardó el nombre, ocultar el overlay
+                ocultarOverlay();
+                $(".user").text(nombreGuardado);
+            }
+
+            // Verificar el estado del botón en el localStorage
+            const mostrarBoton = localStorage.getItem("mostrarBoton");
+            if (mostrarBoton === "false") {
+                // Si el indicador está establecido en "false", ocultar el botón
+                ocultarBoton();
+            }
+        });
+
+        function guardarNombre() {
+            const nombre = document.getElementById("cual-nombre").value;
+
+            if (validarNombre(nombre)) {
+                // Verificar si ya se guardó el nombre previamente
+                const nombreGuardado = localStorage.getItem("nombre");
+
+                if (!nombreGuardado) {
+                    // Guardar el nombre en el local storage
+                    localStorage.setItem("nombre", nombre);
+                    alert("Hola " + nombre);
+                    // Ocultar el overlay
+                    ocultarOverlay();
+                    $(".user").text(nombre);
+                } else {
+                    alert("El nombre ya ha sido guardado.");
+                }
+            } else {
+                alert("Por favor, ingrese un nombre válido.");
+            }
+        }
+
+        function handleKeyPress(event) {
+            // Verificar si la tecla presionada es Enter
+            if (event.key === "Enter") {
+                // Evitar que se realice la acción por defecto del Enter en un formulario
+                event.preventDefault();
+                // Llamar a la función guardarNombre
+                guardarNombre();
+            }
+        }
+
+        function recargarPagina() {
+            // Eliminar permanentemente el nombre almacenado en el localStorage
+            //localStorage.removeItem("nombre");
+            // Ocultar el botón y guardar su estado
+            ocultarBoton();
+            // Recargar la página
+            location.reload();
+        }
+
+        function ocultarBoton() {
+            // Ocultar el botón
+            document.getElementById("recargarBtn").style.display = "none";
+            // Guardar en el localStorage que el botón debe estar oculto
+            localStorage.setItem("mostrarBoton", "false");
+        }
+
+        function validarNombre(nombre) {
+            // Verificar si contiene alguna mala palabra
+            const malasPalabras = ["mala_palabra_1", "mala_palabra_2"]; // Agrega las malas palabras que desees
+            for (const palabra of malasPalabras) {
+                if (nombre.toLowerCase().includes(palabra)) {
+                    alert("Por favor, ingrese un nombre válido.");
+                    return false;
+                }
+            }
+
+            // Verificar si es un número
+            if (!isNaN(nombre)) {
+                alert("Por favor, ingrese un nombre válido.");
+                return false;
+            }
+
+            // Capitalizar la primera letra del nombre
+            const nombreCapitalizado = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+            document.getElementById("cual-nombre").value = nombreCapitalizado;
+
+            return true;
+        }
+
+        function ocultarOverlay() {
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+
+        var username = localStorage.getItem('nombre');
+
+        var textoGenerado = document.getElementById("texto-generado");
+
+        var saludo = "Hola," + username + " Bienvenid@!";
+        textoGenerado.textContent = saludo;
+    </script>
+</body>
+</html>
