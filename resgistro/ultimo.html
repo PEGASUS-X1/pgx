@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="copiaraa">
+<p>var usuariosContrasenas = {</p>
+<span id="Cajadecomentarios"></span>
+<p>};</p>
+    </div>
+    <button id="copiar">copiar</button>
+    <script>
+        function Comentar() {
+            var Nombre1 = localStorage.getItem('username');
+            var password1 = localStorage.getItem('imagenUsuario');
+            var modelo1 = $('#coment').val();
+            var imagen1 = $('#Multimedia').val();
+        
+            if (password1.trim() !== '') {
+                $.ajax({
+                    url: 'https://script.google.com/macros/s/AKfycbynBqHJR8r7siUEk-2vJqwgQsYzg-bKTYEjGN3FA48HinjxgZN3cQY7kC7c6VLGDPpckA/exec',
+                    method: 'POST',
+                    data: {
+                        Nombre1: Nombre1,
+                        password1: password1,
+                        modelo1: modelo1,
+                        imagen1: imagen1
+                    },
+                    success: function(response) {
+                        alert('Agregado con éxito');
+                        mostrarComentarios();
+                    },
+                    error: function(error) {
+                        console.error('Error al agregar: ', error);
+                    }
+                });
+        
+                // Limpiar los campos después de agregar el comentario
+                $('#coment').val('');
+                $('#Multimedia').val('');
+                $('#urlcomente').val('');
+            }
+        }
+        
+        
+        function mostrarComentarios() {
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbynBqHJR8r7siUEk-2vJqwgQsYzg-bKTYEjGN3FA48HinjxgZN3cQY7kC7c6VLGDPpckA/exec',
+                method: 'GET',
+                success: function(response) {
+                    var Cajadecomentarios = $('#Cajadecomentarios');
+                    Cajadecomentarios.empty();
+        
+                    response.forEach(function(Comentario) {
+                        const comentariosuser = document.createElement('div');
+                        comentariosuser.className = 'comentarios-user';
+                        comentariosuser.innerHTML = `"${Comentario.Nombre1}": { password:  "${Comentario.password1}", modelo: "${Comentario.modelo1}", imagen: "${Comentario.imagen1}"},
+`
+                        Cajadecomentarios.append(comentariosuser);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error', error);
+                }
+            });
+        }
+        
+        $(document).ready(function() {
+            mostrarComentarios();
+        });
+        $(document).ready(function() {
+            mostrarComentarios();
+
+            // Agregar el evento de clic al botón "copiar"
+            $('#copiar').on('click', function() {
+                // Obtener el contenido del div
+                var contenidoCaja = $('#copiaraa').text();
+                
+                // Crear un elemento de texto temporal y copiar el contenido
+                var tempTextArea = $('<textarea>');
+                tempTextArea.val(contenidoCaja).css('opacity', '0').appendTo('body').select();
+                
+                // Copiar el contenido al portapapeles
+                document.execCommand('copy');
+                
+                // Eliminar el elemento de texto temporal
+                tempTextArea.remove();
+                
+                // Mostrar un mensaje o realizar otras acciones después de copiar
+                alert('Contenido copiado al portapapeles');
+            });
+        });
+
+        
+    </script>
+</body>
+</html>

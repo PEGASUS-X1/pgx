@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+    <p>Nombre</p>
+    <input type="text" id="Nombre1">
+    <p>url</p>
+    <input type="text" id="password1">
+    <br>
+    <button id="envio">Añadir Resultado</button>
+    
+    <div id="resultados"></div>
+    <button id="copiar">Copiar Todos los Resultados</button>
+
+    <script>
+        var resultadosArray = [];
+
+        function mostrarResultados() {
+            var resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = '';
+            resultadosArray.forEach(function(resultado, index) {
+                var resultadoDiv = document.createElement('div');
+                resultadoDiv.textContent = `{ numero: "${resultado.Nombre1}", url: "${resultado.password1}" },`;
+                resultadosDiv.appendChild(resultadoDiv);
+            });
+        }
+
+        document.getElementById('envio').addEventListener('click', function() {
+            var nombre1 = document.getElementById('Nombre1').value;
+            var password1 = document.getElementById('password1').value;
+
+            resultadosArray.push({
+                "Nombre1": nombre1,
+                "password1": password1
+            });
+            mostrarResultados();
+        });
+
+        document.getElementById('copiar').addEventListener('click', function() {
+            var resultadosTexto = resultadosArray.map(function(resultado) {
+                return `{ numero: "${resultado.Nombre1}", url: "${resultado.password1}" },`;
+            }).join('\n');
+            var textarea = document.createElement('textarea');
+            textarea.value = resultadosTexto;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Todos los resultados copiados al portapapeles');
+        });
+
+    </script>
+
+
+</body>
+</html>

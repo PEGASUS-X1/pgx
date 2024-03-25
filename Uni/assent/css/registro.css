@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background: url(https://p4.wallpaperbetter.com/wallpaper/133/1016/970/mr-robot-tv-series-mr-robot-fsociety-wallpaper-preview.jpg) center fixed;
+    background-size: cover;
+}
+
+.formaulario{
+    max-width: 85%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 440px;
+    background: #ffffff42;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
+.formaulario h1{
+    text-align: center;
+    font-weight: 1;
+    margin-bottom: 10px;
+}
+
+.formaulario span{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: red;
+    background: #000;
+    padding: 5px;
+}
+
+.formaulario input, select{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 95%;
+    height: 20px;
+    padding: 5px;
+    outline: none;
+    /* padding: 0; */
+    border: none;
+}
+
+select{
+    text-align: center;
+    width: 97%;
+    height: 30px;
+}
+
+
+
+.formaulario button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 25px;
+    width: 90%;
+}
+
+.MadeBy{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    color: red;
+    padding: 10px;
+}
+
+#visible{
+    display: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wasap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    color: #fff;
+    /* padding: 20px; */
+    text-align: center;
+}
+
+.wasap a{
+    background: #000;
+    color: #fff;
+    display: none;
+    padding: 20px;
+}

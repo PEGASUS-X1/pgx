@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assent/css/registro.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <audio id="miMusica" >
+        <source src="./assent/audio/ElevenLabs_2024-02-07T16_42_53_Charlie_pre_s50_sb75_se0_m2.mp3" type="audio/mpeg">
+    </audio>
+    <div class="formaulario" id="elementoParaOcultar">
+        <h1>Registro Pegasus X(v2)</h1>
+        <span>!Revuerda que solo es una vez es el registro</span>
+        <input type="text" id="nombre" placeholder="Pon Tu Nombre" required>
+        <input type="number" name="" id="numero" placeholder="Pon Tu Numero De Celular" required>
+        <select name="" id="Area" onchange="actualizarEnlace()" required>
+            <option value="" selected disabled>Seleccione La Área</option>
+            <option value="PRE_CALCULO" id="opcion1">PRE CÁLCULO</option>
+            <option value="AMBIENTE" id="opcion2">MEDIO AMBIENTE Y DESARROLLO SOSTENIBLE</option>
+            <option value="METODOS" id="opcion3">MÉTODOS Y TÉCNICAS DE ESTUDIO UNIVERSITARIO</option>
+            <option value="ANTROPOLOGIA" id="opcion4">ANTROPOLOGIA</option>
+        </select>
+        <button type="submit" onclick="Guardar(event)">Enviar</button>
+    </div>
+
+    <div class="wasap" id="visible">
+        <a href="https://chat.whatsapp.com/H6yYH6AQlaW366Hi2sm0wq" id="PRE_CALCULO" style="display: none;">Unirse a PRE CALCULO</a>
+        <a href="https://chat.whatsapp.com/GKifQfGtq7qBmLree0rHXb" id="AMBIENTE" style="display: none;">Unirse a MEDIO AMBIENTE Y DESARROLLO SOSTENIBLE</a>
+        <a href="https://chat.whatsapp.com/JMLXKX8S3h936dYQaukv6K" id="METODOS" style="display: none;">Unirse a MÉTODOS Y TÉCNICAS DE ESTUDIO UNIVERSITARIO</a>
+        <a href="https://chat.whatsapp.com/K4zZntgfwjwJmLN3xnU1jQ" id="ANTROPOLOGIA" style="display: none;">Unirse a ANTROPOLOGIA</a>    
+    </div>
+    <span class="MadeBy">Made By : Pegasus X(Joseph)</span>
+    <script src="./assent/js/registro.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assent/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 90%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="Buscar" id="search-box">
+    <div id="CajadeLibros"></div>
+    <script src="./assent/js/user.js"></script>
+    <script>
+        document.addEventListener("keyup", e=>{
+
+            if (e.target.matches("#search-box")){
+          
+                if (e.key ==="Escape")e.target.value = ""
+          
+                document.querySelectorAll(".buscado").forEach(BUSCAR =>{
+          
+                    BUSCAR.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+                    ?BUSCAR.classList.remove("filtro-shar")
+                    :BUSCAR.classList.add("filtro-shar")
+                })
+            }
+        })
+        
+    </script>
+</body>
+</html>

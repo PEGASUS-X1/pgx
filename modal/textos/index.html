@@ -1,0 +1,82 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Example</title>
+    <style>
+        .no {
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            max-width: 200px;
+        }
+
+        span {
+            cursor: pointer;
+            border-bottom: 1px dotted #007BFF;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="no">
+    Lorem ipsum dolor, sit amet <span data-texto="anime">anime</span> consectetur adipisicing elit. Consequuntur debitis nam recusandae, repellat quod ipsum nemo corrupti corporis veritatis doloribus adipisci ratione incidunt tenetur minima deleniti facere optio. Esse, doloribus.
+</div>
+
+<div class="tooltip" id="tooltip">
+    
+    <h1></h1>
+</div>
+
+<script>
+    const textos = {
+        "anime": {
+            text: "Texto sobre anime.",
+            image: "https://p4.wallpaperbetter.com/wallpaper/478/533/203/anime-manga-anime-girls-fan-art-illustration-hd-wallpaper-preview.jpg"
+        },
+        // Agrega más categorías según sea necesario
+    };
+
+    var span = document.querySelector('span');
+    var tooltip = document.getElementById('tooltip');
+
+    span.addEventListener('mouseover', function() {
+        var textoKey = span.getAttribute('data-texto');
+        var textoInfo = textos[textoKey];
+
+        if (textoInfo) {
+
+            tooltip.innerHTML = textoInfo.text;
+
+            // Calcula la posición del tooltip para que aparezca al lado del span
+            var rect = span.getBoundingClientRect();
+            var top = rect.top + window.scrollY;
+            var left = rect.right + window.scrollX + 10; // 10px de separación
+
+            tooltip.style.top = top + 'px';
+            tooltip.style.left = left + 'px';
+
+            tooltip.style.display = 'block';
+        }
+    });
+
+    span.addEventListener('mouseout', function() {
+        tooltip.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
