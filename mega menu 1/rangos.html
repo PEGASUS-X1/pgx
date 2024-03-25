@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>top</title>
+</head>
+<body>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+  }
+  
+  .rago {
+    text-align: center;
+    justify-content: center;
+      margin: 20px auto;
+      max-width: 100%;
+      width: 40%;
+      height: auto;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 10px;
+  }
+
+  .loader {
+      position: relative;
+      width: 0;
+      height: 20px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border-radius: 1000px;
+      transition: width 3s ease-in-out;
+      animation: neon 2s linear infinite;
+      overflow: hidden; /* Añadido para ocultar el desbordamiento del contenido */
+      background: var(--clr);
+      box-shadow: 0 0 10px var(--clr),
+      0 0 10px var(--clr),
+      0 0 20px var(--clr);
+  }
+  
+  .xd {
+      position: absolute;
+      top: 50%; /* Centra verticalmente */
+      left: 0;
+      width: 100%;
+      text-align: center;
+      line-height: 30px;
+      color: #000;
+      transform: translateY(-50%); /* Alinea verticalmente en el centro */
+      z-index: 1; /* Añadido para superponer el porcentaje a la barra */
+  }
+  
+  button {
+      padding: 10px 20px;
+      background-color: var(--clr);
+      color: white;
+      border: none;
+      cursor: pointer;
+  }
+  
+  #start-btn:hover {
+      background-color: #45a049;
+  }
+  
+/*  @keyframes neon {
+      0% {
+          box-shadow: 0 0 10px var(--clr),
+                      0 0 20px var(--clr),
+                      0 0 30px var(--clr);
+      }
+      50% {
+          box-shadow: 0 0 20px var(--clr),
+                      0 0 30px var(--clr),
+                      0 0 40px var(--clr);
+      }
+      100% {
+          box-shadow: 0 0 10px var(--clr),
+                      0 0 20px var(--clr),
+                      0 0 30px var(--clr);
+      }
+  }*/
+  .oculto {
+    display: none;
+}
+
+img{
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+}
+.float-right{
+  box-sizing: border-box;  
+  text-align: center;
+  justify-content: center;
+  float: right;
+  width: 100%;
+  padding: 5px;
+  height: auto;
+}
+.contenidoOculto{
+  display: none;
+}
+.ocultar {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .rago {
+      max-width: 100%;
+      width: 90%;
+      height: auto;
+      color: #fff;
+      border: 1px solid #fff;
+  }
+}
+  </style>
+
+
+
+  <script>
+    const btn = document.querySelector("button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".star-widget");
+    const editBtn = document.querySelector(".edit");
+    btn.onclick = ()=>{
+      widget.style.display = "none";
+      post.style.display = "block";
+      editBtn.onclick = ()=>{
+        widget.style.display = "block";
+        post.style.display = "none";
+      }
+      return false;
+    }
+  </script>
+  <div class="rago">
+    <img src="./Sandro-Cuba-Mercado.jpeg" alt="">
+    <div class="float-right">
+      <h1>Sandro Cuba Mercado</h1>
+    <div class="contenidoOculto" id="contenidoOculto">
+      <div class="loader" style="--clr:#2bff00" id="loader1">
+        <div class="xd"><span class="percentage">0% </span><span> Planos</span></div>
+      </div>
+      <div class="loader" style="--clr:#fff" id="loader2">
+        <div class="xd"><span class="percentage">0% </span><span> Dibujos</span></div>
+      </div>
+      <div class="loader" style="--clr:#f0ff" id="loader3">
+        <div class="xd"><span class="percentage">0% </span><span> Etc</span></div>
+      </div>
+      <br>
+    <button id="start-btn1" style="--clr:#900"> Ver Rango Actual </button></span></p>
+    </div>
+  </div>
+    <center>
+      <button id="Mostrar" class="Mostrar"  style="--clr:#2bff00">Ver más</button> 
+      <button id="ocultar" class="ocultar" style="--clr:#f00">Ver menos</button>
+    </center>
+ 
+</div>
+
+<div class="rago">
+  <img src="./PGX.PNG" alt="">
+  <div class="float-right">
+    <h1>Pegasus X</h1>
+  <div class="contenidoOculto" id="contenidoOculto">
+    <div class="loader" style="--clr:#900" id="loader4">
+      <div class="xd"><span class="percentage">0% </span><span> Planos</span></div>
+    </div>
+    <div class="loader" style="--clr:#900" id="loader5">
+      <div class="xd"><span class="percentage">0% </span><span> Dibujos</span></div>
+    </div>
+    <div class="loader" style="--clr:#900" id="loader6">
+      <div class="xd"><span class="percentage">0% </span><span> Etc</span></div>
+    </div>
+    <br>
+  <button id="start-btn2" style="--clr:#900"> Ver Rango Actual </button></span></p>
+  </div>
+</div>
+  <center>
+    <button id="Mostrar" class="Mostrar"  style="--clr:#2bff00">Ver más</button> 
+    <button id="ocultar" class="ocultar" style="--clr:#f00">Ver menos</button>
+  </center>
+
+</div>
+
+    <script>
+
+// Obtener todos los botones de Mostrar y Ocultar
+const botonesMostrar = document.querySelectorAll('.Mostrar');
+const botonesOcultar = document.querySelectorAll('.ocultar');
+const contenidoOculto = document.querySelectorAll('.contenidoOculto');
+
+// Agregar eventos a todos los botones de Mostrar
+botonesMostrar.forEach((botonMostrar, index) => {
+    botonMostrar.addEventListener('click', function () {
+        contenidoOculto[index].style.display = "block";
+        botonesOcultar[index].style.display = "block";
+        botonMostrar.style.display = "none";
+    });
+});
+
+// Agregar eventos a todos los botones de Ocultar
+botonesOcultar.forEach((botonOcultar, index) => {
+    botonOcultar.addEventListener('click', function () {
+        contenidoOculto[index].style.display = "none";
+        botonesMostrar[index].style.display = "block";
+        botonOcultar.style.display = "none";
+    });
+});
+
+    
+    
+    
+    
+      document.addEventListener("DOMContentLoaded", function() {
+        const startBtn1 = document.getElementById("start-btn1");
+        const startBtn2 = document.getElementById("start-btn2");
+        const startBtn3 = document.getElementById("start-btn3");
+    
+        startBtn1.addEventListener("click", function() {
+            startLoading("loader1", 100); // Cambiar el porcentaje según sea necesario
+        });
+    
+        startBtn1.addEventListener("click", function() {
+            startLoading("loader2", 100); // Cambiar el porcentaje según sea necesario
+        });
+    
+        startBtn1.addEventListener("click", function() {
+            startLoading("loader3", 100); // Cambiar el porcentaje según sea necesario
+        });
+        startBtn2.addEventListener("click", function() {
+          startLoading("loader4", 50); // Cambiar el porcentaje según sea necesario
+      });
+  
+      startBtn2.addEventListener("click", function() {
+          startLoading("loader5", 70); // Cambiar el porcentaje según sea necesario
+      });
+  
+      startBtn2.addEventListener("click", function() {
+          startLoading("loader6", 100); // Cambiar el porcentaje según sea necesario
+      });
+        function startLoading(loaderId, percentage) {
+            const loader = document.getElementById(loaderId);
+            const percentageElement = loader.querySelector(".percentage");
+    
+            let currentPercentage = 0;
+            const interval = setInterval(function() {
+                if (currentPercentage < percentage) {
+                    currentPercentage += 1;
+                    loader.style.width = currentPercentage + "%";
+                    percentageElement.textContent = currentPercentage + "%";
+                } else {
+                    clearInterval(interval);
+                }
+            }, 30);
+        }
+    });
+    
+    </script>
+</body>
+</html>

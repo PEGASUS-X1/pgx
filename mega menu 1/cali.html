@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Calificación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      
+      // Definir un objeto que mapea nombres de usuario a contraseñas
+      var usuariosContrasenas = {
+          "Joseph Anthony Laucata Zuñiga": "admin",
+          "Usuario2": "Contraseña2",
+          "Usuario3": "Contraseña3"
+      };
+
+      $(document).ready(function () {
+          var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+          var today = new Date().toLocaleDateString();
+
+          if (lastSecurityCheckDate === today) {
+              showWelcomeMessage();
+          } else {
+              performSecurityCheck();
+          }
+      });
+
+      function showWelcomeMessage() {
+          var username = localStorage.getItem('username');
+          if (username) {
+              // Mostrar mensaje de bienvenida si el control de seguridad ya se realizó hoy
+              //alert("¡Hola, " + username + "! Bienvenido.");
+          } else {
+              performSecurityCheck();
+          }
+          hideLoader();
+      }
+
+      function performSecurityCheck() {
+          var maxAttempts = 3;
+          var attempts = 0;
+          var isAvisoMostrado = false;
+          var controluno = false;
+          var controldos = false;
+
+          function showLoader() {
+              $("#overlay").fadeIn();
+          }
+
+          function hideLoader() {
+              $("#overlay").fadeOut();
+          }
+
+          function guardarDatos(nombre) {
+              var fechaHora = obtenerFechaHora();
+              var url = "https://script.google.com/macros/s/AKfycbx4wyov3Eo9Y244XgwOuonBwWRcHCHOkEZCbqPdpoNi_F2Y9aNvroX71IeJ5Jtv0lGI/exec";
+              var data = {
+                  nombre: nombre
+              };
+
+              $.post(url, JSON.stringify(data), function (response) {
+                  alert(response);
+              });
+
+              var lastReloadDate = localStorage.getItem('lastReloadDate');
+              var today = new Date().toLocaleDateString();
+
+              if (lastReloadDate !== today) {
+                  setTimeout(function () {
+                      localStorage.setItem('lastReloadDate', today);
+                      window.location.reload();
+                  }, 5000);
+              }
+          }
+
+          function obtenerFechaHora() {
+              var now = new Date();
+              var fecha = now.toLocaleDateString();
+              var hora = now.toLocaleTimeString();
+              return fecha + " " + hora;
+          }
+
+          function checkNombre() {
+              if (attempts < maxAttempts) {
+                  if (!isAvisoMostrado) {
+                      alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/resgistro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
+                      isAvisoMostrado = true;
+                  }
+
+                  if (!controluno) {
+                      alert("Control De Seguridad 1");
+                      controluno = true;
+                  }
+
+                  var username = prompt("Ingrese el nombre de seguridad");
+
+                  if (usuariosContrasenas.hasOwnProperty(username)) {
+                      checkCodigo(username);
+                  } else {
+                      attempts++;
+                      alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                      checkNombre();
+                  }
+              } else {
+                  showLoader();
+                  setTimeout(hideLoader, 5000);
+                  window.location.href = "404.html";
+              }
+          }
+
+          function checkCodigo(username) {
+              if (attempts < maxAttempts) {
+                  if (!controldos) {
+                      alert("Control De Seguridad 2");
+                      controldos = true;
+                  }
+
+                  var codigo = prompt("Ingrese la contraseña");
+
+                  if (usuariosContrasenas[username] === codigo) {
+                      showLoader();
+                      setTimeout(function () {
+                          hideLoader();
+                          alert(" ✅ Acceso concedido ✅ ");
+                          guardarDatos(username);
+
+                          var today = new Date().toLocaleDateString();
+                          localStorage.setItem('lastSecurityCheckDate', today);
+
+                          localStorage.setItem('username', username);
+                      }, 5000);
+                  } else {
+                      attempts++;
+                      alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
+                      checkCodigo(username);
+                  }
+              } else {
+                  showLoader();
+                  setTimeout(hideLoader, 5000);
+                  window.location.href = "404.html";
+              }
+          }
+
+          showLoader();
+          checkNombre();
+      }
+
+      function showLoader() {
+          var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+          var today = new Date().toLocaleDateString();
+
+          if (lastSecurityCheckDate !== today) {
+              $("#overlay").fadeIn();
+          }
+      }
+
+      function hideLoader() {
+          $("#overlay").fadeOut();
+      }
+  </script>
+    <style>
+      *{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 100%;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      body{
+        background: #303030;
+      }
+      ::-webkit-scrollbar{
+        display: none;
+        width: 0px;
+        background: #000;
+      }
+      ::-webkit-scrollbar-button{
+        width: 0px;
+        background: #06fff3;
+      }
+      ::selection{
+        background: #06fff3;
+        color: #000;
+      }
+      .box-calificacion{
+        text-align: center;
+      /*  position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);*/
+          max-width: 100%;
+          color: #fff;
+          width: 600px;
+          border: 1px solid #000;
+          background: #111;
+          padding: 20px 30px;
+          border: 1px solid #444;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin: 0 auto;
+          margin-top: 10px;
+          margin-bottom: 30px;
+      }
+      .box-calificacion button {
+color: #000;
+background: #ffee00;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+.box-calificacion button:hover {
+opacity: 80%;
+}
+
+      .box-calificacion h1{
+          font-size: 3vh;
+      }
+      .rating{
+          max-width: 100%;
+      }
+      .rating label{
+          font-size: 4vh;
+          color: #444;
+          padding: 10px;
+          float: right;
+          transition: all 0.2s ease;
+        }
+      input:not(:checked) ~ label:hover,
+      input:not(:checked) ~ label:hover ~ label{
+        color: #fd4;
+      }
+      input:checked ~ label{
+        color: #fd4;
+      }
+      input#rate-5:checked ~ label{
+        color: #eed200;
+        text-shadow: 0 0 20px rgb(255, 217, 0);
+      }
+
+      input[type="radio"] {
+          display: none;
+      }
+      .box-calificacion textarea{
+        padding: 10px;
+          width: 90%;
+          height: 100px;
+          margin-bottom: 10px;
+          outline: none;
+          resize: none;
+          display: none;
+      }
+      #prf-calif{
+          text-align: center;
+          justify-content: center;
+          width: 90%;
+          height: 30px;
+          border-radius: 1000px;
+      }
+      #username{
+        text-align: center;
+        background: none;
+        color: #fff;
+        outline: none;
+        border: none;
+        max-width: 100%;
+        overflow: auto;
+      }
+      /* Estilos generales para el modal */
+.modal {
+display: none;
+position: fixed;
+z-index: 10;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+box-sizing: border-box;  
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translateY(-50%) translateX(-50%);
+text-align: center;
+justify-content: center;
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+max-width: 100%;
+width: 900px;
+height: 700px;
+height: auto;
+overflow: auto;
+
+}
+.modal-content .imgp{
+max-width: 100%;
+width: 450px;
+float: left;
+box-sizing: border-box;  
+padding: 0px 10px 10px 10px;
+height: 560px;
+}
+.infos{
+height: 550px;
+overflow: auto;
+}
+.close {
+position: absolute;
+top: -5px;
+right: 0px;
+font-size: 40px;
+cursor: pointer;
+}
+
+/* Estilos para el botón de "Más información" en las cartas */
+.carta-profesional button {
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+
+.carta-profesional button:hover{
+opacity: 90%;
+}
+
+/* Estilos para el contenedor de cartas */
+.contenedor-cartas-Profesionales {
+margin-top: 10px;
+margin-bottom: 10px;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+text-align: center;
+justify-items: center;
+justify-content: center;
+}
+
+/* Estilos para las cartas */
+.carta-profesional {
+background: #000;
+width: calc(20% - 20px);
+box-sizing: border-box;
+padding: 10px;
+border-radius: 5px;
+text-align: center;
+height: auto;
+max-height: 100%; /* Altura máxima de la carta */
+}
+
+.carta-profesional img {
+box-sizing: border-box;  
+max-width: 100%;
+width: 100%;
+height: 250px;
+border-radius: 5px;
+}
+
+.carta-profesional h2 {
+margin-top: 10px;
+margin-bottom: 10px;
+font-size: 18px;
+}
+
+.carta-profesional p {
+font-size: 14px;
+}
+
+#carta-1{
+border: 2px solid #ffd000;
+color: #ffd000;
+}
+#carta-1 button{
+background: #ffd000;
+}
+
+#carta-2{
+border: 2px solid #00fff2;
+color: #00fff2;
+}
+#carta-2 button{
+background: #00fff2;
+}
+
+#carta-3{
+border: 2px solid #8a8a8a;
+color: #8a8a8a;
+}
+#carta-3 button{
+background: #8a8a8a;
+}
+
+#carta-4{
+border: 2px solid #880000;
+color: #880000;
+}
+#carta-4 button{
+background: #880000;
+}
+
+#carta-5{
+border: 2px solid #00ffaa;
+color: #00ffaa;
+}
+
+#carta-5 button{
+background: #00ffaa;
+}
+
+/* Estilos para el overlay */
+.overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+z-index: 999;
+justify-content: center;
+align-items: center;
+}
+
+.overlay.active {
+display: flex;
+}
+
+.carta-proyecto{
+max-width: 100%;
+margin: 0 auto;
+margin-top: 10px;
+text-align: center;
+color: #000;
+font-family: 'Courier New', Courier, monospace;
+border-radius: 5px;
+background: #ffffff;
+width: 400px;
+border: 1px solid #000;
+}
+.carta-proyecto img{
+max-width: 100%;
+width: 100%;
+height: 250px;
+}
+.carta-proyecto video{
+  max-width: 100%;
+width: 100%;
+height: 100%;
+}
+.segigundario{
+padding: 10px;
+}
+.F-T{
+margin-top: 10px;
+text-align: center;
+width: 100%;
+padding-bottom: 16px;
+border-bottom: 1px solid #000 ;
+}
+.carta-proyecto .F-T span{
+color: #000;
+padding: 6px;
+border: 1px solid #000;
+}
+.nombre-proyecto{
+font-weight: 1;
+font-size: 19px;
+}
+a{
+text-decoration: none;
+}
+.contenedor-btn{
+padding-top: 20px;
+border-top: 1px solid #000 ;
+margin-bottom: 20px;
+}
+
+.btn{
+padding: 10px 20px;
+border-radius: 1000px;
+background: #000000;
+color: #fff;
+}
+@media screen and (max-width: 1380px) {
+  
+  .carta-profesional {
+    background: #000;
+    width: calc(33.3% - 20px);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    max-height: 100%; /* Altura máxima de la carta */
+    }
+}
+
+
+    </style>
+</head> 
+<body>
+
+<!-- 
+  !h   
+    ?#f
+    *hola
+  todo:  +asd  
+  -->
+  <!-- <script src="https://utteranc.es/client.js"
+        repo="PEGASUS-X1/sistema-comentarios"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script> -->
+<!-- <div class="powr-hit-counter" id="9853a6a7_1696533658"></div><script src="https://www.powr.io/powr.js?platform=html"></script> -->
+<!-- <div class="powr-comments" id="ba21d804_1696535443"></div><script src="https://www.powr.io/powr.js?platform=html"></script>   -->
+<audio id="miMusica" >
+  <source src="./Napoleon Song 'No hay nada que podamos hacer' - Videoclub - Amour Plastique slowed (Sub. español) (mp3cut.net).mp3" type="audio/mpeg">
+
+  <!-- <source src="https://github.com/1RubiUwU1/pegasus.tk/raw/main/Adm%C3%ADtelo%2C%20tienes%20a%20quien%20dedicarle%20este%20MASHUP%20%F0%9F%8E%B5.mp3" type="audio/mpeg"> -->
+</audio>
+<div class="" id="elementoParaOcultar">
+<form id="data-form">
+
+    <div class="box-calificacion" >
+        <h1>Clifica a los Profesionales</h1>
+        <br>
+        <select name="prf-calif" id="prf-calif">
+            <option value="" disabled selected >Elige El Profesional</option>
+            <option value="Aquitecto Sandro Cuba">Aquitecto Sandro Cuba</option>
+            <option value="Aquitecta Dariela Cuba">Aquitecta Dariela Cuba</option>
+            <option value="ING Civil Wilson Champi">ING Civil Wilson Champi</option>
+            <option value="Pegasus X">Pegasus X</option>
+            <option value="Estudiantes">Estudiantes</option>
+        </select>
+        <br>
+        <div class="rating">
+            <input type="radio" name="rate" id="rate-5" value="5">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-4" value="4">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-3" value="3">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-2" value="2">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-1" value="1">
+            <label for="rate-1" class="fas fa-star"></label>
+        </div>
+        <br>
+        <p>Calificación: <span id="rating-value">0</span></p>
+        <br>
+        <p class="person">Calificado Por: <br> <input type="text" id="username" disabled></p>
+        <br> 
+        <p id="emocion"></p>
+        <br>
+        <textarea id="comentario" placeholder="Escribe tu comentario aquí ojo:
+si o si por que si no nose considerara tu comentario"></textarea>
+        <a href="" id="prueba1"></a>
+        <a href="#" id="aaa"></a>
+
+        <button type="submit" onclick="ocultarElemento()" >Enviar</button>
+
+</div>
+</form> 
+</div>
+<style>
+  /* Estilos para el modal (puedes personalizarlos según tu preferencia) */
+  .modal-media {
+    display: none;
+    position: fixed;
+    z-index: 12;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow: auto;
+    overflow: auto;
+  }
+
+  .modal-content-media {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    display: block;
+    max-width: 100%;
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+  }
+
+  .modal-media img,
+  .modal-media video {
+    width: 100%;
+    height: auto;
+  }
+  .crentredor{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+  .close-media {
+    color: #ccc;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 10;
+  }
+
+  .close-media:hover,
+  .close-media:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-title{
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    font-weight: 1;
+    font-size: 30px;
+    transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+    color: #fff;
+    background: #000;
+    z-index: 1000;
+  }
+  @media screen and (max-width: 720px) {
+    .modal-title{
+      position: fixed;
+      top: 10%;
+      left: 50%;
+    }
+    .modal-media img,
+    .modal-media video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      width: 100%;
+      height: auto;
+    }
+  .carta-profesional {
+      width: 96%;
+  }   
+  .modal-content {
+    box-sizing: border-box;  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 100%;
+    width: 95%;
+    max-height: 600px;
+    height: auto;
+    overflow: auto;
+  } 
+  .modal-content .imgp{
+    max-width: 100%;
+    width: 100%;
+    float: none;
+    box-sizing: border-box;  
+    padding: 0px 10px 10px 10px;
+    height: 360px;
+  }
+  .infos{
+    height: auto;
+  }
+  .carta-proyecto{
+    width: 100%;
+    margin-left: 0;
+  }
+  .F-T{
+    flex-direction: column;
+    display: flex;
+  }
+  } 
+  @media screen and (max-width: 311px) {
+  .btn{
+  font-size: 15px;
+  }
+  }
+</style>
+<!-- Modal -->
+<div id="visualizador-media" class="modal-media">
+  <span class="close-media">×</span>
+  <div class="modal-content-media" id="modal-content-media">
+    <h1 class="modal-title">Título del Proyecto</h1> <!-- Título del proyecto en el modal -->
+    <!-- Contenido del modal (se llenará con JavaScript) -->
+  </div>
+</div>
+
+
+
+
+
+<div class="contenedor-cartas-Profesionales">
+</div>
+<div id="modal" class="modal">
+  <div class="modal-content" id="modal-content">
+    <span class="close" id="close">&times;</span>
+    <img src="" alt="" class="imgp" id="modal-img">
+    <div class="infos content" id="container">
+      <p id="modal-description"></p>
+      <p id="modal-notas"></p>
+      <br>
+      <h1>Proyectos:</h1>
+      <div  class="modal-Proyectos" id="modal-Proyectos">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div class="carta-proyecto">
+  <div class="img">
+    <video 
+      src="./Baki Hanma Vs Yujiro Hanma_ La ultima cena - (Español Latino) - Baki Hanma T2 Parte 1 _ 3 (2).mp4" 
+      class="video-modal-media" 
+      data-nombre-proyecto="Nombre Del Proyecto"
+      ></video>
+  </div>
+  <div class="proyecto-informacion">
+  <p class="F-T">
+    <span href=""><i class="fa fa-calendar"></i> 12 julio,2022</span>
+    <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+  </p>
+  <div class="segigundario">
+    <h1 class="nombre-proyecto">Nombre Del Proyecto</h1>
+  </div>
+  </div>
+</div> -->
+
+
+<script>
+  let cartaIdCounter = 1;
+  // Tu array de profesionales
+  const listaPRF = [
+    {
+      imgPRF: "Sandro-Cuba-Mercado.jpeg",
+      nombrePRF: "Aquitecto Sandro Cuba",
+      descripcionPRF: "Descripción del Profesional 2",
+      IdbtnPRF: "btn1",
+      Informacion: ["<p>Nombre: Sandro Cuba Mercado</p>" + "<p>Profecion: Arquitecto</p>" + "<p>Calificacion: Excelente 😍</p>"],
+      Proyectos: [
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/1.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="Municipalidad Provincial de Espinar"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> 15 abril,2020</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >Municipalidad Provincial de Espinar</h1>
+        </div>
+        </div>
+      </div>
+      `+
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/4.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="Vilcaro, Coyllurqui, Cotabambas"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> 10 marzo,2018</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >Vilcaro, Coyllurqui, Cotabambas</h1>
+        </div>
+        </div>
+      </div>
+      `+
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/2.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="null"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> null</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >null</h1>
+        </div>
+        </div>
+      </div>
+      `+
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/3.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="null"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> null</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >null</h1>
+        </div>
+        </div>
+      </div>
+      `+
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/5.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="null"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> null</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >null</h1>
+        </div>
+        </div>
+      </div>
+      `+
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecto-Sandro-Cuba/6.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="null"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> null</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Sandro Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >null</h1>
+        </div>
+        </div>
+      </div>
+      `
+      ]
+    },
+    {
+      imgPRF: "https://scontent.fcuz2-1.fna.fbcdn.net/v/t39.30808-6/275114101_3085810401667668_5123901371336489210_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=52f669&_nc_ohc=2zPwEecRBY0AX9_iiJK&_nc_ht=scontent.fcuz2-1.fna&oh=00_AfArTiE5xpx8cR9OX89KdRS5tigK9uQA45zYgqApZ7N16w&oe=65259FE0",
+      nombrePRF: "Aquitecta Dariela Cuba",
+      descripcionPRF: "Descripción del Profesional 3",
+      IdbtnPRF: "btn2",
+      Informacion: ["<p>Nombre: Dariela Cuba</p>" + "<p>Profecion: Arquitecto</p>" + "<p>Calificacion: Excelente 😍</p>"],
+      Proyectos: [
+      `
+      <div class="carta-proyecto">
+        <div class="img">
+          <img 
+          src="https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/Aquitecta-Dariela-Cuba/IMG-20231006-WA0024.jpg" 
+          class="imagen-modal-media" 
+          data-nombre-proyecto="null"
+          >
+        </div>
+        <div class="proyecto-informacion">
+        <p class="F-T">
+          <span href=""><i class="fa fa-calendar"></i> null</span>
+          <span href=""><i class="fa fa-user"></i> ARQ Dariela Cuba</span>
+        </p>
+        <div class="segigundario">
+          <h1 class="nombre-proyecto" id="nombre-proyecto" >null</h1>
+        </div>
+        </div>
+      </div>
+      `
+      ]
+    },
+    {
+      imgPRF: "https://raw.githubusercontent.com/PEGASUS-X1/CreativeScale-Architecture/main/Profecionales/ING-Civil-Wilson-Champi/IMG-20231006-WA0045.jpg",
+      nombrePRF: "ING Civil Wilson Champi",
+      descripcionPRF: "Descripción del Profesional 3",
+      IdbtnPRF: "btn3",
+      Informacion: ["<p>Nombre: Dariela Cuba</p>" + "<p>Profecion: Arquitecto</p>" + "<p>Calificacion: Excelente 😍</p>"]
+    },
+    {
+      imgPRF: "./PGX.png",
+      nombrePRF: "Pegasus X",
+      descripcionPRF: "Descripción del Profesional 1",
+      IdbtnPRF: "btn4"
+    },
+    {
+      imgPRF: "./estudiantes.png",
+      nombrePRF: "Alumnos",
+      descripcionPRF: "Descripción del Profesional 1",
+      IdbtnPRF: "btn5"
+    }
+  ];
+
+  const contenedor = document.querySelector('.contenedor-cartas-Profesionales');
+  const modaldescription = document.getElementById('modal-description');
+  const modalimg = document.getElementById('modal-img');
+  const modalnotas = document.getElementById('modal-notas');
+  const modalProyectos = document.getElementById('modal-Proyectos');
+  // Obtén la plantilla del modal
+  const modalTemplate = document.getElementById('modal-template');
+  
+  // Recorre el array y crea cartas para cada profesional
+  listaPRF.forEach((profesional, index) => {
+    const cartaId = `carta-${cartaIdCounter}`;
+    cartaIdCounter++;
+    // Crea un elemento de carta
+    const carta = document.createElement('div');
+    carta.classList.add('carta-profesional');
+    carta.id = cartaId; // Asigna la ID única a la carta
+
+    // Crea la imagen
+    const imagen = document.createElement('img');
+    imagen.src = profesional.imgPRF;
+    carta.appendChild(imagen);
+
+    // Crea el nombre del profesional
+    const nombre = document.createElement('h2');
+    nombre.textContent = profesional.nombrePRF;
+    carta.appendChild(nombre);
+
+    // Crea la descripción
+    const descripcion = document.createElement('p');
+    descripcion.textContent = profesional.descripcionPRF;
+    carta.appendChild(descripcion);
+
+    const br = document.createElement('br');
+    carta.appendChild(br);
+
+
+    // Crea un botón
+    const boton = document.createElement('button');
+    boton.textContent = 'Ver Portafolio';
+    boton.id = profesional.IdbtnPRF;
+    carta.appendChild(boton);
+  // Agrega un evento click al botón para abrir el modal
+  boton.addEventListener('click', () => {
+    var modal = document.getElementById("modal");
+    modal.style.display = "block";
+    modalimg.src = profesional.imgPRF;
+    modalnotas.innerHTML = profesional.Informacion;
+    modalProyectos.innerHTML = profesional.Proyectos;
+  });
+    // Agrega la carta al contenedor
+    contenedor.appendChild(carta);
+  });
+  
+  var modclose = document.querySelector(".close");
+  modclose.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+</script>
+
+    <script>
+        const ratingInputs = document.querySelectorAll('.rating input[type="radio"]');
+        const ratingValue = document.getElementById('rating-value');
+        const emocion = document.getElementById('emocion');
+        const comentario = document.getElementById('comentario');
+        const prubas = document.getElementById("prueba1");
+        const aaa = document.getElementById("aaa");
+
+        const emocionesArray = [
+            '',           // 0 no se usa
+            'Muy malo 😒',   // 1
+            'Malo 😒',       // 2
+            'Regular 😄',    // 3
+            'Bueno 😎',      // 4
+            'Excelente 😍'   // 5
+        ];
+
+        let valorSeleccionado;
+        let emocionSeleccionado;
+        ratingInputs.forEach(cali => {
+          cali.addEventListener('change', () => {
+                const calistar = cali.value;
+                comentario.style.display = 'block';
+                valorSeleccionado = calistar + " estrellas";
+                ratingValue.textContent = calistar + " estrella";
+                // Obtener el texto de emoción del array
+                const emocionText = emocionesArray[calistar] || '';
+                emocion.textContent = emocionText;
+                emocionSeleccionado = emocionText;
+                miFuncionQueUtilizaElValorSeleccionado();
+                // Mostrar el textarea cuando se selecciona una calificación
+            });
+        });
+
+        var username = document.getElementById("username");
+        username.value = localStorage.getItem('username'); 
+
+        function en() {
+            var textodeanimo = document.querySelectorAll(".textodeanimo");
+          
+            //var textodeanimo = document.getElementById("textodeanimo");
+            textodeanimo.forEach(function (textodeanimo) {
+          
+            textodeanimo.textContent = animos[indiceActual];
+          });
+            indiceActual = (indiceActual + 1) % animos.length;
+          }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("data-form");
+  
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+  
+          const selectPRF = document.getElementById("prf-calif").value;
+          const usernamepr = document.getElementById("username").value;
+  
+          const formData = {
+            selectPRF: selectPRF,
+            usernamepr: usernamepr,
+            calificacion: valorSeleccionado,
+            emocion: emocionSeleccionado,
+          };
+  
+          fetch("https://script.google.com/macros/s/AKfycbx5AvF0Na__m5MDsrfJFPM_zAYnPr_oeAP673vljkncnN6BGbAYBHEkkULVW6dgCPWfTA/exec", {
+            method: "POST",
+            body: JSON.stringify(formData),
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              usernamealert = localStorage.getItem('username');
+              alert("Gracias Por Tu Comentario " + usernamealert);
+            })
+            .catch(error => {
+              console.error("Error:", error);
+              alert("Hubo un error en los datos");
+            });
+        });
+      });
+      function ocultarElemento() {
+        const audioElement = document.getElementById("miMusica");
+        audioElement.play();
+        // Obtener la fecha actual
+        const fechaActual = new Date();
+        
+        // Calcular la fecha de reaparición (1 día después)
+        const fechaReaparicion = new Date();
+        fechaReaparicion.setDate(fechaActual.getDate() + 1);
+        
+        // Convertir la fecha de reaparición a formato de cookie
+        const fechaReaparicionUTC = fechaReaparicion.toUTCString();
+        
+        // Establecer una cookie con la fecha de reaparición
+        document.cookie = `ocultarElemento=true; expires=${fechaReaparicionUTC}; path=/`;
+        
+        // Ocultar el elemento
+        document.getElementById("elementoParaOcultar").style.display = "none";
+        document.getElementById("visible").style.display = "block";
+        // Deshabilitar el botón
+        document.getElementById("botonOcultar").disabled = true;
+  
+    } 
+  
+    // Verificar si la cookie existe al cargar la página
+    window.onload = function () {
+        if (document.cookie.includes("ocultarElemento=true")) {
+            document.getElementById("elementoParaOcultar").style.display = "none";
+            const audioElement = document.getElementById("miMusica");
+            audioElement.play();
+            document.getElementById("visible").style.display = "block";
+            document.getElementById("botonOcultar").disabled = true;
+            
+        }
+    };
+      </script>
+
+      <script>
+  // Función para abrir el modal con el contenido específico
+  function abrirModal(contenido, nombreProyecto) {
+    var modal = document.getElementById('visualizador-media');
+    var modalContent = document.getElementById('modal-content-media');
+    modalContent.innerHTML = '<h1 class="modal-title">' + nombreProyecto + '</h1>' + contenido;
+    modal.style.display = 'block';
+  }
+
+  // Agrega un evento click al documento para abrir el modal cuando se hace clic en cualquier elemento con la clase
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('imagen-modal-media') || event.target.classList.contains('video-modal-media')) {
+      var contenido;
+      var nombreProyecto = event.target.getAttribute('data-nombre-proyecto');
+      if (event.target.tagName === 'IMG') {
+        contenido = '<img src="' + event.target.src + '">';
+      } else {
+        contenido = '<video controls><source src="' + event.target.src + '"></video>';
+      }
+      abrirModal(contenido, nombreProyecto);
+    }
+  });
+
+  // Cierra el modal al hacer clic en la "x"
+  var closeButton = document.querySelector('.close-media');
+  closeButton.addEventListener('click', function() {
+    var modal = document.getElementById('visualizador-media');
+    modal.style.display = 'none';
+  });
+</script>  
+</body>
+</html>

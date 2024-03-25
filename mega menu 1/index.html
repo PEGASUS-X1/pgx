@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Mega Menu</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="./css/style-bar.css">
+		<!-- <link rel="stylesheet" href="./css/pedidos.css"> -->
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	</head>
+	
+	<body>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		
+		.tabs {
+			display: flex;
+		}
+		
+		.tab-button {
+			transition: background-color 0.3s ease;
+		}
+		
+		.tab-button.active {
+			transition: 1s;
+			color:#ff0000;
+			border-bottom: .1rem solid #ff0000;
+			padding-bottom: .5rem;
+		}
+		
+		.tab-content {
+			display: none;
+			padding: 20px;
+		}
+		
+		.tab-content.active {
+			display: block;
+		}
+		.comentario {
+			border: 1px solid #ccc;
+			background-color: #f9f9f9;
+			padding: 10px;
+		}
+	
+		/* Estilo para la imagen de perfil */
+		.imagen-perfil {
+			width: 100%; /* Ajusta el tamaño de la imagen según tus necesidades */
+			height: 300px;
+			margin-right: 10px; /* Espacio entre la imagen y el texto */
+		}
+		.ae p{
+			margin-bottom: 10px;
+		}
+		/* Estilo básico del acordeón */
+	.accordion {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+	
+	.accordion-item {
+		border: 1px solid #ccc;
+		margin-bottom: 10px;
+	}
+	
+	.accordion-header {
+		background-color: #f0f0f0;
+		padding: 10px;
+		cursor: pointer;
+	}
+	
+	.accordion-content {
+		display: none;
+		padding: 10px;
+		font-size: 2vh;
+	}
+	.carta-productos h3{
+		font-size: 3vh;
+	}
+	.carta-productos p{
+		font-size: 2vh;
+	}
+	.content p{
+		font-size: 2vh;
+	}
+	</style>
+	 <!-- header start -->
+	 <header class="header">
+		 <div class="container">
+			 <div class="row v-center">
+				 <div class="header-item item-left">
+					 <div class="logo">
+						 <span><img src="./pegasus.png" alt=""></span>
+					 </div>
+				 </div>
+				 <!-- menu start here -->
+				 <div class="header-item item-center">
+					 <div class="menu-overlay">
+					 </div>
+					 <nav class="menu">
+						 <div class="mobile-menu-head">
+							 <div class="go-back"><i class="fa fa-angle-left"></i></div>
+							 <div class="current-menu-title"></div>
+							 <div class="mobile-menu-close">&times;</div>
+						 </div>
+						 <ul class="menu-main">
+							 <li>
+								 <a href="#" class="tab-button active" data-tab="tab1">Home</a>
+							 </li>
+							 <li>
+								<a href="#" class="tab-button" id="mostrarMensaje" data-tab="tab2">Pedidos</a>
+							 </li>
+							 <li>
+								<a href="#" class="tab-button" id="mostrarMensaje" data-tab="tab2">Ragos</a>
+							 </li>
+							 <!-- <li class="menu-item-has-children">
+								 <a href="#">New <i class="fa fa-angle-down"></i></a>
+								 <div class="sub-menu mega-menu mega-menu-column-4">
+									<div class="list-item text-center">
+										<a href="./generador-codigos.html">
+										<img src="https://www.pngfind.com/pngs/m/187-1878783_etiqueta-de-oferta-png-transparent-png.png" alt="new Product">
+										<h4 class="title">codigos</h4>
+										</a>
+									</div>
+	
+									 <div class="list-item text-center">
+										 <a href="./buscador-grupos.html">
+										 <img src="https://www.pngfind.com/pngs/m/187-1878783_etiqueta-de-oferta-png-transparent-png.png" alt="new Product">
+										 <h4 class="title">buscador</h4>
+										 </a>
+									 </div>
+									 <div class="list-item text-center">
+										 <a href="./registro-grupos.html">
+										 <img src="https://www.pngfind.com/pngs/m/187-1878783_etiqueta-de-oferta-png-transparent-png.png" alt="new Product">
+										 <h4 class="title">registro</h4>
+										 </a>
+									 </div>
+									 <div class="list-item text-center">
+										 <a href="#">
+										 <img src="https://www.pngfind.com/pngs/m/187-1878783_etiqueta-de-oferta-png-transparent-png.png" alt="new Product">
+										 <h4 class="title">Oferta</h4>
+										</a>
+									 </div>
+								 </div>
+							 </li> -->
+							 <!-- <li class="menu-item-has-children">
+								 <a href="#">Shop <i class="fa fa-angle-down"></i></a>
+								 <div class="sub-menu mega-menu mega-menu-column-4">
+								   <div class="list-item">
+										 <h4 class="title">Planos</h4>
+										 <ul>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										 </ul>
+								   </div>
+								   <div class="list-item">
+									   <h4 class="title">Dibujos</h4>
+									   <ul>
+										  </ul>
+										 <h4 class="title"></h4>
+									   <ul>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										<li><a href="#">Product List</a></li>
+										  <li><a href="#">Product List</a></li>
+										 </ul>
+								   </div>
+								   <div class="list-item">
+									   <h4 class="title">Etc</h4>
+									   <ul>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+											  <li><a href="#">Product List</a></li>
+										 </ul>
+								   </div>
+								   <div class="list-item">
+										<img src="./pegasus.png" alt="shop">
+								   </div>
+								 </div>
+							 </li> -->
+							 <li class="menu-item-has-children">
+								 <a href="#">Blog <i class="fas fa-angle-down"></i></a>
+								 <div class="sub-menu single-column-menu">
+									 <ul>
+										 <li class="tab-button" data-tab="tab3"><a href="#">Diseño Estándar</a></li>
+										 <li class="tab-button" data-tab="tab4"><a href="#">Diseño Premiun</a></li>
+										 <li class="tab-button" data-tab="tab5"><a href="#">Diseño De Publicacion</a></li>
+									 </ul>
+								 </div>
+							 </li>
+							 <li class="menu-item-has-children">
+								 <a href="#">Pages <i class="fas fa-angle-down"></i></a>
+								 <div class="sub-menu single-column-menu">
+									 <ul>
+										 <li><a href="#">Login</a></li>
+										 <li><a href="#">Register</a></li>
+										 <li class="tab-button" data-tab="tab6"><a href="#">Preguntas Frecuentes</a></li>
+										 <li><a href="#">404 Page</a></li>
+									 </ul>
+								 </div>
+							 </li>
+							 <li>
+								 <a href="#">Contact</a>
+							 </li>
+						 </ul>
+					 </nav>
+				 </div>
+				 <!-- menu end here -->
+				 <div class="header-item item-right icons">
+					 <span href="#" id="search-btn"><i class="fas fa-search" ></i></span>
+					 <span href="#"><i class="far fa-heart"></i></span>
+					 <span href="#" id="cart-btn"><i class="fas fa-shopping-cart"></i></span>
+					 <!-- mobile menu trigger -->
+					 <div class="mobile-menu-trigger">
+						 <span></span>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="search-form">
+			<input type="search" id="search-box" placeholder="search here...">
+			<label for="search-box" class="fas fa-search"></label>
+		</div>
+	 </header>
+	
+	
+	 <!-- header end -->
+	
+	 <!-- banner start -->
+	 <div class="cover">
+		<div class="black-bg"></div>
+	  <div id="backgroundContainer" class="containerr" style=' background:  url("https://www.ingegeek.site/wp-content/uploads/2022/08/plano-e1616172387551-800x400-1.jpg") center top no-repeat;         background-repeat: no-repeat; background-size: cover; background-position: center ;'>
+		<!-- <img class="logo-fondo" width="900px" src="./assets/img/logo-sin.bordes.png" alt=""> -->
+		<h1 class="name neon2">CreativeScale Architecture</h1>
+		<!-- <h1>Genuis</h1> -->
+		<!-- <p>LOS GENIOS NO NACEN, GENIUS LOS HACE</p> -->
+	  </div>
+	  </div>
+	 <!-- banner end -->
+	   
+	   
+	 
+	
+		<div class="tab-content" id="tab1">
+			<section class="about" id="about">
+	
+				<h1 class="heading"> <span>about</span> us </h1>
+			
+				<div class="row">
+			
+					<div class="image">
+						<img src="./PGX.PNG" alt="">
+					</div>
+			
+					<div class="content">
+						<h3>Quienes somos?</h3>
+						<p>¡Bienvenidos a CreativeScale Architecture!
+							Somos tu destino para obtener planos y dibujos a escala excepcionales de manera rápida y sencilla. Nuestro equipo de arquitectos y diseñadores apasionados está listo para convertir tus ideas en realidad. ¡Explora nuestro sitio y descubre cómo podemos ayudarte a dar vida a tus proyectos arquitectónicos!</p>
+						<div class="cnt-btns">
+							<span class="btn" onclick="planaDocente()" id="play-presentacion">leer</span>
+						</div>
+					</div>
+			
+				</div>
+			
+			</section>
+		</div>
+
+		<div class="tab-content" id="tab3">
+			<div class="comentario">
+				<img src="./PGX.PNG" class="imagen-perfil" alt="">
+				<div class="ae">
+					<h1>El diseño estándar de planos puede variar según el tipo de proyecto y las regulaciones locales, pero aquí te proporcionaré una estructura básica que se suele seguir en muchos proyectos de construcción. Estos planos suelen incluir información detallada sobre la arquitectura, la estructura, la electricidad, la fontanería y otros aspectos importantes de la construcción. A continuación, se presenta una estructura común de planos:</h1>
+					<br>
+					<h2 style="font-weight: 900;">Portada:</h2>
+					<p>La portada del conjunto de planos generalmente incluye información esencial, como el nombre del proyecto, el propietario, el arquitecto, el ingeniero estructural y la fecha de emisión.</p>
+				
+					<h2 style="font-weight: 900;">Índice:</h2>
+					<p>Un índice que enumera todos los planos incluidos en el conjunto para facilitar la referencia rápida.</p>
+				
+					<h2 style="font-weight: 900;">Planos de Situación:</h2>
+					<p>Estos planos muestran la ubicación del proyecto en relación con las calles circundantes y otros edificios cercanos. A menudo, también incluyen detalles topográficos y de acceso.</p>
+				
+					<h2 style="font-weight: 900;">Plano de Parcela o Terreno:</h2>
+					<p>Muestra la parcela o terreno donde se llevará a cabo la construcción, incluyendo las dimensiones, las pendientes y cualquier otra característica relevante.</p>
+				
+					<h2 style="font-weight: 900;">Planta Baja:</h2>
+					<p>Este plano representa el diseño de la planta baja del edificio, mostrando las paredes, puertas, ventanas, espacios interiores y exteriores, y la distribución de las áreas.</p>
+				
+					<h2 style="font-weight: 900;">Plantas Superiores:</h2>
+					<p>Se incluyen planos separados para cada planta superior del edificio, si las hay. Cada plano muestra la distribución de las habitaciones y otros detalles relevantes.</p>
+				
+					<h2 style="font-weight: 900;">Secciones:</h2>
+					<p>Los planos de sección representan cortes transversales del edificio para mostrar cómo se verá en el interior y cómo se conectarán las diferentes partes. Pueden incluir detalles sobre altura de techos, escaleras y estructura.</p>
+				
+					<h2 style="font-weight: 900;">Fachadas:</h2>
+					<p>Estos planos muestran las fachadas exteriores del edificio y muestran detalles arquitectónicos, como ventanas, puertas y revestimientos.</p>
+				
+					<h2 style="font-weight: 900;">Planos de Detalle:</h2>
+					<p>Planos más detallados que se centran en áreas específicas del proyecto, como detalles de ventanas, puertas, escaleras, sistemas de fontanería, eléctricos, etc.</p>
+				
+					<h2 style="font-weight: 900;">Planos Estructurales:</h2>
+					<p>Preparados por un ingeniero estructural, estos planos detallan la estructura del edificio, incluyendo cimientos, columnas, vigas y otros elementos.</p>
+				
+					<h2 style="font-weight: 900;">Planos de Instalaciones:</h2>
+					<p>Incluyen planos eléctricos, de fontanería y HVAC (calefacción, ventilación y aire acondicionado), que muestran la ubicación de dispositivos, cables, tuberías y conductos.</p>
+				
+					<h2 style="font-weight: 900;">Planos de Paisajismo:</h2>
+					<p>Si es necesario, estos planos muestran el diseño paisajístico y la ubicación de elementos como árboles, arbustos, césped y patios.</p>
+				
+					<h2 style="font-weight: 900;">Detalles Constructivos:</h2>
+					<p>Contienen detalles específicos sobre cómo se construirán ciertas partes del proyecto, como juntas, conexiones y acabados.</p>
+				
+					<h2 style="font-weight: 900;">Notas y Especificaciones:</h2>
+					<p>Información escrita que acompaña a los planos y proporciona detalles adicionales, como materiales a utilizar, estándares de construcción y requisitos específicos del proyecto.</p>
+				
+					<h2 style="font-weight: 900;">Tabla de Cotas:</h2>
+					<p>Una tabla que enumera las dimensiones clave en los planos, como longitudes de paredes, alturas de techos y anchos de puertas.</p>
+				
+					<h2 style="font-weight: 900;">Listado de Materiales y Equipos:</h2>
+					<p>Una lista de los materiales y equipos específicos que se utilizarán en el proyecto.</p>
+				
+					<h2 style="font-weight: 900;">Detalles de Estacionamiento y Circulación:</h2>
+					<p>Si el proyecto incluye estacionamiento, se pueden incluir planos y detalles de diseño.</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="tab-content" id="tab4">
+			<div class="comentario">
+				<img src="./PGX.PNG" class="imagen-perfil" alt="">
+				<div class="ae">
+					<h1>
+						El diseño premium de planos se refiere a la creación de planos arquitectónicos y de diseño con un enfoque en la calidad, la estética y la atención al detalle. Aquí hay algunas características y consideraciones clave que pueden contribuir a un diseño premium de planos:
+					</h1>
+					<br>
+		<h2 style="font-weight: 900;">Diseño Funcional y Estético</h2>
+		<p>Un diseño premium debe equilibrar la funcionalidad con la estética. Los planos deben cumplir con las necesidades del cliente y el propósito del espacio, al mismo tiempo que incorporan elementos de diseño que realzan la belleza y el atractivo del lugar.</p>
+	
+		<h2 style="font-weight: 900;">Uso de Materiales de Alta Calidad</h2>
+		<p>En un diseño premium, se suelen utilizar materiales de alta calidad y acabados de lujo que agregan valor y durabilidad al proyecto. Esto puede incluir materiales como mármol, granito, madera noble y otros materiales premium.</p>
+	
+		<h2 style="font-weight: 900;">Atención al Detalle</h2>
+		<p>El diseño premium se caracteriza por la atención meticulosa a los detalles. Cada elemento, desde la selección de los accesorios hasta la disposición de los muebles, se elige cuidadosamente para lograr un resultado final de alta calidad.</p>
+	
+		<h2 style="font-weight: 900;">Tecnología y Sostenibilidad</h2>
+		<p>Los diseños premium a menudo incorporan tecnología de vanguardia para mejorar la comodidad y la eficiencia del espacio. También pueden integrar elementos de diseño sostenible, como sistemas de energía renovable o materiales ecológicos.</p>
+	
+		<h2 style="font-weight: 900;">Espacios Personalizados</h2>
+		<p>En un diseño premium, se presta especial atención a la personalización. Los planos se adaptan a las necesidades y preferencias del cliente, creando un espacio único y exclusivo.</p>
+	
+		<h2 style="font-weight: 900;">Distribución Eficiente</h2>
+		<p>Un diseño premium debe optimizar el espacio disponible, asegurando una distribución eficiente que maximice la funcionalidad y la comodidad.</p>
+	
+		<h2 style="font-weight: 900;">Iluminación y Color</h2>
+		<p>La iluminación adecuada y la elección de colores son aspectos cruciales en el diseño premium. La iluminación debe ser tanto funcional como decorativa, y los colores se seleccionan para crear una atmósfera elegante y acogedora.</p>
+	
+		<h2 style="font-weight: 900;">Accesibilidad</h2>
+		<p>Asegurarse de que el diseño sea accesible para todas las personas es fundamental. Esto implica considerar la inclusión de rampas, ascensores u otras características que permitan el acceso a personas con discapacidades.</p>
+	
+		<h2 style="font-weight: 900;">Seguridad</h2>
+		<p>La seguridad es primordial en cualquier diseño de planos. Se deben cumplir todas las normativas y regulaciones de seguridad aplicables, y se pueden incorporar sistemas de seguridad avanzados si es necesario.</p>
+	
+		<h2 style="font-weight: 900;">Diseño Paisajístico</h2>
+		<p>Si se trata de un diseño premium de exteriores, se prestará atención al diseño paisajístico, incluyendo la selección de plantas, la disposición de jardines y la creación de áreas de entretenimiento al aire libre.</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="tab-content" id="tab5">
+			<div class="comentario">
+				<img src="./PGX.PNG" class="imagen-perfil" alt="">
+				<div class="ae">
+					<h1>Guía para Diseñar una Publicación de Planos</h1>
+	<br>
+					<h2 style="font-weight: 900;">Paso 1: Selecciona el software de diseño</h2>
+					<p>Utiliza software de diseño gráfico como AutoCAD, Adobe Illustrator, SketchUp, Revit u otros programas especializados en diseño técnico. Estos programas te permitirán crear planos de alta calidad y precisión.</p>
+				
+					<h2 style="font-weight: 900;">Paso 2: Dibuja los planos con precisión</h2>
+					<p>Asegúrate de que los planos estén dibujados con precisión y cumplan con todas las normas y estándares relevantes para tu industria. Etiqueta claramente todas las dimensiones, escalas y detalles necesarios.</p>
+				
+					<h2 style="font-weight: 900;">Paso 3: Organiza los planos</h2>
+					<p>Organiza los planos en hojas separadas o en un documento multipágina, dependiendo de la cantidad de información que necesites mostrar. Utiliza capas o grupos para organizar los elementos de manera clara.</p>
+				
+					<h2 style="font-weight: 900;">Paso 4: Establece una escala apropiada</h2>
+					<p>Asegúrate de que los planos tengan una escala adecuada para que sean legibles. Esto puede variar según el tipo de plano y su propósito.</p>
+				
+					<h2 style="font-weight: 900;">Paso 5: Añade títulos y encabezados</h2>
+					<p>Incluye títulos claros en la parte superior de cada plano que indiquen el tipo de plano (planta, elevación, sección, etc.) y la ubicación o proyecto al que pertenecen. Además, agrega números de página y cualquier otra información de identificación necesaria.</p>
+				
+					<h2 style="font-weight: 900;">Paso 6: Etiqueta y anota los planos</h2>
+					<p>Utiliza texto legible y dimensiones claras para etiquetar todas las partes importantes de los planos. Agrega notas y detalles donde sea necesario para explicar elementos específicos.</p>
+				
+					<h2 style="font-weight: 900;">Paso 7: Utiliza colores y líneas adecuados</h2>
+					<p>Utiliza colores y grosores de línea apropiados para distinguir diferentes elementos en los planos. Por ejemplo, puedes usar líneas más gruesas para las paredes y líneas más delgadas para los detalles interiores.</p>
+				
+					<h2 style="font-weight: 900;">Paso 8: Crea una leyenda o clave</h2>
+					<p>Si tu proyecto incluye símbolos o códigos especiales, crea una leyenda o clave que explique su significado.</p>
+				
+					<h2 style="font-weight: 900;">Paso 9: Añade un título de la publicación</h2>
+					<p>Diseña una portada o página de título que incluya el nombre del proyecto, el nombre del diseñador, la fecha y cualquier otra información relevante.</p>
+				
+					<h2 style="font-weight: 900;">Paso 10: Revisa y verifica la precisión</h2>
+					<p>Antes de finalizar la publicación de planos, asegúrate de revisar minuciosamente todos los detalles para garantizar que sean precisos y que cumplan con los estándares requeridos.</p>
+				
+					<h2 style="font-weight: 900;">Paso 11: Exporta o imprime la publicación</h2>
+					<p>Exporta los planos en el formato deseado (PDF, DWG, etc.) o imprímelos en papel de alta calidad si es necesario.</p>
+				
+					<h2 style="font-weight: 900;">Paso 12: Organiza la presentación</h2>
+					<p>Si estás creando una presentación física, organiza los planos de manera lógica y profesional en carpetas o encuadernaciones adecuadas.</p>
+				
+				</div>
+			</div>
+		</div>
+		<div class="tab-content" id="tab6">    
+			<div class="accordion">
+			<div class="accordion-item">
+				<h2 class="accordion-header">Sección 1</h2>
+				<div class="accordion-content">
+					<p>Contenido de la sección 1.</p>
+				</div>
+			</div>
+			<div class="accordion-item">
+				<h2 class="accordion-header">Sección 2</h2>
+				<div class="accordion-content">
+					<p>Contenido de la sección 2.</p>
+				</div>
+			</div>
+			<div class="accordion-item">
+				<h2 class="accordion-header">Sección 3</h2>
+				<div class="accordion-content">
+					<p>Contenido de la sección 3.</p>
+				</div>
+			</div>
+		</div>
+		</div>
+	   <div class="cart-items-container-black">
+		 <div class="cart-items-container">
+		   <span class="close-" id="hide-cart-btn">&times;</span>
+	 
+			 <h1>Carrito</h1>
+			 <ul class="productosEnCaja" id="productosEnCaja"></ul>
+			 <a id="btnEnviarWhatsApp">Hacer pedido</a>
+		 </div>
+	   </div>
+	
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const accordionHeaders = document.querySelectorAll('.accordion-header');
+		
+			accordionHeaders.forEach(function (header) {
+				header.addEventListener('click', function () {
+					const content = this.nextElementSibling;
+		
+					if (content.style.display === 'block') {
+						content.style.display = 'none';
+					} else {
+						content.style.display = 'block';
+					}
+				});
+			});
+		});
+		
+		document.addEventListener("DOMContentLoaded", function () {
+			const tabButtons = document.querySelectorAll(".tab-button");
+			const tabContents = document.querySelectorAll(".tab-content");
+		
+			tabButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					// Desactiva todos los botones y oculta todos los contenidos
+					tabButtons.forEach((btn) => btn.classList.remove("active"));
+					tabContents.forEach((content) => content.classList.remove("active"));
+		
+					// Activa el botón clickeado y muestra el contenido correspondiente
+					const tabId = button.getAttribute("data-tab");
+					button.classList.add("active");
+					document.getElementById(tabId).classList.add("active");
+				});
+			});
+		
+			// Establece la pestaña 1 como activa por defecto
+			tabButtons[0].click();
+		});
+		
+		var audio = new Audio('presentacion.mp3'); // Reemplaza 'url_del_sonido.mp3' con la URL de tu archivo de sonido.
+		var reproduciendo = false; // Bandera para rastrear si el audio está en reproducción.
+	
+		function planaDocente() {
+		  if (!reproduciendo) { // Verificar si el audio no está en reproducción.
+			audio.play(); // Iniciar la reproducción.
+			reproduciendo = true; // Establecer la bandera en verdadero.
+		
+			audio.addEventListener('ended', function() {
+			  reproduciendo = false; // Restablecer la bandera cuando termine la reproducción.
+			});
+		  }
+		}
+	
+	</script>
+	<script src="./js/script.js"></script>
+</body>
+</html>

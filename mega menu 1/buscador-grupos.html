@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+    
+        .buscador {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    
+        .carta {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        .img-grupo {
+            max-width: 100%;
+            height: auto;
+        }
+    
+        .nombre-grupo {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    
+        .informacion p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        /* Estilos para la carta */
+        .carta {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px; /* Ajusta el ancho máximo según tus preferencias */
+            margin: 0 auto; /* Centra la carta horizontalmente en la página */
+            text-align: center; /* Centra el contenido en la carta */
+        }
+    
+        /* Estilos para la imagen del grupo */
+        .img-grupo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        /* Estilos para el nombre del grupo */
+        .nombre-grupo {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #333; /* Cambia el color del texto según tu preferencia */
+        }
+    
+        /* Estilos para los párrafos de información */
+        .informacion p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666; /* Cambia el color del texto según tu preferencia */
+        }
+
+        /* Estilos para el campo de búsqueda */
+        .buscador {
+            width: 100%;
+            max-width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto; /* Centra horizontalmente el campo de búsqueda */
+            display: block; /* Asegura que el campo de búsqueda se comporte como un bloque */
+        }
+        .input-container {
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        /* Estilos para el texto de placeholder */
+        .buscador::placeholder {
+            color: #999; /* Cambia el color del texto del placeholder según tu preferencia */
+        }
+    
+        /* Estilos para el campo de búsqueda cuando se enfoca */
+        .buscador:focus {
+            border-color: #007BFF; /* Cambia el color del borde cuando el campo está enfocado */
+            outline: none; /* Elimina el borde de enfoque predeterminado */
+        }
+        
+        /* Estilos para el icono de búsqueda */
+        .buscador {
+            position: relative; /* Permite posicionar el icono dentro del campo */
+        }
+    
+        .input-container i {
+            position: absolute; /* Posiciona el icono de forma absoluta */
+            right: -10px; /* Ajusta la posición del icono desde la izquierda */
+            top: 50%; /* Alinea verticalmente el icono al centro del campo */
+            transform: translateY(-50%); /* Alinea verticalmente el icono al centro del campo */
+            color: #666; /* Cambia el color del icono según tu preferencia */
+        }
+        .fa-search{
+            color: #000;
+        }
+        .agregar{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: #000;
+            padding: 10px 12px;
+            border-radius: 1000px;
+            font-size: 30px;
+            background: #ff0000;
+        }
+        .input-container{
+            position: relative;
+            width: 50%;
+        }
+        .numero-celular{
+            display: none;
+        }
+        .contactar{
+            display: inline-block;
+            padding: 10px 50px;
+            background-color: #FFD700; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            display: none;
+          }       
+          /* Estilos responsivos para pantallas pequeñas */
+          @media screen and (max-width: 768px) {
+              .contactar {
+                  padding: 8px 16px;
+                  font-size: 14px;
+              }
+              .input-container{
+                position: relative;
+                width: 90%;
+                margin-left: 2px;
+            }
+          }
+        .prpiedades{
+            width: 100%;
+            height: 200px;
+            display: none;
+          }
+    </style>
+</head>
+<body>
+
+    <div class="input-container">
+        <input class="buscador" id="buscador" type="text" placeholder="Ejemplo: MTLD-TLLKF">
+        <span><i class="fas fa-search search-icon"></i></span>
+    </div>
+
+    
+    <div class="carta" id="carta">
+        <img class="img-grupo" id="img-grupo" src="" alt="">
+        <h1 class="nombre-grupo" id="nombre-grupo"></h1>
+        <div class="informacion">
+            <p class="identificador"></p>
+            <p class="integrantes" id="integrantes"></p>
+            <p class="precio" id="precio"></p>
+            <p class="TiempoDisponible" id="TiempoDisponible"></p>
+            <textarea name="" id="prpiedades" class="prpiedades" cols="30" rows="10"></textarea>
+            <p class="numero-celular" id="numero-celular"></p>
+            <br>
+            <a href="" class="contactar" id="contactar">Contactar</a>
+        </div>
+    </div>
+    <div class="agregar">
+        <span><i class='bx bx-plus'></i></span>
+    </div>
+    <br>
+    <br>
+    <script>
+
+// Obtén el elemento "agregar" por su clase
+const botonAgregar = document.querySelector(".agregar");
+
+// Agrega un evento de clic al botón "agregar"
+botonAgregar.addEventListener("click", function() {
+    // Define el enlace que deseas copiar
+    const enlace = "https://www.pegasus-v2.tk/registro-grupos"; // Reemplaza esto con tu enlace real
+
+    // Crea un elemento de texto temporal
+    const elementoTemporal = document.createElement("textarea");
+    elementoTemporal.value = enlace;
+
+    // Agrega el elemento temporal al DOM para poder seleccionarlo
+    document.body.appendChild(elementoTemporal);
+
+    // Selecciona y copia el contenido del elemento temporal al portapapeles
+    elementoTemporal.select();
+    document.execCommand("copy");
+
+    // Elimina el elemento temporal, ya que no es necesario
+    document.body.removeChild(elementoTemporal);
+
+    // Puedes mostrar una notificación o mensaje indicando que el enlace se ha copiado
+    alert("Enlace copiado al portapapeles: " + enlace);
+});
+
+document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+});
+
+// Definir un array de códigos de grupo y sus datos correspondientes
+const grupos = [
+    {
+        codigo: "YXR7-O5FM-KHI4",
+        imgSrc: "./Sandro-Cuba-Mercado.jpeg",
+        nombre: "Trazo maestro",
+        identificador: "Identificador: YXR7-O5FM-KHI4",
+        integrantes: "Integrantes: Sandro Cuba Mercado",
+        precio: "tipo de proyecto: ",   
+        tiempoDisponible: "Tiempo Disponible: 2 horas",
+        numeroCelular: "943583958",
+        contactar: "contactar"
+    },
+    {
+        codigo: "otro codigo",
+        imgSrc: "ruta-de-la-imagen-del-grupo2.jpg",
+        nombre: "Otro Grupo",
+        identificador: "Identificador: OTRO01",
+        integrantes: "Integrantes: 3",
+        precio: "Precio: $15.00",
+        tiempoDisponible: "Tiempo Disponible: 1 hora",
+        numeroCelular: "987-654-3210",
+        contactar: "contactar"
+    },
+    {
+        codigo: "4234-BOIN-G546-GFÑLD",
+        imgSrc: "ruta-de-la-imagen-del-grupo3.jpg",
+        nombre: "Grupo 4234-BOIN-G",
+        identificador: "Identificador: 4234-BOIN-G",
+        integrantes: "Integrantes: 4",
+        precio: "Precio: $25.00",
+        tiempoDisponible: "Tiempo Disponible: 3 horas",
+        numeroCelular: "555-123-4567",
+        contactar: "contactar"
+    }
+    // Agrega más objetos de grupo aquí
+];
+
+// Obtener una referencia al elemento de entrada y a los elementos de la carta
+const buscadorInput = document.getElementById("buscador");
+const imgGrupo = document.getElementById("img-grupo");
+const nombreGrupo = document.getElementById("nombre-grupo");
+const identificador = document.querySelector(".identificador");
+const integrantes = document.getElementById("integrantes");
+const precio = document.getElementById("precio");
+const tiempoDisponible = document.getElementById("TiempoDisponible");
+const numeroCelular = document.getElementById("numero-celular");
+const contactar = document.getElementById("contactar");
+const prpiedadescon = document.getElementById("prpiedades");
+const prpiedades = document.getElementById("prpiedades").value;
+// Obtén una referencia al elemento "contactar"
+const contactarLink = document.getElementById("contactar");
+
+// Agrega un evento click al elemento "contactar"
+contactarLink.addEventListener("click", function(event) {
+    event.preventDefault(); // Evita que el enlace redirija a una página
+
+    // Obtén el número de celular del grupo desde el elemento de la carta
+    const numeroCelularTexto = numeroCelular.textContent;
+        // Texto que deseas enviar por WhatsApp
+        const mensaje = "¡Hola! quiero consultarte si estas disponible (22/09/2023) al (27/09/2023) " ;
+        const prpiedades = document.getElementById("prpiedades").value;
+    
+        // Codifica el mensaje para incluirlo en el enlace de WhatsApp
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        
+    
+    // Genera el enlace de WhatsApp
+    const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroCelularTexto}&text=${mensajeCodificado}\n Propiedades:${prpiedades} `;
+    
+    // Abre una nueva ventana o pestaña con el enlace de WhatsApp
+    window.open(enlaceWhatsApp);
+});
+
+// Escuchar eventos de cambio en el campo de entrada
+buscadorInput.addEventListener("input", function() {
+    // Obtener el valor del campo de entrada
+    const codigoBuscado = buscadorInput.value.trim(); // Eliminar espacios en blanco al principio y al final
+
+    // Buscar el código en el array de grupos
+    const grupoEncontrado = grupos.find(grupo => grupo.codigo === codigoBuscado);
+
+    // Actualizar la información de la carta si se encuentra un grupo
+    if (grupoEncontrado) {
+        imgGrupo.src = grupoEncontrado.imgSrc;
+        nombreGrupo.textContent = grupoEncontrado.nombre;
+        identificador.textContent = grupoEncontrado.identificador;
+        integrantes.textContent = grupoEncontrado.integrantes;
+        precio.textContent = grupoEncontrado.precio;
+        tiempoDisponible.textContent = grupoEncontrado.tiempoDisponible;
+        numeroCelular.textContent = grupoEncontrado.numeroCelular;
+        contactar.textContent = grupoEncontrado.contactar;
+        contactar.style.display = "block";
+        prpiedadescon.style.display = "block";
+    } else {
+        // Borrar la información si el código del grupo no se encuentra en el array
+        imgGrupo.src = "";
+        nombreGrupo.textContent = "";
+        identificador.textContent = "";
+        integrantes.textContent = "";
+        precio.textContent = "";
+        tiempoDisponible.textContent = "";
+        numeroCelular.textContent = "";
+        contactar.textContent = "";
+        contactar.style.display = "none";
+        prpiedadescon.style.display = "none";
+    }
+});
+
+    </script>
+</body>
+</html>

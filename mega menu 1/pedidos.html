@@ -1,0 +1,396 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Pedidos</title>
+<link rel="shortcut icon" href="./PG.png" type="image/x-icon">
+  <!-- ✝ ======= 🐉 ╟ Tarjeta ╢ 🐉 ======= ✝ -->
+
+  <meta name="description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+  <link rel="image_src" href="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" id="image_src" />
+  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="677288579025878" />
+  <meta property="fb:pages" content="122006227838751" />
+  <meta property="og:title" content="Pegasus X" />
+  <meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  <meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  
+  <meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Pegasus X" />
+  <meta property="og:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta property="og:locale" content="es_ES" />
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@NamazYunpio">
+  <meta name="twitter:title" content="Pegasus X">
+  <meta name="twitter:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png">
+  <meta name="robots" content="index, follow" />
+  <meta name='googlebot' content='index, follow' />
+
+  <!-- ✝ ======= 🐉 ╟ Dublin Core ╢ 🐉 ======= ✝ -->
+
+  <meta name="DC.title" content="Pegasus X" />
+  <meta name="dc.creator" content="PEGASUS X">
+  <meta name="dc.date" content="2023-08-21">
+  <meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+  <meta name="DC.description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta name="dc.subject" content=" Pegasus X, pegasus x">
+  <meta name="dc.format" content="text/html">
+  <meta name="DC.language" content="es" />
+  
+  <meta name=”GOOGLEBOT” content=”NOODP” />
+  <meta name=”Slurp” content=”NOODP” />
+  <meta name=”msnbot” content=”NOODP” />
+  
+  <!-- ✝ ======= 🐉 ╟ favicon diferentes dispositivos + pwa ╢ 🐉 ======= ✝ -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pegasus X">
+  <meta name="theme-color" content="#b10a0a">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta fin ╢ 🐉 ======= ✝ -->
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <link rel="stylesheet" href="./css/pedidos.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+  
+// Luego, puedes insertar "textoModificado" en tu página web como desees.
+
+              // Código JavaScript en la página 
+              $(document).ready(function() {
+                // Verificar si el control de seguridad ya se realizó hoy
+                var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+                var today = new Date().toLocaleDateString();
+              
+                if (lastSecurityCheckDate === today) {
+                  // Si el control ya se realizó hoy, omitirlo
+                  showWelcomeMessage();
+                } else {
+                  // Si es un nuevo día, realizar el control de seguridad
+                  performSecurityCheck();
+                }
+              });
+              
+              function showWelcomeMessage() {
+                // Aquí puedes mostrar un mensaje de bienvenida, ya que el control de seguridad ya se realizó hoy
+                var username = localStorage.getItem('username');
+                if (username) {
+                  //$(".user").text(username);
+                  var saludo = "¡Holii, " + username + " Bienvenido!";
+                  textoGenerado.textContent = saludo; // Actualizar el texto generado con el saludo
+                } else {
+                  // Si no se ha proporcionado el nombre, volver a pedirlo
+                  performSecurityCheck();
+                }
+                hideLoader(); // Ocultar el overlay ya que el control ya se realizó con éxito
+              }
+              
+              function performSecurityCheck() {
+                $.get("nombres.txt", function(nombreData) {
+                  $.get("codigo.txt", function(codigoData) {
+                    var nombres = nombreData.split("\n").map(function(nombre) {
+                      return nombre.trim();
+                    });
+              
+                    var codigos = codigoData.split("\n").map(function(codigo) {
+                      return codigo.trim();
+                    });
+              
+                    var maxAttempts = 3;
+                    var attempts = 0;
+                    var isAvisoMostrado = false;
+                    var controluno = false;
+                    var controldos = false;
+              
+                    function showLoader() {
+                      $("#overlay").fadeIn();
+                    }
+              
+                    function hideLoader() {
+                      $("#overlay").fadeOut();
+                    }
+              
+                    function guardarDatos(nombre, codigo) {
+                      var fechaHora = obtenerFechaHora(); // Obtener fecha y hora actual
+                      var url = "https://script.google.com/macros/s/AKfycbx4wyov3Eo9Y244XgwOuonBwWRcHCHOkEZCbqPdpoNi_F2Y9aNvroX71IeJ5Jtv0lGI/exec";
+                      var data = {
+                        nombre: nombre,
+                        codigo: codigo
+                      };
+              
+                      $.post(url, JSON.stringify(data), function(response) {
+                        alert(response);
+                      });
+                    }
+              
+                    function obtenerFechaHora() {
+                      var now = new Date();
+                      var fecha = now.toLocaleDateString();
+                      var hora = now.toLocaleTimeString();
+                      return fecha + " " + hora;
+                    }
+              
+                    function checkNombre() {
+                      if (attempts < maxAttempts) {
+                        if (!isAvisoMostrado) {
+                          alert("😋 Holiii Es hora de acceder 😋 \n🤭 Si no tienes tus claves accede a este \n 🔗 link: 'pegasus-v2.tk/resgistro' 🔗 para obtener tu acceso 😏 \n \n☠️ No te equivoques ☠️"); // Mensaje de aviso antes de solicitar la contraseña
+                          isAvisoMostrado = true;
+                        }
+              
+                        if (!controluno) {
+                          alert("Control De Seguridad 1"); // Mensaje de aviso antes de solicitar la contraseña
+                          controluno = true;
+                        }
+              
+                        var username = prompt("Ingrese el nombre de seguridad");
+              
+                        if (nombres.includes(username)) {
+                          checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                        } else {
+                          attempts++;
+                          alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                          checkNombre();
+                        }
+                      } else {
+                        showLoader();
+                        setTimeout(hideLoader, 5000);
+                        window.location.href = "404.html";
+                      }
+                    }
+              
+                    function checkCodigo(username) { // Añadimos un parámetro "username"
+                      if (attempts < maxAttempts) {
+              
+                        if (!controldos) {
+                          alert("Control De Seguridad 2"); // Mensaje de aviso antes de solicitar la contraseña
+                          controldos = true;
+                        }
+              
+                        var codigo = prompt("Ingrese el código");
+              
+                        if (codigos.includes(codigo)) {
+                          showLoader();
+                          setTimeout(function() {
+                            hideLoader();
+                            var saludo = "¡Holiii, " + username + " Bienvenido!"; // Concatenamos el nombre al saludo
+                            textoGenerado.textContent = saludo;
+                            // Actualizamos el texto generado con el saludo
+                            alert(" ✅ Acceso concedido ✅ ");
+                            guardarDatos(username, codigo); // Guardar los datos en Google Sheets
+              
+                            // Al finalizar el control de seguridad, guardar la fecha actual para evitar que se realice nuevamente hoy
+                            var today = new Date().toLocaleDateString();
+                            localStorage.setItem('lastSecurityCheckDate', today);
+              
+                            // Guardar el nombre de usuario para futuros saludos
+                            localStorage.setItem('username', username);
+                          }, 5000);
+                        } else {
+                          attempts++;
+                          alert("Código incorrecto. Intento " + attempts + " de " + maxAttempts);
+                          checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                        }
+                      } else {
+                        showLoader();
+                        setTimeout(hideLoader, 5000);
+                        window.location.href = "404.html";
+                      }
+                    }
+              
+                    showLoader();
+                    checkNombre();
+                  });
+                });
+              }
+              
+              function showLoader() {
+                // Verificar si el control de seguridad ya se realizó con éxito en el mismo día
+                var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+                var today = new Date().toLocaleDateString();
+              
+                if (lastSecurityCheckDate !== today) {
+                  $("#overlay").fadeIn();
+                }
+              }
+              
+              function hideLoader() {
+                $("#overlay").fadeOut();
+              }
+              
+              
+              var textoGenerado = document.getElementById("texto-generado");
+</script>
+<body>
+  <div id="overlay">
+    <div id="loader">
+      <div class="loader-circle"></div>
+    </div>
+    <div id="loading-text">Cargando...</div>
+ </div>
+
+ <div class="caja-de-info-envio">
+  <div class="contenedor-info">
+    <h1 id="texto-generado"></h1>
+    <p id="textodeanimo" class="textodeanimo"></p>
+    <p style="text-align: left;">Pedido Desde:</p>
+    <br>
+    <div class="mensaje" id="mensaje">
+      <p>Hola <span id="username"></span> Antes De Elegir Al Profesional Te Recomiendo Revisar La Escalas De Profesionales Por Su Rango </p>
+      <p>rangos: <a href="./rangos.html">ver rangos</a></p>
+      <p class="pie-pagina">Pegasus X</p>
+    </div>
+    <br>
+    <select name="Región" id="Región" disabled >
+      <option value="cusco">cusco</option>
+    </select>
+    <br>
+    <select name="provincia" id="provincia">
+      <option value="null" disabled selected>seleciona tu provincia</option>
+      <option value="Acomayo">Acomayo</option>
+      <option value="Anta">Anta</option>
+      <option value="Calca">Calca</option>
+      <option value="Canas">Canas</option>
+      <option value="Canchis">Canchis</option>
+      <option value="Cusco">Cusco</option>
+      <option value="Chumbivilcas">Chumbivilcas</option>
+      <option value="Espinar">Espinar</option>
+      <option value="La Convención">La Convención</option>
+      <option value="Paruro">Paruro</option>
+      <option value="Paucartambo">Paucartambo</option>
+      <option value="Quispicanchi">Quispicanchi</option>
+      <option value="Urubamba" hidden>Urubamba</option>
+    </select>
+    <br>
+    <input type="text" id="distrito" placeholder="distrito de:">
+  </div>
+ </div>
+<div class="covertura-black" id="covertura-black">
+  <span class="close" id="hidePremiumCartBtn">&times;</span>
+<div class="premium">
+  <div class="password" id="password">
+    <div class="pasword-contend" id="pasword-contend">
+      <h1>Premium</h1>
+      <p>Escribe tu codigo de producto:</p>
+      <a href="" class="btn"> Donar Para Obtener Clave De Producto</a>
+      <br>
+      <br>
+      <input type="password" id="password-input" placeholder="Ejemplo: Nt656496">
+      <span class="btn" onclick="checkPassword()">Enviar</span>
+    </div>
+  </div>
+  <div class="contenedor-prime"></div>
+</div>
+</div>
+<br>
+<div class="caja-left">
+  <a href="#" id="cart-btn">
+    <i class="fas fa-shopping-cart" ></i>
+    <span></span>
+  </a>
+  <br>
+  <br>
+  <br>
+  <span id="PremiumCartBtn"><i class='bx bxs-diamond'></i></span>
+</div>
+      <div id="productos"></div>
+  
+  
+			<style>
+				/* Estilo del mensaje de advertencia */
+	.mensaje {
+    margin: 0 auto;
+		width: 90%;
+		max-width: 100%;
+		font-size: 2vh;
+		background-color: #ff0000;
+		color: #fff;
+		padding: 10px;
+		text-align: center;
+	}
+  .mensaje a{
+    color: #000;
+    background: #fff;
+  }
+	.pie-pagina{
+		font-size: 1.5vh;
+	}
+	
+			</style>
+  <div class="cart-items-container-black">
+    <div class="cart-items-container">
+      <span class="close-" id="hide-cart-btn">&times;</span>
+
+        <h3>Carrito</h3>
+        <ul class="productosEnCaja" id="productosEnCaja"></ul>
+        <a id="btnEnviarWhatsApp">Hacer pedido</a>
+        <br>
+        <br>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script>
+    
+    // Obtiene el elemento h1 por su ID
+    var textoGenerado = document.getElementById("texto-generado");
+
+        // Obtener todos los elementos textarea con la clase "autoresize"
+        var textareas = document.querySelectorAll("textarea.autoresize");
+
+        // Agregar un evento input a cada textarea
+        textareas.forEach(function(textarea) {
+            textarea.addEventListener("input", function () {
+                this.style.height = "auto";
+                this.style.height = this.scrollHeight + "px";
+            });
+        });
+
+    // Array de títulos
+var animos = [
+"¿"+ localStorage.getItem('username') + " Estás listo para dar vida a tus proyectos? En nuestra página web, puedes solicitar planos personalizados que harán realidad tus ideas. Nuestro equipo de expertos está listo para crear planos precisos y detallados que se ajusten perfectamente a tus necesidades. ¡No esperes más! Haz tu pedido ahora y comienza a construir tus sueños.", 
+"¿" + localStorage.getItem('username') + " Necesitas planos de calidad profesional? En nuestra página web, te ofrecemos una solución fácil y rápida. Solo tienes que hacer clic en el botón de pedido, proporcionarnos tus especificaciones y en poco tiempo recibirás planos excepcionales. No pierdas más tiempo buscando en otro lugar. ¡Haz tu pedido hoy mismo y experimenta la diferencia que ofrecemos!", 
+"¿" + localStorage.getItem('username') + " Quieres simplificar tu proceso de diseño? En nuestra página web, te ofrecemos la oportunidad de obtener planos precisos y bien diseñados con tan solo unos pocos clics. Nuestro equipo de arquitectos y diseñadores está listo para trabajar en tu proyecto. Haz tu pedido ahora y descubre lo fácil que puede ser obtener planos de alta calidad. ¡No esperes más para empezar a construir tu futuro!"];
+var indiceActual = 0;
+
+var textodeanimo = document.getElementById("textodeanimo");
+textodeanimo.textContent = "¿"+ localStorage.getItem('username') + " Quieres convertir tus ideas en realidad? En nuestra plataforma en línea, la magia de la arquitectura y el diseño está a solo un clic de distancia. Nuestro equipo de profesionales se encargará de transformar tus conceptos en planos con precisión y estilo. No dejes que tus proyectos se queden en el papel, ¡haz tu pedido ahora y comienza a construir tus sueños!";
+
+// Función para cambiar el título
+function cambiarAnimo() {
+  var textodeanimo = document.querySelectorAll(".textodeanimo");
+
+  //var textodeanimo = document.getElementById("textodeanimo");
+  textodeanimo.forEach(function (textodeanimo) {
+
+  textodeanimo.textContent = animos[indiceActual];
+});
+  indiceActual = (indiceActual + 1) % animos.length;
+}
+
+setInterval(cambiarAnimo, 5000); 
+    var username = document.getElementById("username")
+    username.textContent = localStorage.getItem('username') ; 
+
+  </script>
+  <script src="./js/pedidos.js"></script>
+</body>
+</html>
