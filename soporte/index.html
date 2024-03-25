@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre De La Pagina</title>
+    <link rel="stylesheet" href="./css.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+    <link rel="stylesheet" href="./data/style.css">
+    <link rel="stylesheet" href="./supor.css">
+    <link rel="stylesheet" href="./font-awesome.css">
+    <!--! ✝ ======= 🐉 ╟ Icons ╢ 🐉 ======= ✝ -->
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--! ✝ ======= 🐉 ╟ Icons ╢ 🐉 ======= ✝ -->
+
+</head>
+<body>
+    <!-- <button id="recargarBtn" onclick="recargarPagina()">Recargar Página </button> -->
+    <div id="Feliz">
+        <span class="closex" id="closex" onclick="this.parentNode.remove();">&times;</span>
+        <h1 id="user4">Feliz Año Nuevo</h1>
+    </div>
+
+    <div id="overlay">
+        <div class="loader-circle"></div>
+        <div id="loading-text">Cargando...</div>
+        <div class="personal-information">
+            <input type="text" id="cual-nombre" placeholder="Cual Es Tu Nombre?" onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="guardarNombre()">Guardar Nombre</button>
+        </div>
+        <br>
+    </div>
+
+<!--? 🎠 Escribe Aqui El Codigo Para La Pagina 🎠  -->
+
+<!--! ✝ ======= 1.- 🐉 ╟ Header ╢ 🐉 ======= ✝ -->
+<section class="header" id="header">
+    <div class="logo">
+        <h1>Pegasus X</h1>
+    </div>
+    <div class="controladores">
+            <button id="refresh" class="refresh"><i class="fas fa-sync-alt"></i></button>
+    </div>
+    <i class="fas fa-bars" id="barra"></i>
+</section>
+
+<!--! ✝ ======= 🐉 ╟ End Header ╢ 🐉 ======= ✝ -->
+
+<!--! ✝ ======= 2.- 🐉 ╟ Navegador ╢ 🐉 ======= ✝ -->
+<section class="Navegador" id="Navegador">
+    <span id="close">&times;</span>
+    <h1>Mentor X</h1>
+    <div class="direciones">
+        <a href="./Mentor_X/reproductor.html"><span>➣</span> Mentor X</a>
+        <a href="./Mentor_X/examen.html"><span>➣</span> Examenes</a>
+    </div>
+    <button id="Exit" class="Exit"> Salir <i class="fa fa-sign-out-alt"></i> </button>
+</section>
+<!--! ✝ ======= 🐉 ╟ End Navegador ╢ 🐉 ======= ✝ -->
+<div class="feliz_a"></div>
+<!--! ✝ ======= 3.- 🐉 ╟ Landing Page ╢ 🐉 ======= ✝ -->
+<section class="Landing" id="Landing">
+    <div class="titulo">
+        <h1>Mentor X</h1>
+    </div>
+    <div class="texto">
+        <div class="margin">
+            <h1 id="texto-generado"></h1>
+            <p>Somos Mentor X estamos para ayudarte en tu preparacion academica completamente gratis solo te pedimos <span class="user"></span> que nos ayudes recomendandonos materiales de estudio</p>
+            <div class="btns">
+                <a href="#recomend" class="btn">Recomendar</a>
+                <a href="./Mentor_X/reproductor.html" class="btn">Accerder</a>
+            </div>
+        </div>
+    </div>
+    <!-- <img class="separador" src="./bg-curvy-desktop.svg" alt=""> -->
+</section>
+<!--! ✝ ======= 🐉 ╟ End Landing Page ╢ 🐉 ======= ✝ -->
+
+<!--! ✝ ======= 4.- 🐉 ╟ Page Content ╢ 🐉 ======= ✝ -->
+<!-- <div class="countdown">
+    <span id="countdown">00:00:00</span> 
+    <button id="" onclick="holaaa()" >Cancelar Alarma</button>
+</div> -->
+
+<section class="Content" id="Content">
+    <div class="cartas_de_ofrecimiento">
+        <div class="carta ca1">
+            <img src="./Img/icon-any-file.svg" alt="">
+            <!-- <i class="fas fa-image icon"></i> -->
+            <p class="carta_texto">Imagenes De Diferentes Temas</p>
+        </div>
+        <div class="carta">
+            <img src="./Img/icon-any-file.svg" alt="">
+            <!-- <i class="fas fa-file icon"></i> -->
+            <p class="carta_texto">Pdf, Word, PowerPoint, etc</p>
+        </div>
+        <div class="carta">
+            <img src="./Img/icon-security.svg" alt="">
+            <!-- <i class="fa fa-video icon"></i> -->
+            <p class="carta_texto">Clases, Videos, Grabaciones De Diferentes Temas</p>
+        </div>
+    </div>
+</section>
+<section class="recomend" id="recomend">
+    <div class="elegir">
+        <h1><span id="user2"></span> Con qué tipo de Archivo Deseas Colaborarnos</h1>
+        <button id="Desblock_Libros">Libros</button>
+        <button id="Desblock_Videos" >Videos</button>
+    </div>
+    <div class="libros" id="block_libros">
+        <div class="img">
+            <h1>Libros</h1>
+            <img src="./Img/icon-any-file.svg" alt="">
+        </div>
+        <div class="sistema">
+            <p>
+                Tu Nombre De Aportador:<input id="nombre_aporte" type="text" disabled>
+            </p>
+            <p>
+                Nombre Del Libro: <input id="Nombre_Libro" type="text">
+            </p>
+            <p>
+                Nombre Del Autor: <input type="text" id="Nombre_Autor">
+            </p>
+            <p>
+                <select name="" id="Grupo_Libros">
+                    <option value="todos" selected disabled>Seleciona El Grupo</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                </select>
+                <select name="" id="Tema_Libros">
+                    <option value="todos" selected disabled>Seleciona El Tema</option>
+                    <option value="Fisica">Fisica</option>
+                    <option value="Algebra">Algebra</option>
+                    <option value="Geometria">Geometria</option>
+                    <option value="Trigonometria">Trigonometria</option>
+                    <option value="Aritmetica">Aritmetica</option>
+                    <option value="Competencia_Comunicativa">Competencia Comunicativa</option>
+                    <option value="Quimica">Quimica</option>
+                </select>
+            </p>
+            <p>
+                <div class="cargador-archivos">
+                    <input type="file" id="fileToUpload" style="display: none">
+                <h1 onclick="selectFile()">Seleccionar archivo</h1>
+                <label for="">El Nombre Del Archivo:</label>
+                <input type="text" id="fileName" value="Ningún archivo seleccionado" disabled>
+                <h1 onclick="subirArchivo()">Cargar</h1>
+                </div>
+            </p>
+            <p>
+                <button class="btn_libros" type="button" onclick="GuardarLibro()">Publicar</button>
+            </p>
+        </div>
+    </div>
+    <div class="Videos" id="block_Videos">
+        <div class="img">
+            <h1>Videos</h1>
+            <img src="./Img/481821.svg" alt="">
+        </div>
+        <div class="sistema">
+            <p>
+                <a href=""> Como sacar el Link o Enlace Del Video En Tipo Embed ?</a>
+            </p>
+            <p>
+                <select name="" id="asignatura">
+                    <option value="" disabled selected>seleccione una asignatura</option>
+                    <option value="Aritmetica">Aritmetica</option>
+                    <option value="Algebra">Algebra</option>
+                </select>
+            </p>
+            <p>
+                El Nombre Del Tema: <input  id="Tema_videos" type="text">
+            </p>
+            <p>
+                El Nombre Del Mentor: <input id="Mentor_videos" type="text">
+            </p>
+            <p>
+                Nombre De La Clase: <input id="Clase_mentor" type="text">
+            </p>
+            <p>
+                Link o Enlace Del Video Tipo Embed: <br>  <br>   <input id="Link_Del_Video" type="text">
+            </p>
+            <p>
+                <button onclick="GuardarVideo()">guardar</button>
+            </p>
+        </div>
+    </div>
+    <div class="archivos_cargados">
+        <h1>Aqui estan los archivos que subiste a la Pagina</h1>
+        <div class="indicaciones">
+            <p>! El btn de eliminar sirve para borra de la pagina tu archivo</p>
+            <p>! No ponagas Nombres bulgares y/o grocerias alos libros y videos para evitar problemas con los administradores</p>
+        </div>
+        <div id="archivosContainer"></div>
+    </div>
+</section>
+
+<script id="script_temas"></script>
+<!--! ✝ ======= 🐉 ╟ End Page Content ╢ 🐉 ======= ✝ -->
+<!--? 🎠 End 🎠 -->
+
+
+    <script src="./data/base.js"></script>
+    <script src="./supor.js"></script>
+</body>
+</html>

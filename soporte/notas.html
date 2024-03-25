@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mostrar Datos</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Hacer la solicitud AJAX a la URL de tu aplicación web
+      $.ajax({
+        url: 'URL_GENERADA', // Reemplaza con la URL generada por tu aplicación web
+        method: 'GET',
+        success: function(data) {
+          // Actualizar los elementos en tu página con los datos obtenidos
+          $('.nota').text($(data).find('.nota').text());
+          $('.nombre').text($(data).find('.nombre').text());
+        },
+        error: function(error) {
+          console.error('Error en la solicitud AJAX:', error);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <p class="nota">Cargando nota...</p>
+  <p class="nombre">Cargando nombre...</p>
+</body>
+</html>

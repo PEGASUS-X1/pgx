@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/modo-dia.css">
+    <link rel="stylesheet" href="./css/modo-noche.css">
+    <link rel="stylesheet" href="../data/style.css">
+    <link rel="stylesheet" href="./css/comentario.css">
+    <!-- <link rel="stylesheet" href="../supor.css"> -->
+    <link rel="stylesheet" href="../data/style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <script src="https://212132314344-vltrtgr-566575.netlify.app/contrae%C3%B1as.js"></script> -->
+
+      <body>
+        <div id="Feliz">
+            <span class="closex" id="closex" onclick="this.parentNode.remove();">&times;</span>
+            <h1 id="user3">Feliz Año Nuevo</h1>
+        </div>
+        <!-- <object type="application/pdf" width="400px" height="700px" data="Arban.pdf" ></object> -->
+        <div id="overlay">
+            <div class="loader-circle"></div>
+            <div id="loading-text">Cargando...</div>
+            <div class="personal-information">
+                <input type="text" id="cual-nombre" placeholder="Cual Es Tu Nombre?" onkeypress="handleKeyPress(event)">
+                <br>
+                <button onclick="guardarNombre()">Guardar Nombre</button>
+            </div>
+            <br>
+        </div> 
+
+        <button onclick="Exitt()" >Corregir Errores</button>
+
+    <button class="switch" id="switch">
+        <i class="fas fa-sun"></i>
+        <span class="indicator"></span>
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="contenedor-reproductor">
+        <div class="info-contenedor">
+            <img  id="ImagenDelTema" src="./img/Captura.PNG" alt="">
+            <br>
+            <h1 id="texto-generado"></h1>
+            <br>
+            <br>
+            <select name="" id="Asignatura">
+                <option value="" disabled selected>Selecciona La Asignatura</option>
+                <option value="Aritmetica">Aritmetica</option>
+                <option value="Algebra">Algebra</option>
+            </select>
+            <p class="btn btn1" id="infobr" onclick="LibrosModalAbrir()">
+                Ver Ejercicios y Libros
+            </p>
+            <a href="./examen.html" class="btn btn2" id="infobr">
+                Realizar El Examen
+            </a>    
+        </div>
+        <div class="temario">
+            <h1>Temario</h1>
+            <div id="temario">
+                <p>Hola <span id="username"></span> Soy Joseph y me complace informarte que las actualizaciones de la página se llevarán a cabo cada tres días. Para hacer posible esta tarea, estoy solicitando tu colaboración al recomendar libros y videos desde tu perspectiva. Tu ayuda será invaluable para enriquecer el contenido y brindar a los usuarios una experiencia más completa y enriquecedora. ¡Agradezco de antemano tu contribución!</p>
+                <br>
+                <div class="btna">
+                    <a target="_blank" href="../index.html" class="ctn">
+                        Contribuir
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="librosContainer" id="Modal-libros">
+            <span class="close" onclick="LibrosModalClose()">&times;</span>
+            <div class="canbiadores">
+                <button class="canbiador active" id="canbiador_Libros" onclick="ccanbiadorLibros()" >Libros</button>
+                <button class="canbiador" id="canbiador_Lives" onclick="ccanbiadorLives()"> Lives</button>
+            </div>
+            <div class="libros-barra" id="libros_barra">
+                <h1 class="l">Libros</h1>
+                <div class="filtradores">
+                    <div class="buscador">
+                        <input type="text" id="search-box" placeholder="escribe el nombre, tema, grupo">
+                    </div>
+                    <select name="selectGrupo" id="selectGrupo">
+                        <option value="todos" selected>Grupos</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+    
+                    <select name="selectTema" id="selectTema">
+                        <option value="todos" selected>Temas</option>
+                        <option value="Fisica">Fisica</option>
+                        <option value="Algebra">Algebra</option>
+                        <option value="Geometria">Geometria</option>
+                    </select>
+                </div>
+                <p id="espera"></p>
+                <div id="EjerciciosContainer"></div>
+                <div id="librosContainer"></div>
+                <div id="CajadeLibros"></div>
+            </div>
+            <div class="lives" id="lives">
+                <h1 class="l">En Vivos</h1>
+            </div>
+        </div>
+        <div class="visualisador_de_pdfs" id="visualisador_de_pdfs">
+            <span id="closepdfs" onclick="visualisadorModalClose()">&times;</span>
+            <br>
+            <br>
+            <object type="application/pdf" id="visualisador" data=""></object>
+        </div>
+        <div class="bar">
+            <div class="video-var" id="video-var">
+                <select class="select-video" name="" id="Tema">
+                    <option value="" disabled selected>Selecciona El Tema </option>
+                </select>
+                <select class="select-video" name="" id="Mentor">
+                    <option value="" disabled selected>Selecciona Al Mentor </option>
+                </select>
+                <select class="select-video" name="" id="Clases" >
+                    <option value="" disabled selected>Selecciona La Clase</option>
+                </select>
+            </div>
+            <br>
+            <iframe src="https://drive.google.com/file/d/1tKis393DqkNLuO5VK91aL4spx47wbxkI/preview" id="reproductor-video" frameborder="0"></iframe>
+            <div class="con-btn">
+                <button class="btn_comentarios" onclick="ComentariosModalAbrir()">Poner Un Comentario</button>
+            </div>
+            
+            <div id="Cajadecomentarios">
+            
+            </div>
+        </div>
+    </div>
+    <div class="comentarios" id="comentarios_upload">
+        <span class="close" id="close_comentarios" onclick="ComentariosModalClose()">&times;</span>
+        <form action="" id="Comentario" class="Comentario">
+            <div class="informacion-general-del-comentario">
+                <img src="" id="ImgDelComentario" alt="">
+                <input id="NombreDelComentario" type="text" disabled>
+            </div>
+        <br>
+            <div class="comentarios-general">
+              <p>Escribe Tu Comentario:</p>
+              <textarea name="" class="coment" id="coment" cols="30" rows="10" required></textarea>
+            </div>
+            <h3>Sube Los Archivos:</h3>
+            <!-- <input id="fileToUpload" type="file"> -->
+            <div class="cargador-archivos">
+            <input type="file" id="fileToUpload" style="display: none">
+        <h1 onclick="selectFile()">Seleccionar archivo</h1>
+        <label for="">El Nombre Del Archivo:</label>
+        <input type="text" id="fileName" value="Ningún archivo seleccionado" disabled>
+        <h1 onclick="subirArchivo()">Cargar</h1>
+        </div>
+        <div id="archivosContainer"></div>
+        <br>
+        <label for="urlcomente">Subir Con Url:</label>
+        <input type="text" id="urlcomente" placeholder="URL del Video De Tipo embed">
+        
+        <br>
+        <br>
+            <button class="btn-coment" type="button" onclick="Comentar()">Comentar</button>
+        
+            </form>
+    </div>
+    <!-- <script>
+        const asignaturaSelect = document.getElementById('Asignatura');
+        const temaSelect = document.getElementById('Tema');
+        const mentorSelect = document.getElementById('Mentor');
+        const clasesSelect = document.getElementById('Clases');
+        const reproductorVideo = document.getElementById('reproductor-video');
+        const temarioDiv = document.getElementById('temario');
+        const asignaturas = {
+            Aritmetica: [
+                {
+                    NombreDeltema: "Divicion",
+                    Mentores: [
+                        { NonbreDelMentor: "1", videos: [{ numero: "1", url: "https://www.youtube.com/embed/oHxeN8UGQg0?si=iYfaw-Xg0GiqIpq0" }, 
+                        { numero: "2", url: "https://www.youtube.com/embed/oHxeN8UGQg0?si=iYfaw-Xg0GiqIpq0" }] },
+                        { NonbreDelMentor: "2", videos: [{ numero: "1", url: "" }, { numero: "2", url: "" }] }
+                    ]
+                },
+                {
+                    NombreDeltema: "multiplicacion",
+                    Mentores: [
+                        { NonbreDelMentor: "3", videos: [{ numero: "1", url: "https://www.youtube.com/embed/LKENZ55ArPc?si=irdFgYXXV4QLswbV" }, { numero: "2", url: "" }] },
+                        { NonbreDelMentor: "4", videos: [{ numero: "1", url: "" }, { numero: "2", url: "" }] }
+                    ]
+                }
+            ],
+            Algebra: [
+                {
+                    NombreDeltema: "polinomios",
+                    Mentores: [
+                        { NonbreDelMentor: "5", videos: [{ numero: "1", url: "https://www.youtube.com/embed/LKENZ55ArPc?si=irdFgYXXV4QLswbV" }, { numero: "2", url: "" }] },
+                        { NonbreDelMentor: "6", videos: [{ numero: "1", url: "" }, { numero: "2", url: "" }] }
+                    ]
+                },
+                {
+                    NombreDeltema: "trinomios",
+                    Mentores: [
+                        { NonbreDelMentor: "7", videos: [{ numero: "1", url: "https://www.youtube.com/embed/LKENZ55ArPc?si=irdFgYXXV4QLswbV" }, { numero: "2", url: "" }] },
+                        { NonbreDelMentor: "8", videos: [{ numero: "1", url: "" }, { numero: "2", url: "" }] }
+                    ]
+                }
+            ]
+        };
+
+        asignaturaSelect.addEventListener('change', function() {
+            const asignatura = this.value;
+            const temas = asignaturas[asignatura];
+
+            // Limpiar temario anterior
+            temarioDiv.innerHTML = '';
+
+            // Crear opciones de temario
+            temas.forEach(tema => {
+                const option = document.createElement('option');
+                option.value = tema.NombreDeltema;
+                option.textContent = tema.NombreDeltema;
+                temaSelect.appendChild(option);
+
+                const paragraph = document.createElement('p');
+                paragraph.textContent = tema.NombreDeltema;
+                temarioDiv.appendChild(paragraph);
+            });
+        });
+
+        temaSelect.addEventListener('change', function() {
+            const asignatura = asignaturaSelect.value;
+            const tema = this.value;
+            const mentores = asignaturas[asignatura].find(t => t.NombreDeltema === tema).Mentores;
+
+            mentorSelect.innerHTML = '<option value="" disabled selected>Selecciona Al Mentor</option>';
+            mentores.forEach(mentor => {
+                const option = document.createElement('option');
+                option.value = mentor.NonbreDelMentor;
+                option.textContent = mentor.NonbreDelMentor;
+                mentorSelect.appendChild(option);
+            });
+        });
+
+        mentorSelect.addEventListener('change', function() {
+            const asignatura = asignaturaSelect.value;
+            const tema = temaSelect.value;
+            const mentor = this.value;
+            const videos = asignaturas[asignatura].find(t => t.NombreDeltema === tema).Mentores.find(m => m.NonbreDelMentor === mentor).videos;
+
+            clasesSelect.innerHTML = '<option value="" disabled selected>Selecciona La Clase</option>';
+            videos.forEach(video => {
+                const option = document.createElement('option');
+                option.value = video.url;
+                option.textContent = `Clase ${video.numero}`;
+                clasesSelect.appendChild(option);
+            });
+        });
+
+        clasesSelect.addEventListener('change', function() {
+            const videoUrl = this.value;
+            reproductorVideo.src = videoUrl;
+        });
+    </script> -->
+  
+    
+    <script id="script_temas"></script>
+    <script src="./js/reproductor-academia.js"></script>
+    <script src="./js/comentarios.js"></script>
+    <script src="./js/Videos.js"></script>
+    <script src="../data/base.js"></script>
+    <script src="./js/libros.js"></script>
+    <script src="../supor.js"></script>
+    <script src="./js/Upload.js"></script>
+    <!-- <script src="./ae.js"></script> -->
+
+
+</body>
+</html>
