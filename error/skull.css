@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+body.skull{
+    /* Agrega los estilos para el modo noche aquí */
+    /* Por ejemplo, puedes establecer un fondo oscuro, cambiar colores de texto, etc. */
+    background-color: #9b0000;
+    color: #fff;
+}
+img{
+    max-width: 100%;
+}
+.tablero-user{
+    display: none;
+}
+.close{
+    display: none;
+}
+body.skull .padre-user .switch{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+body.skull .padre-user .close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color:  #fff;
+    font-size: 40px;
+    display: block;
+    z-index: 1;
+}
+
+body.skull .padre-user{
+    max-width: 100%;
+    width: 400px;
+    height: 100vh;
+    position: relative;
+}
+
+body.skull .tablero-user{
+    text-align: center;
+    justify-content: center ;
+    /* padding-top: 30px; */
+    display: block;
+    max-width: 100%;
+    /* border: 1px solid #000; */
+    width: 400px;
+    background: #000;
+    height: 100vh;
+    /* position: fixe   d; */
+}
+body.skull .tablero-user #texto-generado{
+    padding-top: 20px;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+body.skull .tablero-user #Modelo-user{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+body.skull .tablero-user img{
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 1000px;
+    width: 90%;
+    /* border: 1px solid #fff; */
+    height: 350px;
+}
+body.skull .tableros{
+    width: 79.2%;
+    margin-left: 400px;
+    height: 100vh;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+body.skull .padre-tableros{
+    background: #fff;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+body.skull .tableros .teblero-arriba {
+
+    top: 20px;
+    position: absolute;
+    right: 10px;
+    background: #000;
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./skull.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <audio id="nightModeAudio" >
+        <!-- <source src="./a.mp3" type="audio/mpeg"> -->
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+    
+    <script>
+    // Definir un objeto que mapea nombres de usuario a contraseñas
+var usuariosContrasenas = {
+  "Florentino": { password: "admin", modelo: "💎 Premiun a💎", imagen: "https://i.pinimg.com/564x/b8/87/be/b887be064ad39eecf7bfefe3e035f536.jpg" },
+    "admin": {
+        password: "admin",
+        modelo: "💎 Premiun 💎",
+        imagen: "11.jpg" // Reemplaza "url_de_la_imagen_de_Arquitecto_Sandro.jpg" con la URL de la imagen
+    },
+    "aa": { password: "aa", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/d5/81/45/d58145ed8fded7ebed053677baeef49c.jpg" },
+    "Arquitecto Sandro": {
+        password: "admin",
+        mensaje: "Pago: te faltan 2 días",
+        modelo: "Basico",
+        imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" // Reemplaza "url_de_la_imagen_de_Arquitecto_Sandro.jpg" con la URL de la imagen
+    },
+    "Usuario2": {
+      password: "admin",
+      modelo: "💎 Premiun 💎",
+      imagen: "./1.jpg" // Reemplaza "url_de_la_imagen_de_Arquitecto_Sandro.jpg" con la URL de la imagen
+    }
+};
+
+$(document).ready(function () {
+    var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+    var today = new Date().toLocaleDateString();
+
+    if (lastSecurityCheckDate === today) {
+        showWelcomeMessage();
+    } else {
+        performSecurityCheck();
+    }
+});
+
+function showWelcomeMessage() {
+    var username = localStorage.getItem('username');
+    var username = localStorage.getItem('username');
+    if (username) {
+        var saludo = "Hola, " + username + " Bienvenid@!";
+        textoGenerado.textContent = saludo;
+
+        var TipoModelos = localStorage.getItem('TipoModelo');
+
+        if (TipoModelos){
+          var TipoModelo = document.getElementById("Modelo-user");
+          TipoModelo.textContent = TipoModelos;
+                      // Comprobar si el modelo es "Premium" y ocultar el elemento con id "password"
+                    //   if (TipoModelos === "💎 Premiun 💎") {
+                    //     var passwordElement = document.getElementById("password");
+                    //     passwordElement.style.display = "none";
+                    // }
+        }
+
+        // Mostrar mensaje de bienvenida si el control de seguridad ya se realizó hoy
+        // alert("¡Hola, " + username + "! Bienvenido.");
+
+        // Mostrar la imagen de usuario almacenada en el almacenamiento local
+        var imagenUsuarioURL = localStorage.getItem('imagenUsuario');
+
+if (imagenUsuarioURL) {
+    var imagenUsuario = document.getElementById("img-user");
+    imagenUsuario.src = imagenUsuarioURL;
+    imagenUsuario.alt = "Imagen de Usuario";
+}
+    } else {
+        performSecurityCheck();
+    }
+    hideLoader();
+}
+
+function performSecurityCheck() {
+    var maxAttempts = 3;
+    var attempts = 0;
+    var isAvisoMostrado = false;
+    var controluno = false;
+    var controldos = false;
+
+    function showLoader() {
+        $("#overlay").fadeIn();
+    }
+
+    function hideLoader() {
+        $("#overlay").fadeOut();
+    }
+
+    function guardarDatos(nombre) {
+      var fechaHora = obtenerFechaHora();
+              var url = "https://script.google.com/macros/s/AKfycbx4wyov3Eo9Y244XgwOuonBwWRcHCHOkEZCbqPdpoNi_F2Y9aNvroX71IeJ5Jtv0lGI/exec";
+              var data = {
+                  nombre: nombre
+              };
+
+              $.post(url, JSON.stringify(data), function (response) {
+                  alert(response);
+              });
+
+        var lastReloadDate = localStorage.getItem('lastReloadDate');
+        var today = new Date().toLocaleDateString();
+
+        if (lastReloadDate !== today) {
+            setTimeout(function () {
+                localStorage.setItem('lastReloadDate', today);
+                window.location.reload();
+            }, 5000);
+        }
+    }
+
+    function obtenerFechaHora() {
+        var now = new Date();
+        var fecha = now.toLocaleDateString();
+        var hora = now.toLocaleTimeString();
+        return fecha + " " + hora;
+    }
+
+    function checkNombre() {
+        if (attempts < maxAttempts) {
+            if (!isAvisoMostrado) {
+                alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/registro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
+                isAvisoMostrado = true;
+            }
+
+            if (!controluno) {
+                alert("Control De Seguridad 1");
+                controluno = true;
+            }
+
+            var username = prompt("Ingrese el nombre de seguridad");
+
+            if (usuariosContrasenas.hasOwnProperty(username)) {
+                checkCodigo(username);
+            } else {
+                attempts++;
+                alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                checkNombre();
+            }
+        } else {
+            showLoader();
+            setTimeout(hideLoader, 5000);
+            window.location.href = "404.html";
+        }
+    }
+
+    function checkCodigo(username) {
+      if (attempts < maxAttempts) {
+          if (!controldos) {
+              alert("Control De Seguridad 2");
+              controldos = true;
+          }
+  
+          var codigo = prompt("Ingrese la contraseña");
+  
+          if (usuariosContrasenas[username].password === codigo) {
+              showLoader();
+              setTimeout(function () {
+                  hideLoader();
+                  var saludo = "Hola, " + username + " Bienvenid@!";
+                  textoGenerado.textContent = saludo;
+
+                  var TipoModelos = usuariosContrasenas[username].modelo;
+                  var TipoModelo = document.getElementById("Modelo-user");
+                  TipoModelo.textContent = TipoModelos;
+                  localStorage.setItem('TipoModelo', TipoModelos);
+
+                  // Agregar imagen de usuario aquí
+                  var imagenUsuarioURL = usuariosContrasenas[username].imagen;
+
+// Mostrar la imagen de usuario en una etiqueta de imagen
+var imagenUsuario = document.getElementById("img-user");
+imagenUsuario.src = imagenUsuarioURL;
+imagenUsuario.alt = "Imagen de Usuario";
+                  // Almacenar la URL de la imagen en el almacenamiento local
+                  localStorage.setItem('imagenUsuario', imagenUsuarioURL);
+
+  
+                  if (username === 'admin') {
+                      // Mostrar una alerta específica para el usuario 'admin'
+                      alert("¡Acceso de administrador!");
+                  } else {
+                      alert(" ✅ Acceso concedido ✅ ");
+                  }
+                  if (usuariosContrasenas[username].mensaje) {
+                    alert(usuariosContrasenas[username].mensaje);
+                }
+
+                  guardarDatos(username, imagenUsuarioURL, TipoModelos);
+  
+                  var today = new Date().toLocaleDateString();
+                  localStorage.setItem('lastSecurityCheckDate', today);
+  
+                  localStorage.setItem('username', username);
+              }, 5000);
+          } else {
+              attempts++;
+              alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
+              checkCodigo(username);
+          }
+      } else {
+          showLoader();
+          setTimeout(hideLoader, 5000);
+          window.location.href = "404.html";
+      }
+  }
+
+    showLoader();
+    checkNombre();
+}
+
+function showLoader() {
+    var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+    var today = new Date().toLocaleDateString();
+
+    if (lastSecurityCheckDate !== today) {
+        $("#overlay").fadeIn();
+    }
+}
+
+function hideLoader() {
+    $("#overlay").fadeOut();
+}
+
+
+</script>
+
+<style>
+    /* Estilos para el botón */
+    .switch {
+        position: relative;
+        background-color: #000000; /* Color de fondo */
+        border: none;
+        border-radius: 30px; /* Forma redondeada del botón */
+        color: #fff; /* Color del texto */
+        padding: 10px 10px; /* Espaciado interno del botón */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Alinea los iconos y el texto */
+        transition: background-color 0.3s ease;
+    }
+
+    /* Estilo para el icono de sol y luna */
+    .switch .fas.fa-smile, .switch .fas.fa-skull {
+        font-size: 24px;
+    }
+
+    /* Bolita indicadora */
+    .indicator {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff; /* Color de la bolita */
+        transition: transform 0.3s ease;
+    }
+
+    /* Estilo para el icono de sol y luna */
+    .switch .fas.fa-smile {
+        z-index: 5;
+        color: #000000; /* Color del sol */
+        padding-left: 3px;
+        margin-right: 10px; /* Espacio entre el icono y el texto */
+    }
+
+    /* Estilo para el icono de luna */
+    .switch .fas.fa-skull {
+        opacity: 0;
+        z-index: 1;
+        color: #5e0000; /* Color de la luna */
+        margin-left: 7px; /* Espacio entre el icono y el texto */
+    }
+
+
+
+    /* Animación de la bolita */
+    .switch.active .indicator {
+        transform: translateX(135%); /* Mueve la bolita a la derecha cuando el botón está activo (modo noche) */
+        background-color: #fff; /* Cambia el color de la bolita en modo noche */
+    }
+    .switch.active {
+        background: #5e0000;
+    }
+    .switch.active .fas.fa-skull{
+        opacity: 1;
+    }
+    .switch.active .fas.fa-smile{
+        opacity: 0;
+    } 
+    /* Agregar clase .skull al documento cuando el botón esté activo */
+            
+</style>
+<div class="hack">
+<div class="padre-user" id="padre-user">
+    <span class="close" onclick="cerra()">&times;</span>
+    <div class="tablero-user" id="tablero-user">
+        <p id="texto-generado"></p>
+        <p id="Modelo-user"></p>
+        <img id="img-user" alt="Imagen de Usuario">
+    </div>
+    <button class="switch" id="switch">
+        <i class="fas fa-smile"></i>
+        <span class="indicator"></span>
+        <i class="fas fa-skull"></i>
+    </button>
+</div>
+<div class="padre-tableros">
+    <div class="tableros">
+        <div class="teblero-arriba">
+            <div class="tab-ar">
+                <h1>Info</h1>
+                <p>Online: 0</p>
+                <p>Prot: 7771</p>
+                <p>Key: CVJ45O</p>
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        <!-- <div class="tablero-centro">
+    
+        </div> -->
+    </div>
+</div>
+
+</div>
+
+
+
+        <script>
+                        var textoGenerado = document.getElementById("texto-generado");
+        </script>
+        
+        <script>
+function cerra(){
+    const tablerouser = document.getElementById('padre-user');
+    tablerouser.style.display = "none";
+}
+// Función para verificar y aplicar el estado guardado en el almacenamiento local
+function applySavedState() {
+    const isNightMode = localStorage.getItem('nightMode') === 'true';
+    const switchButton = document.getElementById('switch');
+    const audio = document.getElementById('nightModeAudio');
+
+    if (isNightMode) {
+        switchButton.classList.add('active');
+        document.body.classList.add('skull');
+        audio.play();
+    } else {
+        switchButton.classList.remove('active');
+        document.body.classList.remove('skull');
+        audio.pause();
+    }
+}
+
+// JavaScript para alternar la clase "active" en el botón y guardar el estado
+document.getElementById('switch').addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.body.classList.toggle('skull');
+    const isNightMode = this.classList.contains('active');
+    localStorage.setItem('nightMode', isNightMode.toString());
+
+    // Reproducir o detener la canción según el estado del modo nocturno
+    const audio = document.getElementById('nightModeAudio');
+    if (isNightMode) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+});
+
+// Aplicar el estado guardado al cargar la página
+applySavedState();
+        </script>
+</body>
+</html>

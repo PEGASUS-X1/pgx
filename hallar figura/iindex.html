@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/css.css">
+</head>
+<body>
+    <select id="miSelect">
+        <option value="null" selected disabled>Seleccione Una Figura</option>
+        <option value="Cuadrado">Cuadrado</option>
+        <option value="Triangulo">Triangulo</option>
+        <option value="Rectangulo">Rectangulo</option>
+        <option value="Paralelogramo">Paralelogramo</option>
+        <option value="Rombo">Rombo</option>
+        <option value="Cometa">Cometa</option>
+        <option value="Trapecio">Trapecio</option>
+        <option value="Circulo">Circulo</option>
+        <option value="Poligono-Regular">Poligono Regular</option>
+        <option value="Corona-Circular">Corona Circular</option>
+        <option value="Sector-Circular">Sector Circular</option>
+    </select>
+    <div class="contenedor" id="contenidoOpcion1">
+        <div class="cajas">
+            <h1>Cuadrado</h1>
+            <img src="./assets/1.png" alt="">
+            <input type="text" id="lado" placeholder="Escribe un lado del cuadrado">
+            <p>Area: <span class="respuetas" id="Area1"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro1"></span></p>
+            <br>
+            <button id="sacar1" onclick="sacar('Cuadrado')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion2">
+        <div class="cajas">
+            <h1>Triangulo</h1>
+            <img src="./assets/2.png" alt="">
+            <input type="text" id="base" placeholder="Escribe la base del triángulo">
+            <input type="text" id="altura" placeholder="Escribe la altura del triángulo">
+            <p>Area: <span class="respuetas" id="Area2"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro2"></span></p>
+            <br>
+            <button id="sacar2" onclick="sacar('Triangulo')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion3">
+        <div class="cajas">
+            <h1>Rectangulo</h1>
+            <img src="./assets/3.png" alt="">
+            <input type="text" id="baseRect" placeholder="Escribe la base del rectángulo">
+            <input type="text" id="alturaRect" placeholder="Escribe la altura del rectángulo">
+            <p>Area: <span class="respuetas" id="Area3"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro3"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Rectangulo')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion4">
+        <div class="cajas">
+            <h1>Paralelogramo</h1>
+            <img src="./assets/4.png" alt="">
+            <input type="text" id="baseParale" placeholder="Escribe la base del Paralelogramo">
+            <input type="text" id="alturaParale" placeholder="Escribe la altura del Paralelogramo">
+            <input type="text" id="ladoParale" placeholder="Escribe lado del Paralelogramo">
+            <p>Area: <span class="respuetas" id="Area4"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro4"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Paralelogramo')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion5">
+        <div class="cajas">
+            <h1>Rombo</h1>
+            <img src="./assets/5.png" alt="">
+            <input type="text" id="DRombo" placeholder="Escribe la D del Rombo">
+            <input type="text" id="dRombo" placeholder="Escribe la d del Rombo">
+            <input type="text" id="ladoRombo" placeholder="Escribe lado del Rombo">
+            <p>Area: <span class="respuetas" id="Area5"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro5"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Rombo')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion6">
+        <div class="cajas">
+            <h1>Cometa</h1>
+            <img src="./assets/6.png" alt="">
+            <input type="text" id="DCometa" placeholder="Escribe la D del Cometa">
+            <input type="text" id="dCometa" placeholder="Escribe la d del Cometa">
+            <input type="text" id="ladoCometa" placeholder="Escribe lado del Cometa">
+            <input type="text" id="baseCometa" placeholder="Escribe base del Cometa">
+            <p>Area: <span class="respuetas" id="Area6"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro6"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Cometa')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion7">
+        <div class="cajas">
+            <h1>Trapecio</h1>
+            <img src="./assets/7.png" alt="">
+            <input type="text" id="BaseMayorTra" placeholder="Escribe la Base Mayor del Trapecio">
+            <input type="text" id="BaseMenorTra" placeholder="Escribe la Base Menor del Trapecio">
+            <input type="text" id="AlturaTra" placeholder="Escribe Altura del Trapecio">
+            <input type="text" id="ladoATra" placeholder="Escribe lado A del Trapecio">
+            <input type="text" id="ladoCTra" placeholder="Escribe lado C del Trapecio">
+            <p>Area: <span class="respuetas" id="Area7"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro7"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Trapecio')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion8">
+        <div class="cajas">
+            <h1>Circulo</h1>
+            <img src="./assets/8.PNG" alt="">
+            <input type="text" id="radioCir" placeholder="Escribe el radio del Circulo">
+            <p>Area: <span class="respuetas" id="Area8"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro8"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Circulo')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion9">
+        <div class="cajas">
+            <h1>Poligono Regular</h1>
+            <img src="./assets/9.png" alt="">
+            <input type="text" id="apotemaPoli" placeholder="Escribe el apotema del Poligono Regular">
+            <input type="text" id="ladosPoli" placeholder="Escribe numero de lados del Poligono Regular">
+            <input type="text" id="basePoli" placeholder="Escribe la base del Poligono Regular">
+
+            <p>Area: <span class="respuetas" id="Area9"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro9"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Poligono-Regular')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion10">
+        <div class="cajas">
+            <h1>Corona Circular</h1>
+            <img src="./assets/10.png" alt="">
+            <input type="text" id="RadioMayorCoro" placeholder="Escribe el Radio Mayor de la Corona">
+            <input type="text" id="RadioMenorCoro" placeholder="Escribe el Radio Menor de la Corona">
+            <p>Area: <span class="respuetas" id="Area10"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro10"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Corona-Circular')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="contenedor" id="contenidoOpcion11">
+        <div class="cajas">
+            <h1>Sector Circular</h1>
+            <img src="./assets/11.png" alt="">
+            <input type="text" id="anguloSec" placeholder="Escribe el angulo del Sector">
+            <input type="text" id="radioSec" placeholder="Escribe el radio del Sector">
+            <p>Area: <span class="respuetas" id="Area11"></span></p>
+            <p>Perimetro: <span class="respuetas" id="Perimetro11"></span></p>
+            <br>
+            <button id="sacar3" onclick="sacar('Sector-Circular')" class="btn">Calcular</button>
+        </div>
+    </div>
+    <script src="./assets/js/js.js"></script>
+</body>
+</html> 

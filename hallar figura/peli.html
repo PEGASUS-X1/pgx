@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="miSelect">
+        <option value="x" >x</option>
+        <option value="y">y</option>
+    </select>
+    <input type="text" id="asa">
+    <input type="text" id="bsb">
+    <p id="resultado">
+
+    </p>
+    <br>
+    <br>
+    <input type="text" id="1asa">
+    <input type="text" id="1bsb">
+    <p id="1resultado">
+
+    </p>
+    <p onclick="sacar('x')">x</p>
+    <p onclick="sacar('y')">y</p>
+    <script>
+        //function ara(){
+        //    var asa = document.getElementById("asa").value;
+        //    var bsb = document.getElementById("bsb").value;
+        //    polinomio = asa * bsb +2 *(asa * bsb) + bsb*bsb;
+        //    var resultado = document.getElementById("resultado");
+        //    resultado.textContent = polinomio;
+        //}
+        var select = document.getElementById('miSelect');
+        var asa = document.getElementById('asa');
+        select.addEventListener('change', function() {
+        
+            var opcionSeleccionada = select.value;
+            if (opcionSeleccionada === 'x') {
+                asa.style.display = '';
+            } else if (opcionSeleccionada === 'y') {
+                asa.style.display = 'none';
+            }
+        });
+function sacar(figura) {
+    if (figura === 'x') {
+        var asa = parseFloat(document.getElementById("asa").value);
+        var bsb = parseFloat(document.getElementById("bsb").value);
+        polinomio = asa * bsb + 2 *(asa * bsb) + bsb*bsb;
+        var resultado = document.getElementById("resultado");
+        resultado.textContent = polinomio;
+    } else if (figura === 'y') {
+        var asa = parseFloat(document.getElementById("1asa").value);
+        var bsb = parseFloat(document.getElementById("1bsb").value);
+        polinomio = asa + "x + " + 2*asa + "x " + "+ x³";
+        var resultado = document.getElementById("1resultado");
+        resultado.textContent = polinomio;
+    }
+}
+    </script>
+</body>
+</html>
