@@ -1,0 +1,13 @@
+.tableros.dia .tablero {
+    background: #ffffff81;
+}
+
+.tableros.dia .tablero span {
+    background: #000;
+}
+
+.tableros.dia .tablero h1 {
+    color: #000;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #fff;
+}
