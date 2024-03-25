@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from resultados.unap.edu.pe/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Mar 2024 00:33:01 GMT -->
+<head>
+  <title>UNAP</title>
+ <meta charset="utf-8">
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      background: linear-gradient(0deg, #1b1e26 6%, #303440 95%);
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+    }
+
+    .login {
+      position: relative;
+      width: 500px;
+      height: 450px;
+      padding: 20px;
+      background: #15171d;
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login::before,
+    .login_circuit-mask {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 1100px;
+      height: 900px;
+    }
+
+    .login::before {
+      background: url("w.svg");
+      /urls de la imagen/
+    }
+
+    .login_circuit-mask {
+      display: grid;
+      place-items: center;
+
+      -webkit-mask: url("w.svg");
+      mask: url("w.svg");
+    }
+
+    .login_circuit-mask::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #00f0ff;
+      animation: onda 6s infinite;
+      animation-delay: 1s;
+    }
+
+    .login_heading {
+      font-size: 24px;
+      margin-bottom: 2px;
+      /* Espacio entre el texto y el botón */
+    }
+    .sub_tittle {
+      font-size: 20px;
+      margin-bottom: 2px;
+      /* Espacio entre el texto y el botón */
+    }
+    .subsub_tittle {
+      font-size: 14px;
+      margin-bottom: 2px;
+      /* Espacio entre el texto y el botón */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      /* Cambia 'center' a 'flex-end' para alinear los botones al final */
+      flex-wrap: wrap;
+      /* Añade esta línea para que los botones se coloquen en una línea */
+      gap: 15px;
+      /* Añade un espacio de separación entre los botones */
+      margin-top: auto;
+      /* Mueve los botones al final del contenedor */
+    }
+
+    .neon-button {
+      border: 2px solid #00f0ff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #00f0ff;
+      font-size: 18px;
+      background-color: transparent;
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      max-width: 120px;
+    }
+
+    .neon-button:hover {
+      color: #fff;
+      background-color: #00f0ff;
+      cursor: pointer;
+    }
+
+    .logo-image {
+      position: absolute;
+      top: -75px;
+      /* Ajustar el valor según la posición deseada */
+      left: 50%;
+      transform: translateX(-50%);
+      border: 10px solid #15171d;
+      border-radius: 20%;
+      background-color: #15171d;
+      /* Fondo del logo */
+      width: 200px;
+      /* Ajustar el tamaño del logo */
+      height: 200px;
+      /* Ajustar el tamaño del logo */
+    }
+
+    @keyframes onda {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(9.5);
+      }
+
+      100% {
+        transform: scale(9.5);
+      }
+    }
+
+    /* Footer Styles */
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #15171d;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .copyricht {
+      margin-top: 10px;
+      color: #fff;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <div class="button-container">
+      <button class="neon-button" onclick="window.location.href='https://portal.unap.edu.pe/'">Portal UNAP</button>
+    </div>
+    <h1 class="login_heading">Universidad Nacional del Altiplano</h1>
+    <h2 class="sub_tittle">VICERRECTORADO ACADÉMICO</h2>
+    <h2 class="sub_tittle">DIRECCIÓN DE ADMISIÓN</h2>
+   <strong class="subsub_tittle"> EXAMEN EXTRAORDINARIO 2024</strong>
+
+    <img class="logo-image" src="logo-universidad-nacional-del-altiplano.png" alt="Logo">
+    <span class="login_circuit-mask"></span>
+    <div class="button-container">
+     <!-- <a class="neon-button" href="ingresantes.txt"> RELACION DE INGRESANTES</a>-->
+     <!-- <a class="neon-button" href="clasificados.txt">CLASIFICADOS PARA EL EXAMEN DEL DOMINGO 28 ENERO DEL 2024</a>-->
+     <!-- <a class="neon-button" href="ingresadomingo.txt">INGRESANTES  EXAMEN DEL DOMINGO 28 ENERO DEL 2024</a>-->
+	<a class="neon-button" href="estraordinario2024-1.txt">INGRESANTES EXAMEN EXTRAORDINARIO</a>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="copyricht">
+      © 2024 Universidad Nacional del Altiplano. Oficina de Tecnologias de Informacion  Todos los derechos reservados.
+    </div>
+  </footer>
+</body>
+
+
+<!-- Mirrored from resultados.unap.edu.pe/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Mar 2024 00:33:02 GMT -->
+</html>
